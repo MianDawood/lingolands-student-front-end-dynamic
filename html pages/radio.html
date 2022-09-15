@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Слушайте радио когда и где угодно</title>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+   <link rel="stylesheet" href="./datepicker/css/datepicker.min.css">
+   <link rel="stylesheet" href="./node_modules/@fancyapps/ui/dist/fancybox.css">
+   <link rel="stylesheet" href="./css/custom-player.css">
+   <link href="./node_modules/star-rating.js/dist/star-rating.css" rel="stylesheet" />
+   <link rel="stylesheet" href="./scss/style.css">
+</head>
+
+<body>
+   <header class="header">
+      <div class="header__inner">
+         <div class="container">
+            <div class="header__top header-top">
+               <div class="header-top__logo">
+                  <a href="./" class="header-top__logo-link">
+                     <img class="header-top__logo-img" src="./image/logo.svg" alt="logo">
+                  </a>
+               </div>
+               <div class="header-top__search">
+                  <form class="header-top__search-form" action="#">
+                     <input class="header-top__search-form-input" type="text" placeholder="Search">
+                  </form>
+                  <div class="header-top__buy-btn">
+                     <a href="./buy-lessons.html">Купить уроки</a>
+                  </div>
+               </div>
+               <div class="header-top__user-nav">
+                  <div style="position:relative">
+                     <a href="#" class="header-top__notification-btn" data-fancybox="" data-src="#notification">
+                        <img src="./image/notification-icon.svg" alt="notification">
+                     </a>
+                     <div class="popup__notifications popup__notifications-main" id="notification2"
+                        style="max-width:500px;">
+                        <p class="notifications-title">Уведомления</p>
+                        <ol class="notifications-list">
+                           <li class="notifications-item">
+                              <a href="./homework.html">Новое домашнее задание уже добавлено!</a>
+                           </li>
+                           <li class="notifications-item">
+                              <a href="./homework.html">У вас 2 не выполненых домашних задания!</a>
+                           </li>
+                           <li class="notifications-item">
+                              <a href="./club.html">Сегодня состоиться встреча в разговорном клубе!</a>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+                  <a href="./account.html" class="header-top__account-btn">
+                     <img src="./image/account-icon.svg" alt="account">
+                  </a>
+               </div>
+               <div class="header__mob-menu-btn">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+               <div class="mob-menu">
+                  <div class="mob-menu-content">
+                     <a href="#" class="mob-menu__notification-btn" data-fancybox="" data-src="#notification">
+                        <img src="./image/notification-icon-m.svg" alt="notification">
+                     </a>
+                     <a href="./account.html" class="mob-menu__account-btn">
+                        Мой профиль <img src="./image/account-icon.svg" alt="account">
+                     </a>
+                  </div>
+                  <nav>
+                     <ul>
+                        <li class="mob-menu-link drop">
+                           <div class="mob-menu-link-main accordion" href="#">Уроки</div>
+                           <div class="drop-content">
+                              <a class="drop-content-link" href="#">Мои уроки</a>
+                              <a class="drop-content-link" href="#">Домашнее задание</a>
+                           </div>
+                        </li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./buy-lessons.html">Курсы</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./tv.html">Телеканалы</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./books.html">Книги</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./radio.html">Радио</a></li>
+                     </ul>
+                  </nav>
+                  <div class="mob-menu-content-bottom">
+                     <a href="#" class="mob-menu__account-btn-l">
+                        Выйти из аккаунта <img src="./image/account-icon.svg" alt="account">
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="popup__notifications" id="notification" style="display:none;max-width:500px;">
+            <p class="notifications-title">Уведомления</p>
+            <ol class="notifications-list">
+               <li class="notifications-item">
+                  <a href="./homework.html">Новое домашнее задание уже добавлено!</a>
+               </li>
+               <li class="notifications-item">
+                  <a href="./homework.html">У вас 2 не выполненых домашних задания!</a>
+               </li>
+               <li class="notifications-item">
+                  <a href="./club.html">Сегодня состоиться встреча в разговорном клубе!</a>
+               </li>
+               </>
+         </div>
+      </div>
+      <div class="header__bottom header-bottom">
+         <div class="header-bottom__inner">
+            <div class="container">
+               <nav class="header__menu">
+                  <ul class="header__menu-list">
+                     <li class="header__menu-item  header__menu-item-drop">
+                        <div href="#" class="header__menu-item-link">
+                           Уроки
+                        </div>
+                        <div class="dropdown-content">
+                           <a class="dropdown-content-link" href="./lessons.html">Мои уроки</a>
+                           <a class="dropdown-content-link" href="./homework.html">Домашнее задание</a>
+                        </div>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./buy-lessons.html" class="header__menu-item-link">
+                           Курсы
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./tv.html" class="header__menu-item-link">
+                           Телеканалы
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./books.html" class="header__menu-item-link">
+                           Книги
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./radio.html" class="header__menu-item-link">
+                           Радио
+                        </a>
+                     </li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </header>
+   <main class="main main__radio">
+
+
+      <section class="radio">
+         <div class="radio__inner">
+
+            <div class="testov" style="padding-top: 20px">
+               <div class="radio-top">
+                  <div class="container">
+                     <h2>Интернет-радиостанции всех стран</h2>
+                     <div class="radio-top__content">
+                        <div class="radio-top__content-img">
+                           <img src="./image/radio-main-img.svg" alt="radio">
+                        </div>
+                        <div class="radio-top__content-desc">
+                           <p>
+                              Слушайте радио в свободное время, во время вожденния, занятия спортом. Будьте
+                              всегда погружены в изучения иностранного языка.
+
+                           </p>
+                           <p>
+                              Специально для вас мы собрали подборку лучших БЕСПЛАТНЫХ радиостанцый со
+                              всего мира.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="filter-8">
+                  <form action="#" class="radio__search-form">
+                     <div class="radio-form-search">
+                        <input class="radio-form-search-input" type="text" placeholder="Поиск">
+                     </div>
+                     <div class="radio-form-status">
+                        <div class="dropdown">
+                           <button class="btn btn-secondary dropdown-toggle radio-select" type="button"
+                              data-bs-toggle="dropdown" aria-expanded="false">
+                              World
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-main radio-select-list">
+                              <li>
+                                 <button type="button" data-filter="all">World</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".austria">Austria</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".australia">Australia</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".canada">Canada</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".great-britain">Great Britain</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".new-zealand">New Zealand</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".usa">USA</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".south-africa">South Africa</button>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <div class="sort">
+
+                  <div class="sort-container sort-container-radio">
+                     <h4>Фильтр</h4>
+                     <div class="controls">
+                        <!-- <button type="button" data-sort="views:asc">Sort by v (A-Z)</button> -->
+                        <button type="button" data-sort="views:desc">Количество просмотров
+                         
+                        </button>
+                        <button type="button" data-sort="reiting:desc">Рейтинг
+                          
+                        </button>
+                        <button type="button" data-sort="best:desc">Избранное
+                          
+                        </button>
+                     </div>
+                     <div class="mobile">
+                        <div class="dropdown">
+                           <button class="btnm btn-secondary dropdown-toggle radio-select" type="button"
+                              data-bs-toggle="dropdown" aria-expanded="false">
+                              Сортировать
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-mobilem radio-select-list">
+                              <li>
+                                 <button type="button" data-sort="views:desc">Количество просмотров</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-sort="reiting:desc">Рейтинг</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-sort="best:desc">Избранное</button>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="container">
+               <div class="radio__content-list" id="radio">
+                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
+                     data-best="4">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a href="#" class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
+                     data-best="4">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a href="#" class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
+                     data-best="4">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a href="#" class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
+                     data-best="4">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a href="#" class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
+                     data-best="4">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a href="#" class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
+                     data-best="4">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <a href="#" class="radio-radioi__link">
+                           <img src="./image/radio-start.svg" alt="play"
+                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
+                        </a>
+                     </div>
+                  </div>
+
+                  <!-- <div class="gap"></div>
+                     <div class="gap"></div>http://stream.wksu.org/wksu1.128.mp3 -->
+
+               </div>
+               <div id="pagination" class="pagination"></div>
+            </div>
+         </div>
+      </section>
+      <section class="go-club">
+         <div class="go-club__inner">
+            <div class="container">
+               <h4>
+                  Заполняйте форму и присоединяйтесь к нам!
+               </h4>
+               <p>
+                  Практикуйте ваши навыки владения иностранными языки в разговорном клубе вместе с другими стуендами
+               </p>
+               <ul>
+                  <li>Живое общение</li>
+                  <li>Практика разговорной речи</li>
+                  <li>Новые зкомства</li>
+                  <li>Преодоление языкового барьера</li>
+               </ul>
+               <a href="./club.html">Записаться в разговорный клуб</a>
+            </div>
+         </div>
+      </section>
+      <div id="p1"></div>
+   </main>
+   <footer class="footer">
+      <div class="footer__inner">
+         <div class="container">
+            <div class="footer__menu-one footer-menu">
+               <ul class="footer__menu-one-list">
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Процесс изучения
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Цена
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Груповые уроки
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Разговорные клубы
+                     </a>
+                  </li>
+               </ul>
+            </div>
+            <div class="footer__menu-two footer-menu">
+               <ul class="footer__menu-two-list">
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Общий английский
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Бизнес английский
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Подготовка к экзамену
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Школьный английский
+                     </a>
+                  </li>
+               </ul>
+            </div>
+            <div class="footer__menu-three footer-menu">
+               <ul class="footer__menu-three-list">
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Работа для учителей
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Политика конфиденциальности
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Условия и положения
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Контакты
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="./datepicker/js/datepicker.min.js"></script>
+   <script src="./node_modules/mixitup/dist/mixitup.js"></script>
+   <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+   <script src="./scripts/jPages.min.js"></script>
+   <script src="./node_modules/@fancyapps/ui/dist/fancybox.umd.js"></script>
+   <script src="./node_modules/star-rating.js/dist/star-rating.js"></script>
+   <script>
+      if ($(window).width() < 960) {
+         //pagination
+         var pagination = $('.pagination');
+         function setPagination() {
+            pagination.jPages({
+               containerID: 'radio',
+               perPage: 4,
+               startPage: 1,
+               startRange: 1,
+               midRange: 3,
+               endRange: 1,
+               first: false,
+               last: false,
+               previous: "",
+               next: ""
+            });
+         }
+         function destroyPagination() {
+            pagination.jPages('destroy');
+         };
+         setPagination();
+         var mixer = mixitup('#radio', {
+            selectors: {
+               target: '.radio__content-item'
+            },
+            animation: {
+               duration: 300
+            },
+            callbacks: {
+               onMixStart: function (state, futureState) {
+                  destroyPagination();
+
+               },
+               onMixEnd: function (state, futureState) {
+                  console.log('mix End');
+                  setPagination();
+               },
+            }
+         });
+         setPagination();
+      }
+      else {
+         //pagination
+         var pagination = $('.pagination');
+         function setPagination() {
+            var d = $(window).width();
+            pagination.jPages({
+               containerID: 'radio',
+               perPage: 12,
+               startPage: 1,
+               startRange: 1,
+               midRange: 3,
+               endRange: 1,
+               first: false,
+               last: false,
+               previous: "Предыдущая страница",
+               next: "Следущая страница"
+            });
+         }
+         function destroyPagination() {
+            pagination.jPages('destroy');
+         };
+         setPagination();
+         var mixer = mixitup('#radio', {
+            selectors: {
+               target: '.radio__content-item'
+            },
+            animation: {
+               duration: 300
+            },
+            callbacks: {
+               onMixStart: function (state, futureState) {
+                  destroyPagination();
+
+               },
+               onMixEnd: function (state, futureState) {
+                  console.log('mix End');
+                  setPagination();
+               },
+            }
+         });
+      }
+
+   </script>
+   <script src="./scripts/custom-player.js"></script>
+   <script src="./scripts/main.js"></script>
+</body>
+
+</html>

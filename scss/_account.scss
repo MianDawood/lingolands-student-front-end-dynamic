@@ -1,0 +1,826 @@
+@media only screen and (min-width: 1000px) {
+   .filter-9 {
+      height: 235px;
+   }}
+   @media only screen and (max-width: 1000px) {
+      .filter-9 {
+         border-radius: 0;
+         padding-right: 34px;
+      }}
+@media only screen and (max-width: 900px) {
+   .filter-9 {
+      margin: 0;
+      padding-right: 12.5vw;
+      padding-left: 12.5vw;
+      border-radius: 0;
+      //height: 120px;
+   }
+}
+.main__account {
+   .account-langs__list {
+      li {
+         transform: unset;
+         &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+         }
+      }
+   }
+   
+}
+.account-langs__title {
+   font-weight: 500;
+   font-size: 20px;
+   line-height: 22px;
+   margin-bottom: 10px;
+}
+.account-langs__list {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+.filter-9 {
+   //width: calc(565px + ((105vw - 1280px) / 2));
+   //width: 838px;
+   background-color: $mblue;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+   padding: 24px calc((100vw - 1280px) / 2) 24px 34px;
+}
+.account__info-person-interess ul li {
+   background: #e5e0e4 !important;
+}
+
+.account-langs {
+   p {
+      text-align: left;
+   }
+}
+.account__info-person-interess {
+}
+.account-langs__list {
+
+}
+.account__info-person-interess ul {
+   padding-bottom: 30px !important;
+}
+
+.account-langs {
+   padding-bottom: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+   .filter-9 {
+      margin: 0;
+      padding-right: 12.5vw;
+      padding-left: 12.5vw;
+      border-radius: 0;
+      //height: 120px;
+   }}
+   
+   .password,
+.plogs {
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.3s ease-out;
+}
+.loggout {
+   font-weight: 600;
+   font-size: 23px;
+   line-height: 28px;
+   padding-bottom: 14px;
+   display: flex;
+   justify-content: end;
+   & a {
+      width: 188px;
+      display: block;
+   }
+}
+.account__content {
+   display: flex;
+   gap: 30px;
+   margin-bottom: 50px;
+}
+.account-photo {
+   z-index: 1;
+   width: 23.2%;
+   & img {
+      width: 100%;
+      border: 1px solid #000000;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 50%;
+      @include av("margin-bottom", 50, 25, 1920, 480, 1);
+   }
+   &-links a {
+      margin-left: auto;
+      margin-right: auto;
+      width: fit-content;
+      display: block;
+      border-radius: 25px;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      color: #ffffff;
+      @include av("padding-top", 8, 6, 1920, 480, 1);
+      @include av("padding-bottom", 8, 6, 1920, 480, 1);
+      @include av("padding-left", 20, 12, 1920, 480, 1);
+      @include av("padding-right", 20, 12, 1920, 480, 1);
+      background: $mblue;
+      @include av("margin-bottom", 35, 15, 1920, 480, 1);
+   }
+}
+#info {
+   max-width: 696px;
+   width: 80%;
+   display: flex;
+   flex-wrap: nowrap;
+   flex-direction: row;
+   padding: 42px 30px 33px 13px;
+   border-radius: 75px;
+   display: none;
+   & .carousel__button.is-close {
+      top: 20px;
+      right: 30px;
+      background-color: $mblue;
+   }
+}
+.info-photo {
+   width: 29.1%;
+   & img {
+      width: 100%;
+      border-radius: 50%;
+      padding-bottom: 50px;
+   }
+   & a {
+      display: inline-block;
+      width: fit-content;
+      border-radius: 25px;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      color: #ffffff;
+      @include av("padding-top", 8, 6, 1920, 480, 1);
+      @include av("padding-bottom", 8, 6, 1920, 480, 1);
+      @include av("padding-left", 20, 12, 1920, 480, 1);
+      @include av("padding-right", 20, 12, 1920, 480, 1);
+      background: $mblue;
+      @include av("margin-bottom", 35, 15, 1920, 480, 1);
+   }
+}
+.info-desc {
+   display: flex;
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 24px;
+   text-align: center;
+   color: #000000;
+   gap: 50px;
+   & div {
+      display: flex;
+      width: 50%;
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: center;
+      & .value {
+         font-weight: 300;
+         font-size: 18px;
+         line-height: 22px;
+         @include av("padding-bottom", 50, 25, 1920, 480, 1);
+      }
+   }
+}
+.account__info {
+   position: relative;
+   display: flex;
+   width: 57.3%;
+   text-align: left;
+   flex-wrap: wrap;
+}
+.account__info-person {
+   &-name {
+      @include av("font-size", 32, 19, 1920, 480, 1);
+      @include av("line-height", 39, 23, 1920, 480, 1);
+      font-weight: 600;
+      padding-bottom: 11px;
+      text-align: left;
+   }
+   &-data {
+      @include av("padding-bottom", 50, 14, 1920, 480, 1);
+      & div {
+         text-align: left;
+         display: flex;
+         @include av("font-size", 20, 16, 1920, 480, 1);
+         @include av("line-height", 24, 20, 1920, 480, 1);
+         align-items: center;
+         padding-bottom: 15px;
+         & p {
+            display: inline-block;
+         }
+         & li {
+            @include av("font-size", 17, 15, 1920, 480, 1);
+            @include av("line-height", 21, 18, 1920, 480, 1);
+            font-weight: 400px;
+            display: inline-block;
+            background: #e5e0e4;
+            border-radius: 29px;
+            padding: 7px 37px;
+            margin-left: 20px;
+            display: inline-block;
+         }
+      }
+   }
+   &-interess ul {
+      text-align: left;
+      display: flex;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      align-items: center;
+      @include av("padding-bottom", 123, 50, 1920, 480, 1);
+      & p {
+         display: inline-block;
+      }
+      & li {
+         display: inline-block;
+         @include av("font-size", 17, 15, 1920, 480, 1);
+         @include av("line-height", 21, 18, 1920, 480, 1);
+         font-weight: 400px;
+         display: inline-block;
+         background: #fd7979;
+         border-radius: 29px;
+         padding: 7px 37px;
+         margin-left: 20px;
+      }
+   }
+}
+.account__info::after {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: -220px;
+   width: calc(100% + 234px);
+   border-radius: 61px;
+   height: 210px;
+   border: 1px solid #808080;
+}
+.account__info-teacher {
+   display: flex;
+   border: 1px solid #808080;
+   border-radius: 25px;
+   padding: 14px 26px 10px 23px;
+   &-desc-times {
+      text-align: left;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      padding-bottom: 18px;
+      & span {
+         font-weight: 600;
+      }
+   }
+   &-desc-level {
+      text-align: left;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      padding-top: 40px;
+      & span {
+         font-weight: 600;
+      }
+   }
+   &-desc-title {
+      text-align: left;
+      font-weight: 600;
+      @include av("font-size", 26, 19, 1920, 480, 1);
+      @include av("line-height", 32, 23, 1920, 480, 1);
+      @include av("padding-bottom", 35, 15, 1920, 480, 1);
+   }
+   &-photo {
+      @include av("widht", 171, 71, 1920, 480, 1);
+      padding-bottom: 14px;
+      &-img {
+         width: 100%;
+      }
+      & div {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+   }
+}
+
+.account__flag {
+   width: 14.6%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   height: 100%;
+   flex-wrap: wrap;
+   align-content: center;
+   align-items: center;
+   align-self: center;
+}
+.account {
+   &__info-title {
+      font-weight: 700;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      @include av("padding-bottom", 50, 15, 1920, 480, 1);
+   }
+   &__info-flags {
+      display: flex;
+      gap: 43px;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-between;
+   }
+   &__info-flag {
+      & img{
+
+         border-radius: 50%;
+         @include av("width", 77, 50, 1920, 480, 1);
+         @include av(" height", 77, 50, 1920, 480, 1);
+         filter: brightness(62%);
+         transition: filter 0.3s, transform 0.3s;
+         &:hover {
+            transform: scale(1.1);
+         }
+      }
+   }
+   &__info-flag.active {
+      & img{
+         filter: brightness(100%);
+      }
+   }
+}
+
+@media only screen and (max-width: 480px) {
+  .account__info-flags{
+   gap: 3px;
+  }
+  .row .container{
+   & div::after{
+      @include av ("font-size",20,14, 480, 320, 1);
+   }
+  }
+}
+.password__inner {
+   @include av("margin-bottom", 115, 50, 1920, 480, 1);
+   border-top: 1px solid #808080;
+   border-bottom: 1px solid #808080;
+   padding-top: 50px;
+   @include av("font-size", 40, 19, 1920, 480, 1);
+   @include av("line-height", 49, 23, 1920, 480, 1);
+   font-weight: 600;
+   text-align: left;
+}
+
+.row {
+   border-top: 1px solid #808080;
+   padding-top: 21px;
+   margin-top: 35px;
+   padding-bottom: 20px;
+   border-bottom: 1px solid #808080;
+   .container {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 64px;
+
+      & div {
+         position: relative;
+         width: 500%;
+         display: block;
+         height: 44px;
+         & input {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.55);
+         }
+      }
+   }
+}
+.password-form-old::after {
+   content: "Старый пароль";
+   background-color: #ffffff;
+   position: absolute;
+   left: 50px;
+   top: 0px;
+   transform: translateY(-50%);
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 24px;
+   padding: 0 10px;
+}
+.password-form-new::after {
+   content: "Новый пароль";
+   background-color: #ffffff;
+   position: absolute;
+   left: 50px;
+   top: 0px;
+   transform: translateY(-50%);
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 24px;
+   padding: 0 10px;
+}
+.password-form-newrep::after {
+   content: "Повторите пароль";
+   background-color: #ffffff;
+   position: absolute;
+   left: 50px;
+   top: 0px;
+   transform: translateY(-50%);
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 24px;
+   padding: 0 10px;
+}
+.row-2 .container {
+   display: flex;
+   justify-content: space-between;
+   padding: 58px 0 30px;
+   & label {
+      font-size: 20px;
+      line-height: 24px;
+      color: rgba(0, 0, 0, 0.42);
+      width: 60%;
+   }
+   & button {
+      display: block;
+      width: 270px;
+      font-size: 20px;
+      line-height: 24px;
+      color: white;
+      background-color: $mblue;
+      padding: 8px 14px;
+      border-radius: 25px;
+   }
+}
+.plogs {
+   & table {
+      word-wrap: break-word;
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #e7ffa4;
+      margin-bottom: 70px;
+      & tbody {
+         & .before,
+         .after {
+            width: calc((105vw - 1280px) / 2);
+         }
+         & tr:first-child {
+            background-color: $mblue;
+            border: 0px;
+            color: #ffffff;
+
+            & td {
+               padding: 8px 0 31px;
+               border: 0px;
+            }
+         }
+         & tr {
+            & td {
+               padding-top: 20px;
+               border-bottom: 1px solid #808080;
+            }
+         }
+      }
+   }
+}
+.filter-9{
+   height: 71px;
+   display: flex;
+   align-items: center;
+   padding-left: 220px;
+   position: relative;
+   overflow: hidden;
+   border-radius: 0;
+}
+.filter-9::after{
+   content: '';
+   position: absolute;
+   top: 0;
+   left:0;
+   width: 200px;
+   height: 150%;
+   background-color: #ffffff;
+   transform: rotate(-25deg) translateY(-75%) translateX(-0%);
+
+}
+.plogs-top{
+   display: flex;
+}
+.plogs-top h4{
+   font-weight: 600;
+font-size: 32px;
+line-height: 39px;
+padding-left: (calc(105vw - 1280px) / 2);
+}
+@media only screen and (max-width: 1280px) {
+   .plogs-top h4{
+      padding-left: 2.5vw;
+   }
+}
+@media only screen and (max-width: 1050px) {
+   .account__info::after{
+      display: none;
+   }
+   .account__info-person-interess ul{
+      flex-wrap: wrap;
+      gap: 12px;
+   }
+   .row .container{
+      flex-wrap: wrap;
+      gap: 30px;
+   }
+}
+.plogs-top{
+   align-items: flex-end;
+   justify-content: space-between;
+   & h4{
+      padding-left: calc(52.5vw - 640px);
+      align-self: center;
+   }
+}
+.info-desc{
+   div{
+      position: relative;
+   }
+   div:first-child:before{
+      content: '';
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 0%;
+      right: 0px;
+      background-image: url("../image/account-info-link.svg");
+      background-size: 100% 100%;
+      transform: translateY(-50%) translateX(100%);
+   }
+}
+@media only screen and (max-width: 768px) {
+   .account__content{
+      display: flex;
+      flex-wrap: wrap;
+   }
+   .account-photo{
+      width: 100%;
+      display: flex;
+
+      justify-content: space-evenly;
+      gap: 33px;
+      order: 1;
+
+      & img{
+         width: 33%;
+         height: min-content;
+      }
+      &-links a{
+         margin-left: 0;
+      }
+   }
+   .account__info-person{
+      width:100%
+   }
+   #info.fancybox__content{
+      display: flex;
+      flex-direction: column;
+   }
+   .info-photo{
+      display: flex;
+      align-items: flex-end;
+      width: 100%;
+      justify-content: space-around;
+      padding-bottom: 15px;
+      & img{
+         width: 100px;
+         padding-bottom: 0px;
+         height: auto;
+      }
+   }
+   .info-desc{
+      width: 100%;
+      & div{
+         font-weight: 600;
+      }
+   }
+   .account__flag{
+      order: 2;
+      flex-wrap: nowrap;
+      width: 100%;
+      align-content: flex-start;
+      align-items: flex-start;
+   }
+   .account__content{
+      padding-top: 30px;
+   }
+   .loggout{
+      display: none;
+   }
+   .account__info{
+      width: 100%;
+   }
+   .account__info-person-name{
+      border-left: 1px solid #000000;
+      border-right: 1px solid #000000;
+      border-top: 1px solid #000000;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      padding-top: 5px;
+      padding-left: 7px;
+   }
+   .account__info-teacher{
+      width: 100%;
+      position: relative;
+   }
+   .account__info-teacher-photo{
+      position: absolute;
+      top: 6px;
+      right: 7px;
+      width: 71px;
+   }
+   .account__info-teacher-desc{
+      width: calc(100% - 80px);
+   }
+   .account__info-person-data{
+      border-left: 1px solid #000000;
+      border-right: 1px solid #000000;
+      border-bottom: 1px solid #000000;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      padding: 0 7px 16px;
+      margin-bottom: 15px;
+   }
+   .account__info-person-data div li {
+      background: transparent !important;
+   }
+   .account__info-flags{
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-evenly;
+   }
+   .account__info{
+      order: 3;
+   }
+  .plogs-top{
+   flex-wrap:wrap;
+   & h4{
+      display: inline-block;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+      text-align: center;
+      display: block;
+      padding: 30px;
+      padding: 0 10px;
+      background-color: white;
+      transform: translateY(-50%);
+      margin-bottom: 30px;
+
+   }
+  }
+  .filter-9{
+   height:124px;
+   width: 100%;
+   padding: 19px 2.5vw 21px;
+   &::after{
+      content: unset;
+   }
+   & form{
+      justify-content: flex-end;
+      & input{
+         height: 33px;
+      }
+   }
+  }
+  .password__inner{
+   border-bottom: unset;
+   padding-top: 0px;
+  }
+  .password__title{
+   transform: translateY(-50%);
+   background-color: #ffffff;
+   display: inline-block;
+   font-weight: 600;
+   padding: 0 10px;
+   z-index: 2;
+  }
+  .row{
+   border-bottom: unset;
+  }
+  .row-2 .container{
+   border-bottom: unset;
+   & label{
+      display: none;
+   }
+   & button{
+      width: 297px;
+      margin-left: auto;
+      margin-right: auto;
+   }
+  }
+  .plogs{
+   border-top: 1px solid #808080;
+  }
+}
+@media only screen and (max-width: 580px) {
+   .plogs-top h4{
+      padding-left: 12.5vw;
+   }
+}
+
+.table-mobile{
+   display: none;
+
+}
+@media only screen and (max-width: 768px) {
+   table{
+      display: none;
+   }
+   
+   .plogs .table-mobile{
+      width: 100%;
+      display: block;
+      & tbody{
+         display: flex;
+         flex-wrap: wrap;
+         width: 100%;
+         & tr:first-child{
+            background-color: unset;
+            color: #000000;
+
+            & td{
+               border-bottom: 1px solid #000000;
+               padding-top: 30px;
+               padding-bottom: 23px;
+            }
+         }
+         & tr{
+            display: flex;
+            width: 100%;
+            & td{
+               width: 38.5%;
+               padding-top: 30px;
+               padding-bottom: 23px;
+               border-bottom: 1px solid #000000;
+               padding-right: 2.5vw;
+               text-align: left;
+            }
+            & td:first-child{
+               width: 61.5%;
+               padding-right: 0;
+               padding-left: 2.5vw;
+               font-weight: 600;
+               text-align: left;
+            }
+         }
+      }
+   }
+}
+@media only screen and (max-width: 580px) {
+   .my-lessons__search-form{
+      margin: 0 12.5vw;
+   }
+   .plogs .table-mobile{
+      & tbody{
+         & tr{
+            & td{
+               padding-right: 12.5vw;
+            }
+            & td:first-child{
+               padding-left: 12.5vw;
+            }
+         }
+      }
+   }
+}
+
+.account__info-person-data div li {
+   background: #21be85;
+}
+
+.account__info-person-interess ul li {
+   background: #e3d623 !important;
+}
+.account__content {
+   padding-top: 70px !important;
+}
+.header-top__account-btn {
+   background: unset !important;
+   position: relative;
+   z-index: 1000;
+}
+.header-top-account-btn__content {
+   display: none;
+}
+.header-top-account-btn--active {
+   .header-top-account-btn__content {
+      display: block;
+      position: absolute;
+      width: 150%;
+      height: 100%;
+      background: #fff;
+      top: 120%;
+      right: 0;
+      z-index: 1000;
+   }
+}
+.account__info-teacher-desc-level {
+   padding-top: 0;
+}

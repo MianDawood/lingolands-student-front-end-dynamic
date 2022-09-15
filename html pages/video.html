@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Подброрка видео для обучения</title>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+   <link rel="stylesheet" href="./datepicker/css/datepicker.css">
+   <link rel="stylesheet" href="./datepicker/css/datepicker.min.css">
+   <link rel="stylesheet" href="./node_modules/@fancyapps/ui/dist/fancybox.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="./scss/style.css">
+</head>
+
+<body>
+   <header class="header">
+      <div class="header__inner">
+         <div class="container">
+            <div class="header__top header-top">
+               <div class="header-top__logo">
+                  <a href="./" class="header-top__logo-link">
+                     <img class="header-top__logo-img" src="./image/logo.svg" alt="logo">
+                  </a>
+               </div>
+               <div class="header-top__search">
+                  <form class="header-top__search-form" action="#">
+                     <input class="header-top__search-form-input" type="text" placeholder="Search">
+                  </form>
+                  <div class="header-top__buy-btn">
+                     <a href="./buy-lessons.html">Купить уроки</a>
+                  </div>
+               </div>
+               <div class="header-top__user-nav">
+                  <div style="position:relative">
+                     <a href="#" class="header-top__notification-btn" data-fancybox="" data-src="#notification">
+                        <img src="./image/notification-icon.svg" alt="notification">
+                     </a>
+                     <div class="popup__notifications popup__notifications-main" id="notification2"
+                        style="max-width:500px;">
+                        <p class="notifications-title">Уведомления</p>
+                        <ol class="notifications-list">
+                           <li class="notifications-item">
+                              <a href="./homework.html">Новое домашнее задание уже добавлено!</a>
+                           </li>
+                           <li class="notifications-item">
+                              <a href="./homework.html">У вас 2 не выполненых домашних задания!</a>
+                           </li>
+                           <li class="notifications-item">
+                              <a href="./club.html">Сегодня состоиться встреча в разговорном клубе!</a>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+                  <a href="./account.html" class="header-top__account-btn">
+                     <img src="./image/account-icon.svg" alt="account">
+                  </a>
+               </div>
+               <div class="header__mob-menu-btn">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+               <div class="mob-menu">
+                  <div class="mob-menu-content">
+                     <a href="#" class="mob-menu__notification-btn" data-fancybox="" data-src="#notification">
+                        <img src="./image/notification-icon-m.svg" alt="notification">
+                     </a>
+                     <a href="./account.html" class="mob-menu__account-btn">
+                        Мой профиль <img src="./image/account-icon.svg" alt="account">
+                     </a>
+                  </div>
+                  <nav>
+                     <ul>
+                        <li class="mob-menu-link drop">
+                           <div class="mob-menu-link-main accordion" href="#">Уроки</div>
+                           <div class="drop-content">
+                              <a class="drop-content-link" href="#">Мои уроки</a>
+                              <a class="drop-content-link" href="#">Домашнее задание</a>
+                           </div>
+                        </li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./buy-lessons.html">Курсы</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./tv.html">Телеканалы</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./books.html">Книги</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./radio.html">Радио</a></li>
+                     </ul>
+                  </nav>
+                  <div class="mob-menu-content-bottom">
+                     <a href="#" class="mob-menu__account-btn-l">
+                        Выйти из аккаунта <img src="./image/account-icon.svg" alt="account">
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="popup__notifications" id="notification" style="display:none;max-width:500px;">
+            <p class="notifications-title">Уведомления</p>
+            <ol class="notifications-list">
+               <li class="notifications-item">
+                  <a href="./homework.html">Новое домашнее задание уже добавлено!</a>
+               </li>
+               <li class="notifications-item">
+                  <a href="./homework.html">У вас 2 не выполненых домашних задания!</a>
+               </li>
+               <li class="notifications-item">
+                  <a href="./club.html">Сегодня состоиться встреча в разговорном клубе!</a>
+               </li>
+               </>
+         </div>
+      </div>
+      <div class="header__bottom header-bottom">
+         <div class="header-bottom__inner">
+            <div class="container">
+               <nav class="header__menu">
+                  <ul class="header__menu-list">
+                     <li class="header__menu-item  header__menu-item-drop">
+                        <div href="#" class="header__menu-item-link">
+                           Уроки
+                        </div>
+                        <div class="dropdown-content">
+                           <a class="dropdown-content-link" href="./lessons.html">Мои уроки</a>
+                           <a class="dropdown-content-link" href="./homework.html">Домашнее задание</a>
+                        </div>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./buy-lessons.html" class="header__menu-item-link">
+                           Курсы
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./tv.html" class="header__menu-item-link">
+                           Телеканалы
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./books.html" class="header__menu-item-link">
+                           Книги
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./radio.html" class="header__menu-item-link">
+                           Радио
+                        </a>
+                     </li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </header>
+   <main class="main main__video">
+      <section class="video">
+         <div class="video__inner">
+            <div class="video__top">
+               <h2 class="video__title-t-t">Подборка видеокурсов для обучения</h2>
+               <div class="filter-3">
+                  <div class="video__search-form">
+                     <form action="#" class="video-form-search">
+                        <input class="video-form-search-input" type="text" placeholder="Поиск">
+                        <button class="video-form-search-button">Поиск</button>
+                     </form>
+
+
+                     <div class="video-form-lang">
+                        <div class="dropdown">
+                           <button class="btn btn-secondary dropdown-toggle video-select" type="button"
+                              data-bs-toggle="dropdown" aria-expanded="false">
+                              Язык
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-main video-select-list">
+                              <li>
+                                 <button type="button" data-filter="all">Show all</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".english">English</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".spanish">Spanish</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".french">French</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".italian">Italian</button>
+                              </li>
+                           </ul>
+                        </div>
+
+                     </div>
+                     <div class="video-form-level">
+                        <div class="dropdown">
+                           <button class="btn btn-secondary dropdown-toggle video-select" type="button"
+                              data-bs-toggle="dropdown" aria-expanded="false">
+                              Сложность
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-main video-select-list">
+                              <li>
+                                 <button type="button" data-filter="all">Show all</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".english">English</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".spanish">Spanish</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".french">French</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".italian">Italian</button>
+                              </li>
+                           </ul>
+                        </div>
+
+                     </div>
+                     <div class="video-form-topic">
+                        <div class="dropdown">
+                           <button class="btn btn-secondary dropdown-toggle video-select" type="button"
+                              data-bs-toggle="dropdown" aria-expanded="false">
+                              Тема видео
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-main video-select-list">
+                              <li>
+                                 <button type="button" data-filter="all">Show all</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".english">English</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".spanish">Spanish</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".french">French</button>
+                              </li>
+                              <li>
+                                 <button type="button" data-filter=".italian">Italian</button>
+                              </li>
+                           </ul>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="sort">
+               <div class="sort-container">
+                  <h4>Фильтр</h4>
+                  <div class="controls">
+                     <!-- <button type="button" data-sort="pop:asc">Sort by pop (low to high)</button> -->
+                     <!-- <button type="button" data-sort="views:asc">Sort by v (A-Z)</button> -->
+                     <button type="button" data-sort="views:desc">Количество просмотров</button>
+                     <button type="button" data-sort="reiting:desc">Рейтинг</button>
+                     <button type="button" data-sort="best:desc">Избранное</button>
+                  </div>
+                  <div class="mobile">
+                     <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle video-select" type="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                           Сортировать
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-mobile video-select-list">
+                           <li>
+                              <button type="button" data-sort="views:desc">Количество просмотров</button>
+                           </li>
+                           <li>
+                              <button type="button" data-sort="reiting:desc">Рейтинг</button>
+                           </li>
+                           <li>
+                              <button type="button" data-sort="best:desc">Избранное</button>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="container">
+               <div class="video__content-list" id="video">
+                  <div class="video__content-item english mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>       
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item spanish mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                   
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item french mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                    
+                 
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                   
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item italian mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                    
+                  
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                   
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item english mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                    
+                    
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                  
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item spanish mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                   
+                    
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                    
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item french mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                   
+                  
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                   
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item italian mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                    
+                   
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                    
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item english mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                   
+                   
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                    
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item spanish mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                   
+                  
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                 
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item french mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                   
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                    
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item italian mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                    
+                  
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                   
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item english mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                     
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                   
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item spanish mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                    
+                 
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                    
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item french mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+                    
+                    
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                    
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <div class="video__content-item italian mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="video-videoi__img"><a href="#"><img src="./image/video-img.jpg" alt="videoi"></a></div>
+                     <div class="video-videoi__section-one">
+                        <h5 class="video-videoi__title">Euronews English Live</h5>
+                        <div class="video-videoi__star"></div>
+                     </div>
+                     <div class="video-videoi__section-two">
+                        <p class="video-videoi__writer">J. M. Barrie</p>
+                        <p class="video-videoi__views2"></p>
+                     </div>
+               
+                  
+                     <div class="star__ratings">
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <p>
+                           Рейтинг
+                        </p>
+                     </div>
+                    
+                     <div class="video-videoi__section-three">
+                        <p class="video-videoi__level-title">Сложность:</p>
+                        <p class="video-videoi__level-value">Начальный</p>
+                     </div>
+                     <a class="video-videoi__link" href="#">Смотреть</a>
+                  </div>
+                  <!-- <div class="gap"></div>
+                     <div class="gap"></div> -->
+
+               </div>
+               <div id="pagination" class="pagination"></div>
+            </div>
+         </div>
+      </section>
+      <section class="recommendation">
+         <div class="recommendation">
+            <div class="container">
+               <h2>Рекомендуем посмотреть</h2>
+               <div class="recommendation__video-1">
+                  <div class="img-1-2">
+                     <img class="img-1" src="./image/rec-img.jpg" alt="recommendation">
+                     <div class="img-2">
+
+                        <img class="img-2" src="./image/rec-1-img.png" alt="recommendation">
+                     </div>
+                  </div>
+                  <div class="desc">
+                     <p>
+                        Посмотрите последний выпуск новостей. Эта практика позволяет хорошо усваивать иностранные языки
+                        на слух.
+                     </p>
+                     <a href="#">Смотреть</a>
+                  </div>
+               </div>
+               <div class="recommendation__video-2">
+                  <div class="img-1-2">
+                     <img class="img-1" src="./image/rec-img.jpg" alt="recommendation">
+                     <div class="img-2">
+
+                        <img class="img-2" src="./image/rec-1-img.png" alt="recommendation">
+                     </div>
+                  </div>
+                  <div class="desc">
+                     <p>
+                        Посмотрите последний выпуск новостей. Эта практика позволяет хорошо усваивать иностранные языки
+                        на слух.
+                     </p>
+                     <a href="#">Смотреть</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+   <footer class="footer">
+      <div class="footer__inner">
+         <div class="container">
+            <div class="footer__menu-one footer-menu">
+               <ul class="footer__menu-one-list">
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Процесс изучения
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Цена
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Груповые уроки
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Разговорные клубы
+                     </a>
+                  </li>
+               </ul>
+            </div>
+            <div class="footer__menu-two footer-menu">
+               <ul class="footer__menu-two-list">
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Общий английский
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Бизнес английский
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Подготовка к экзамену
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Школьный английский
+                     </a>
+                  </li>
+               </ul>
+            </div>
+            <div class="footer__menu-three footer-menu">
+               <ul class="footer__menu-three-list">
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Работа для учителей
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Политика конфиденциальности
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Условия и положения
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Контакты
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="./datepicker/js/datepicker.min.js"></script>
+   <script src="./node_modules/mixitup/dist/mixitup.js"></script>
+   <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+   <script src="./node_modules/@fancyapps/ui/dist/fancybox.umd.js"></script>
+   <script src="./scripts/jPages.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <link href="./node_modules/star-rating.js/dist/star-rating.css" rel="stylesheet" />
+   <script>
+      if ($(window).width() < 960) {
+         //pagination
+         var pagination = $('.pagination');
+         function setPagination() {
+            var d = $(window).width();
+            pagination.jPages({
+               containerID: 'video',
+               perPage: 3,
+               startPage: 1,
+               startRange: 1,
+               midRange: 3,
+               endRange: 1,
+               first: false,
+               last: false,
+               previous: "",
+               next: ""
+            });
+         }
+         function destroyPagination() {
+            pagination.jPages('destroy');
+         };
+
+         setPagination();
+         var mixer = mixitup('#video', {
+            selectors: {
+               target: '.video__content-item'
+            },
+            animation: {
+               duration: 300
+            },
+            callbacks: {
+               onMixStart: function (state, futureState) {
+                  destroyPagination();
+
+               },
+               onMixEnd: function (state, futureState) {
+                  console.log('mix End');
+                  setPagination();
+               },
+            }
+         });
+      }
+      else {
+         //pagination
+         var pagination = $('.pagination');
+         function setPagination() {
+            var d = $(window).width();
+            pagination.jPages({
+               containerID: 'video',
+               perPage: 16,
+               startPage: 1,
+               startRange: 1,
+               midRange: 3,
+               endRange: 1,
+               first: false,
+               last: false,
+               previous: "Предыдущая страница",
+               next: "Следущая страница"
+            });
+         }
+         function destroyPagination() {
+            pagination.jPages('destroy');
+         };
+         setPagination();
+         var mixer = mixitup('#video', {
+            selectors: {
+               target: '.video__content-item'
+            },
+            animation: {
+               duration: 300
+            },
+            callbacks: {
+               onMixStart: function (state, futureState) {
+                  destroyPagination();
+
+               },
+               onMixEnd: function (state, futureState) {
+                  console.log('mix End');
+                  setPagination();
+               },
+            }
+         });
+      }
+   </script>
+   <script src="./node_modules/star-rating.js/dist/star-rating.js"></script>
+   <script src="./scripts/main.js"></script>
+</body>
+
+</html>

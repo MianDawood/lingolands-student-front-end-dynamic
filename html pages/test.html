@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Мой профиль</title>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="./datepicker/css/datepicker.css">
+   <link rel="stylesheet" href="./node_modules/@fancyapps/ui/dist/fancybox.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+   <header class="header">
+      <div class="header__inner">
+         <div class="container">
+            <div class="header__top header-top">
+               <div class="header-top__logo">
+                  <a href="./" class="header-top__logo-link">
+                     <img class="header-top__logo-img" src="./image/logo.svg" alt="logo">
+                  </a>
+               </div>
+               <div class="header-top__search">
+                  <form class="header-top__search-form" action="#">
+                     <input class="header-top__search-form-input" type="text" placeholder="Search">
+                  </form>
+                  <div class="header-top__buy-btn">
+                     <a href="./buy-lessons.html">Купить уроки</a>
+                  </div>
+               </div>
+               <div class="header-top__user-nav">
+                  <div style="position:relative">
+                     <a href="#" class="header-top__notification-btn" data-fancybox="" data-src="#notification">
+                        <img src="./image/notification-icon.svg" alt="notification">
+                     </a>
+                     <div class="popup__notifications popup__notifications-main" id="notification2"
+                        style="max-width:500px;">
+                        <p class="notifications-title">Уведомления</p>
+                        <ol class="notifications-list">
+                           <li class="notifications-item">
+                              <a href="./homework.html">Новое домашнее задание уже добавлено!</a>
+                           </li>
+                           <li class="notifications-item">
+                              <a href="./homework.html">У вас 2 не выполненых домашних задания!</a>
+                           </li>
+                           <li class="notifications-item">
+                              <a href="./club.html">Сегодня состоиться встреча в разговорном клубе!</a>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+                  <a href="./account.html" class="header-top__account-btn">
+                     <img src="./image/account-icon.svg" alt="account">
+                  </a>
+               </div>
+               <div class="header__mob-menu-btn">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+               <div class="mob-menu">
+                  <div class="mob-menu-content">
+                     <a href="#" class="mob-menu__notification-btn" data-fancybox="" data-src="#notification">
+                        <img src="./image/notification-icon-m.svg" alt="notification">
+                     </a>
+                     <a href="./account.html" class="mob-menu__account-btn">
+                        Мой профиль <img src="./image/account-icon.svg" alt="account">
+                     </a>
+                  </div>
+                  <nav>
+                     <ul>
+                        <li class="mob-menu-link drop">
+                           <div class="mob-menu-link-main accordion" href="#">Уроки</div>
+                           <div class="drop-content">
+                              <a class="drop-content-link" href="#">Мои уроки</a>
+                              <a class="drop-content-link" href="#">Домашнее задание</a>
+                           </div>
+                        </li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./buy-lessons.html">Курсы</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./tv.html">Телеканалы</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./books.html">Книги</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./radio.html">Радио</a></li>
+                     </ul>
+                  </nav>
+                  <div class="mob-menu-content-bottom">
+                     <a href="#" class="mob-menu__account-btn-l">
+                        Выйти из аккаунта <img src="./image/account-icon.svg" alt="account">
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="popup__notifications" id="notification" style="display:none;max-width:500px;">
+            <p class="notifications-title">Уведомления</p>
+            <ol class="notifications-list">
+               <li class="notifications-item">
+                  <a href="./homework.html">Новое домашнее задание уже добавлено!</a>
+               </li>
+               <li class="notifications-item">
+                  <a href="./homework.html">У вас 2 не выполненых домашних задания!</a>
+               </li>
+               <li class="notifications-item">
+                  <a href="./club.html">Сегодня состоиться встреча в разговорном клубе!</a>
+               </li>
+               </>
+         </div>
+      </div>
+      <div class="header__bottom header-bottom">
+         <div class="header-bottom__inner">
+            <div class="container">
+               <nav class="header__menu">
+                  <ul class="header__menu-list">
+                     <li class="header__menu-item  header__menu-item-drop">
+                        <div href="#" class="header__menu-item-link">
+                           Уроки
+                        </div>
+                        <div class="dropdown-content">
+                           <a class="dropdown-content-link" href="./lessons.html">Мои уроки</a>
+                           <a class="dropdown-content-link" href="./homework.html">Домашнее задание</a>
+                        </div>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./buy-lessons.html" class="header__menu-item-link">
+                           Курсы
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./tv.html" class="header__menu-item-link">
+                           Телеканалы
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./books.html" class="header__menu-item-link">
+                           Книги
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./radio.html" class="header__menu-item-link">
+                           Радио
+                        </a>
+                     </li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </header>
+   <div id="full-stars-example">
+      <div class="rating-group">
+         <input class="rating__input rating__input--none" name="rating" id="rating-none" value="0" type="radio">
+         <label aria-label="No rating" class="rating__label" for="rating-none"><i
+               class="rating__icon rating__icon--none fa fa-ban"></i></label>
+         <label aria-label="1 star" class="rating__label" for="rating-1"><i
+               class="rating__icon rating__icon--star fa fa-star"></i></label>
+         <input class="rating__input" name="rating" id="rating-1" value="1" type="radio">
+         <label aria-label="2 stars" class="rating__label" for="rating-2"><i
+               class="rating__icon rating__icon--star fa fa-star"></i></label>
+         <input class="rating__input" name="rating" id="rating-2" value="2" type="radio">
+         <label aria-label="3 stars" class="rating__label" for="rating-3"><i
+               class="rating__icon rating__icon--star fa fa-star"></i></label>
+         <input class="rating__input" name="rating" id="rating-3" value="3" type="radio" checked>
+         <label aria-label="4 stars" class="rating__label" for="rating-4"><i
+               class="rating__icon rating__icon--star fa fa-star"></i></label>
+         <input class="rating__input" name="rating" id="rating-4" value="4" type="radio">
+         <label aria-label="5 stars" class="rating__label" for="rating-5"><i
+               class="rating__icon rating__icon--star fa fa-star"></i></label>
+         <input class="rating__input" name="rating" id="rating-5" value="5" type="radio">
+      </div>
+      <p class="desc" style="margin-bottom: 2rem; font-family: sans-serif; font-size:0.9rem">Full stars<br />'No rating'
+         option</p>
+   </div>
+
+
+   <div id="full-stars-example-two">
+      <div class="rating-group">
+         <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0"
+            type="radio">
+         <label aria-label="1 star" class="rating__label" for="rating3-1"><i
+               class="rating__icon rating__icon--star fa fa-star"></i></label>
+         <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
+         <label aria-label="2 stars" class="rating__label" for="rating3-2"><i
+               class="rating__icon rating__icon--star fa fa-star"></i></label>
+         <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
+         <label aria-label="3 stars" class="rating__label" for="rating3-3"><i
+               class="rating__icon rating__icon--star fa fa-star"></i></label>
+         <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
+         <label aria-label="4 stars" class="rating__label" for="rating3-4"><i
+               class="rating__icon rating__icon--star fa fa-star"></i></label>
+         <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
+         <label aria-label="5 stars" class="rating__label" for="rating3-5"><i
+               class="rating__icon rating__icon--star fa fa-star"></i></label>
+         <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
+      </div>
+      <p class="desc" style="font-family: sans-serif; font-size:0.9rem">Full stars<br />
+         Must select a star value
+      </p>
+   </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="./node_modules/@fancyapps/ui/dist/fancybox.umd.js"></script>
+   <script src="./datepicker/js/datepicker.js"></script>
+   <!-- <script>
+      //
+      $('#ppp').datepicker({
+         // Передаем функцию, которая добавляет 11 числу каждого месяца класс 'my-class'
+         // и делает их невозможными к выбору.
+         onShow: function () {
+            var r = document.getElementById("pppp");
+            r.classList.add('active');
+         },
+         onHide: function () {
+            var r = document.getElementById("pppp");
+            r.classList.remove('active');
+         }
+      })
+      $('#ppp').datepicker({
+         language: 'en',
+      })
+         ; (function ($) {
+            $.fn.datepicker.language['en'] = {
+               days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+               daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+               daysMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+               months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+               monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+               today: 'Today',
+               clear: 'Clear',
+               dateFormat: 'mm/dd/yyyy',
+               timeFormat: 'hh:ii aa',
+               firstDay: 1
+            };
+         })(jQuery);
+   </script> -->
+   <script src="./scripts/main.js"></script>
+</body>
+
+</html>

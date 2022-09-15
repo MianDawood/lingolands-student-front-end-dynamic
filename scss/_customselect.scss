@@ -1,0 +1,99 @@
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select{
+  display: none; /*hide original SELECT element: */
+}
+.same-as-selected{
+  display: none;
+}
+
+.select-selected {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.62);
+  border-radius: 25px;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,
+.select-selected {
+  text-align: left;
+  color: #ffffff;
+  color: rgba(0, 0, 0, 0.62);
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  border: unset;
+}
+
+/* Style items (options): */
+.select-selected.select-arrow-active {
+  color: black;
+  border-bottom-left-radius:  unset;
+  border-bottom-right-radius: unset;
+  border: 1px solid #808080;
+  border-bottom: unset;
+}
+.select-items div{
+  color: black;
+  position: relative;
+  padding: 10px 24px;
+  border: unset;
+}
+.s-option::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 126px;
+  border-bottom: 1px solid #808080;
+}
+.select-items {
+  transition: max-height 0.3s;
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  overflow: hidden;
+  border: 1px solid #808080;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top: unset;
+}
+
+/* Hide the items when the select box is closed: */
+.select-items.select-hide {
+  transition: max-height 0.3s;
+  /*display: none;*/
+  max-height: 0!important;
+  overflow: hidden;
+  border: unset;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}

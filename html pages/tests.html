@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Тестирование</title>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+      <link rel="stylesheet" href="./node_modules/@fancyapps/ui/dist/fancybox.css">
+   <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body style="background: linear-gradient(0deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.62)),
+linear-gradient(259.98deg, rgba(67, 2, 204, 0.82) 2.15%, rgba(255, 94, 94, 0.29) 54.9%, #ffffff 95.91%);">
+   <header class="header">
+      <div class="header__inner">
+         <div class="container">
+            <div class="header__top header-top">
+               <div class="header-top__logo">
+                  <a href="./" class="header-top__logo-link">
+                     <img class="header-top__logo-img" src="./image/logo.svg" alt="logo">
+                  </a>
+               </div>
+               <div class="header-top__search">
+                  <form class="header-top__search-form" action="#">
+                     <input class="header-top__search-form-input" type="text" placeholder="Search">
+                  </form>
+                  <div class="header-top__buy-btn">
+                     <a href="./buy-lessons.html">Купить уроки</a>
+                  </div>
+               </div>
+               <div class="header-top__user-nav">
+                  <div style="position:relative">
+                     <a href="#" class="header-top__notification-btn" data-fancybox="" data-src="#notification">
+                        <img src="./image/notification-icon.svg" alt="notification">
+                     </a>
+                     <div class="popup__notifications popup__notifications-main" id="notification2"
+                        style="max-width:500px;">
+                        <p class="notifications-title">Уведомления</p>
+                        <ol class="notifications-list">
+                           <li class="notifications-item">
+                              <a href="./homework.html">Новое домашнее задание уже добавлено!</a>
+                           </li>
+                           <li class="notifications-item">
+                              <a href="./homework.html">У вас 2 не выполненых домашних задания!</a>
+                           </li>
+                           <li class="notifications-item">
+                              <a href="./club.html">Сегодня состоиться встреча в разговорном клубе!</a>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+                  <a href="./account.html" class="header-top__account-btn">
+                     <img src="./image/account-icon.svg" alt="account">
+                  </a>
+               </div>
+               <div class="header__mob-menu-btn">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+               <div class="mob-menu">
+                  <div class="mob-menu-content">
+                     <a href="#" class="mob-menu__notification-btn" data-fancybox="" data-src="#notification">
+                        <img src="./image/notification-icon-m.svg" alt="notification">
+                     </a>
+                     <a href="./account.html" class="mob-menu__account-btn">
+                        Мой профиль <img src="./image/account-icon.svg" alt="account">
+                     </a>
+                  </div>
+                  <nav>
+                     <ul>
+                        <li class="mob-menu-link drop">
+                           <div class="mob-menu-link-main accordion" href="#">Уроки</div>
+                           <div class="drop-content">
+                              <a class="drop-content-link" href="#">Мои уроки</a>
+                              <a class="drop-content-link" href="#">Домашнее задание</a>
+                           </div>
+                        </li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./buy-lessons.html">Курсы</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./tv.html">Телеканалы</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./books.html">Книги</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./radio.html">Радио</a></li>
+                     </ul>
+                  </nav>
+                  <div class="mob-menu-content-bottom">
+                     <a href="#" class="mob-menu__account-btn-l">
+                        Выйти из аккаунта <img src="./image/account-icon.svg" alt="account">
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="popup__notifications" id="notification" style="display:none;max-width:500px;">
+            <p class="notifications-title">Уведомления</p>
+            <ol class="notifications-list">
+               <li class="notifications-item">
+                  <a href="./homework.html">Новое домашнее задание уже добавлено!</a>
+               </li>
+               <li class="notifications-item">
+                  <a href="./homework.html">У вас 2 не выполненых домашних задания!</a>
+               </li>
+               <li class="notifications-item">
+                  <a href="./club.html">Сегодня состоиться встреча в разговорном клубе!</a>
+               </li>
+               </>
+         </div>
+      </div>
+      <div class="header__bottom header-bottom">
+         <div class="header-bottom__inner">
+            <div class="container">
+               <nav class="header__menu">
+                  <ul class="header__menu-list">
+                     <li class="header__menu-item  header__menu-item-drop">
+                        <div href="#" class="header__menu-item-link">
+                           Уроки
+                        </div>
+                        <div class="dropdown-content">
+                           <a class="dropdown-content-link" href="./lessons.html">Мои уроки</a>
+                           <a class="dropdown-content-link" href="./homework.html">Домашнее задание</a>
+                        </div>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./buy-lessons.html" class="header__menu-item-link">
+                           Курсы
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./tv.html" class="header__menu-item-link">
+                           Телеканалы
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./books.html" class="header__menu-item-link">
+                           Книги
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./radio.html" class="header__menu-item-link">
+                           Радио
+                        </a>
+                     </li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </header>
+   <main class="main tests">
+      <div class="main__inner">
+         <div class="container container-tests">
+            <h3 class="tests-title">Пройдите тест и узнайте уровень владения иностранным языком</h3>
+            <div class="banner__flags tests">
+               <a href="#">
+                  <img src="./image/lang-gb.png" alt="GB" class="banner__flag active">
+               </a>
+               <a href="#">
+                  <img src="./image/lang-fr.png" alt="FR" class="banner__flag">
+               </a>
+               <a href="#">
+                  <img src="./image/lang-sp.png" alt="SP" class="banner__flag">
+               </a>
+               <a href="#">
+                  <img src="./image/lang-it.png" alt="IT" class="banner__flag">
+               </a>
+            </div>
+            <div class="time">
+               <img src="./image/test-time.svg" alt="time">
+               <progress id="time" max="100" value="70"> 70% </progress>
+               <p>4:53</p>
+            </div>
+            <form action="#" class="tests-form">
+               <label name="question" class="question">Вопрос</label>
+               <label name="progress" class="progress">1/20</label>
+               <label class="tests-container">
+                  <input type="radio" style="display: none;" name="answer" id="1" class="answer-radio">
+                  <span class="checkmark">A) answer</span>
+               </label>
+               <label class="tests-container">
+                  <input type="radio" style="display: none;" name="answer" id="2" class="answer-radio">
+                  <span class="checkmark">B) answer</span>
+               </label>
+               <label class="tests-container" for="3">
+                  <input type="radio" style="display: none;" name="answer" id="3" class="answer-radio">
+                  <span class="checkmark">C) answer</span>
+               </label>
+               <label class="tests-container" for="4">
+                  <input type="radio" style="display: none;" name="answer" id="4" class="answer-radio">
+                  <span class="checkmark">D) answer</span>
+               </label>
+               <button class="tests-btn" disabled>Далее</button>
+            </form>
+         </div>
+      </div>
+   </main>
+   <footer class="footer tests-footer">
+      <div class="footer__inner">
+         <div class="container">
+            <div class="footer__menu-one footer-menu">
+               <ul class="footer__menu-one-list">
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Процесс изучения
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Цена
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Груповые уроки
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Разговорные клубы
+                     </a>
+                  </li>
+               </ul>
+            </div>
+            <div class="footer__menu-two footer-menu">
+               <ul class="footer__menu-two-list">
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Общий английский
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Бизнес английский
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Подготовка к экзамену
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Школьный английский
+                     </a>
+                  </li>
+               </ul>
+            </div>
+            <div class="footer__menu-three footer-menu">
+               <ul class="footer__menu-three-list">
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Работа для учителей
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Политика конфиденциальности
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Условия и положения
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Контакты
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="./scripts/main.js"></script>
+</body>
+
+</html>

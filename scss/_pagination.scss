@@ -1,0 +1,37 @@
+.pagination {
+   width: 100%;
+   margin: 0 auto;
+   justify-content: space-between;
+   @include av ("margin-bottom",80,70, 1920, 480, 1);
+   & a {
+      display: none;
+      float: left;
+      list-style: none;
+      margin-left: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 20px;
+      color: #000000;
+      line-height: 24px;
+      text-align: center;
+      padding: 20px 25px;
+      border: 1px solid #808080;
+      border-radius: 25px;
+   }
+   & .jp-disabled {
+      color: #808080;
+   }
+}
+.pagination .jp-previous {
+   display: block;
+}
+.pagination .jp-next {
+   display: block;
+}
+
+// .mix {
+//    display: none;
+// }
+a.jp-current {
+   color: red;
+}

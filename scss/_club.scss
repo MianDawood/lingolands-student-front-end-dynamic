@@ -1,0 +1,604 @@
+.club-banner__inner {
+   background-image: url("../image/club-bg.jpg");
+   background-position: center center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   @include av("padding-top", 65, 32, 1920, 480, 1);
+   @include av("padding-bottom", 64, 32, 1920, 480, 1);
+   @include av("margin-bottom", 50, 25, 1920, 480, 1);
+}
+.club-banner__content {
+   padding: 0 36px;
+   background: rgba(255, 255, 255, 0.63);
+   margin-left: auto;
+   margin-right: auto;
+   border-radius: 15px;
+   max-width: 588px;
+   @include av("padding-bottom", 78, 39, 1920, 480, 1);
+}
+.club-banner__title {
+   font-weight: 700;
+   @include av("font-size", 50, 32, 1920, 480, 1);
+   @include av("line-height", 61, 36, 1920, 480, 1);
+   @include av("padding-bottom", 50, 25, 1920, 480, 1);
+   @include av("padding-top", 78, 39, 1920, 480, 1);
+}
+.club-banner__desc {
+   font-weight: 500;
+   @include av("font-size", 20, 16, 1920, 480, 1);
+   @include av("line-height", 24, 18, 1920, 480, 1);
+   padding: 0 53px;
+   @include av("padding-bottom", 50, 25, 1920, 480, 1);
+}
+.club-banner__link {
+   @include av("font-size", 20, 16, 1920, 480, 1);
+   @include av("line-height", 24, 18, 1920, 480, 1);
+   color: white;
+   padding: 8px 67px;
+   background-color: $mred;
+   display: inline-block;
+   border-radius: 25px;
+}
+
+.club-meets-item__status {
+   //background-repeat: no-repeat;
+   //background-size: 100% 100%;
+   display: block;
+   @include av("width", 58, 35, 1920, 480, 1);
+   @include av("height", 58, 35, 1920, 480, 1);
+   @include av("margin-top", 12, 5, 1920, 480, 1);
+   @include av("margin-bottom", 12, 5, 1920, 480, 1);
+   @include av("margin-left", 43, 8, 1920, 480, 1);
+   min-width: 35px;
+   //background-image: url("../image/club-status.png");
+   & img {
+      width: 100%;
+   }
+}
+
+.club-meets-item {
+   border: 1px solid #000000;
+   border-radius: 15px;
+   width: 100%;
+   height: auto;
+   display: flex;
+   flex-wrap: nowrap;
+   align-items: center;
+   @include av("margin-bottom", 35, 30, 1920, 480, 1);
+   word-break: break-word;
+
+   &__inner {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      width: 100%;
+      align-items: center;
+   }
+   &__desc {
+      text-align: left;
+      margin: 13px 0px 13px 47px;
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 200px;
+      gap: 9px;
+   }
+   &__title {
+      text-align: left;
+      width: 100%;
+      width: 150px;
+   }
+   &__number {
+      text-align: left;
+      width: 100%;
+   }
+   &__name {
+      width: 250px;
+      align-items: center;
+      display: flex;
+      font-size: 18px;
+      line-height: 22px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 15px;
+   }
+   &__container {
+      max-width: 530px;
+      display: flex;
+      margin: 15px 23px 15px 29px;
+   }
+   &__long {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__level {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__time {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__date {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &-link {
+      //position: absolute;
+      position: relative;
+      border: 1px solid $mblue;
+      border-radius: 25px;
+      //left: 212px;
+      //top: 7px;
+      padding: 4px 20px 4px 3px;
+      font-weight: 300;
+      @include av("font-size", 18, 16, 1920, 480, 1);
+      @include av("line-height", 22, 20, 1920, 480, 1);
+
+      &::after {
+         position: absolute;
+         background-image: url("../image/lessons-arrow.svg");
+         content: "";
+         top: 40%;
+         right: 8px;
+         width: 9px;
+         height: 9px;
+         background-size: 100% 100%;
+      }
+   }
+}
+@media only screen and (max-width: 850px) {
+   .club-meets-item__container {
+      flex-wrap: wrap;
+   }
+}
+@media only screen and (max-width: 580px) {
+   .club-meets-item__inner {
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+   }
+   .club-meets-item-link {
+      position: absolute;
+      right: 7px;
+      bottom: 7px;
+   }
+   .club-meets-item__container {
+      //justify-content: space-around;
+      gap: 10px;
+   }
+   .club-meets-item__name {
+      width: auto;
+   }
+   .club-meets-item__status {
+      position: absolute;
+      bottom: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+   }
+   .club-meets-item__desc {
+      justify-content: center;
+      margin: 13px 5px 13px 5px;
+   }
+   .club-meets-item__title {
+      text-align: center;
+   }
+}
+// @media only screen and (max-width: 1300px) {
+//    .club-meets-item__desc {
+
+//       padding-bottom: 30px;
+//    }
+//    .club-meets-item-link {
+
+//       bottom: 5px;
+//       top: auto;
+//       @include av("left", 132, 30, 1920, 480, 1);
+//    }
+// }
+// @media only screen and (max-width: 1000px) {
+//    .club-meets-item__container {
+
+//       display: grid;
+//       grid-template-columns: auto auto;
+//    }
+// }
+// @media only screen and (max-width: 768px) {
+//    .club-meets__title {
+//       text-align: left;
+//       padding-bottom: 8px;
+//       display: inline-block;
+//    }
+//    .club-meets-form-date {
+//       width: 45%;
+//       max-width: unset;
+//       margin-right: 7px;
+//       height: 33px;
+//    }
+//    .club-meets-form-status {
+//       height: 33px;
+//       width: 45%;
+//       max-width: unset;
+//       margin-left: 8px;
+//    }
+//    .club-meets__top {
+//       display: block;
+//       padding-left: 0;
+//    }
+//    .filter {
+//       margin: 0;
+//       padding-right: 12.5vw;
+//       padding-left: 12.5vw;
+//       border-radius: 0;
+//       height: 120px;
+//    }
+//    .club-meets__search-form {
+//       flex-wrap: wrap;
+//       gap: 17px;
+//       width: 100%;
+//    }
+//    .club-meets-form-search {
+//       width: 100%;
+//       order: 2;
+//       max-width: unset;
+//    }
+//    .club-meets-item__inner {
+
+//       display: flex;
+//       justify-content: start;
+//       flex-wrap: wrap;
+//    }
+//    .club-meets-item__container {
+
+//       margin-left: auto;
+//    }
+//    .club-meets-item__desc {
+
+//       padding-bottom: 0px;
+//    }
+//    .club-meets-item__name {
+
+//       margin: 0;
+//       display: inline-block;
+//    }
+// }
+// @media only screen and (max-width: 600px) {
+//    .club-meets-item__desc {
+
+//       padding-bottom: 20px;
+//    }
+//    .club-meets-item__status {
+
+//       top: 8px;
+//       left: 7px;
+//       position: absolute;
+//    }
+//    .club-meets-item__container {
+
+//       padding-left: 0px;
+//    }
+//    .club-meets-item__inner {
+
+//       display: block;
+//    }
+//    .club-meets-item__desc {
+
+//       justify-content: space-around;
+//       flex-wrap: nowrap;
+//       padding: 13px 55px 13px 55px;
+//       & p {
+//          display: inline-block;
+//          width: auto;
+//          text-align: center;
+//       }
+//    }
+//    .club-meets-item__name {
+
+//       margin: 0 auto;
+//       display: inline-block;
+//    }
+//    .club-meets-item__container {
+
+//       display: flex;
+//       flex-wrap: wrap;
+//       max-width: unset;
+//       justify-content: space-around;
+//       margin-bottom: 60px;
+//       gap: 20px;
+//    }
+
+//    .club-meets-item-link {
+
+//       bottom: 8px;
+//       top: auto;
+//       left: auto;
+//       right: 8px;
+//    }
+//    .club-meets-item {
+
+//       &__long {
+//          width: 40%;
+//       }
+//       &__level {
+//          width: 22%;
+//       }
+//       &__time {
+//          width: 40%;
+//       }
+//       &__date {
+//          width: 22%;
+//       }
+//    }
+// }
+// @media only screen and (max-width: 768px) {
+//    .club-meets-item {
+
+//       &__inner {
+//          font-weight: 400;
+//       }
+//       &__name {
+//          font-size: 19px;
+//          font-weight: 600;
+//          line-height: 23px;
+//       }
+//       &-link {
+//          font-weight: 500;
+//       }
+//    }
+//    .long-title {
+//       font-weight: 400;
+//    }
+// }
+.club-video__title,
+.club-meets__title {
+   @include av("padding-bottom", 50, 25, 1920, 480, 1);
+   @include av("font-size", 32, 18, 1920, 480, 1);
+   @include av("line-height", 39, 22, 1920, 480, 1);
+}
+.club-video__list {
+   background-color: $mblue;
+}
+.club-video__list .container {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 30px;
+   justify-content: space-evenly;
+   @include av("padding-bottom", 50, 25, 1920, 480, 1);
+   @include av("margin-bottom", 80, 40, 1920, 480, 1);
+}
+.club-video__item {
+   width: calc(33.3% - 20px);
+   min-width: 360px;
+   & p {
+      font-weight: 500;
+      @include av("font-size", 31, 18, 1920, 480, 1);
+      @include av("line-height", 38, 22, 1920, 480, 1);
+      @include av("padding-bottom", 20, 10, 1920, 480, 1);
+      @include av("padding-top", 50, 25, 1920, 480, 1);
+      color: white;
+   }
+   & a {
+      & img {
+         border-radius: 13px;
+         width: 100%;
+      }
+   }
+}
+
+@media only screen and (max-width: 1280px) {
+   .club-video__list {
+      justify-content: space-around;
+   }
+}
+@media only screen and (max-width: 450px) {
+   .club-meets-item__container {
+      padding-bottom: 40px;
+   }
+   .club-meets-item__status {
+      left: 13px;
+      top: 0px;
+   }
+   .club-video__item {
+      width: 75%;
+      min-width: 75%;
+   }
+}
+.club__popup {
+   background: #0060fc;
+   border-radius: 15px;
+   width: 452px;
+   max-width: 80%;
+   position: relative;
+   z-index: 99;
+   transform-style: preserve-3d;
+   padding: 18px 9px 14px 13px;
+   & h4 {
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 39px;
+      text-align: center;
+      color: #ffffff;
+      padding-bottom: 45px;
+   }
+   & form {
+      padding: 0 44px 0 15px;
+      & div {
+         position: relative;
+         input {
+            color: #ffffff;
+            width: 100%;
+            height: 44px;
+            background: #0060fc;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 15px;
+            margin-bottom: 44px;
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: left;
+         }
+      }
+   }
+}
+.club__form-select {
+   position: relative;
+   color: #ffffff;
+   width: 100%;
+   height: 44px;
+
+   border: 1px solid rgba(255, 255, 255, 0.55);
+   border-radius: 15px;
+   &-sel {
+      background: #0060fc;
+      position: relative;
+   }
+   & .select-selected {
+      top: 0;
+      background: #0060fc;
+      color: #ffffff;
+      border-radius: 15px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+   }
+   & .select-items {
+      & .s-option {
+         background: #0060fc;
+         color: #ffffff;
+         &::before {
+            border-color: #ffffff;
+         }
+      }
+      top: 0px;
+      border-color: transparent;
+   }
+}
+.club__form {
+   & button {
+      margin-top: 50px;
+      padding: 8px 42px;
+      background-color: $mred;
+      color: #ffffff;
+      font-size: 20px;
+      line-height: 24px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 25px;
+      display: inline-block;
+      margin-bottom: 50px;
+   }
+}
+.club__popup{
+   display: none;
+}
+.club__popup p {
+   width: 100%;
+   display: block;
+   font-weight: 200;
+   font-size: 15px;
+   line-height: 18px;
+   color: #ffffff;
+   text-align: left;
+}
+.club__form-name::after {
+   content: "Ваше имя";
+   background-color: $mblue;
+   color: white;
+   position: absolute;
+   left: 50px;
+   top: 0px;
+   transform: translateY(-50%);
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 24px;
+   padding: 0 10px;
+}
+
+.club__form-sid::after {
+   content: "Skype ID";
+   background-color: $mblue;
+   color: white;
+   position: absolute;
+   left: 50px;
+   top: 0px;
+   transform: translateY(-50%);
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 24px;
+   padding: 0 10px;
+}
+.club__form-phone::after {
+   content: "Номер телефона";
+   background-color: $mblue;
+   color: white;
+   position: absolute;
+   left: 50px;
+   top: 0px;
+   transform: translateY(-50%);
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 24px;
+   padding: 0 10px;
+}
+.club__form-email::after {
+   content: "Email";
+   background-color: $mblue;
+   color: white;
+   position: absolute;
+   left: 50px;
+   top: 0px;
+   transform: translateY(-50%);
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 24px;
+   padding: 0 10px;
+}
+.club__form-select::after {
+   content: "Язык";
+   background-color: $mblue;
+   color: white;
+   position: absolute;
+   left: 50px;
+   top: 0px;
+   transform: translateY(-50%);
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 24px;
+   padding: 0 10px;
+}
+
+.club__popup::before {
+   transform: translateZ(-1px);
+   position: absolute;
+   content: "";
+   width: 146px;
+   height: 146px;
+   top: -102px;
+   right: -63px;
+   background-image: url("../image/club-pupup.svg");
+   z-index: -1;
+}

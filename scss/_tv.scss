@@ -1,0 +1,540 @@
+.tv__top {
+   max-width: calc(1280px + ((100vw - 1280px) / 2));
+   @include av("margin-top", 54, 26, 1920, 480, 1);
+   @include av("margin-bottom", 50, 25, 1920, 480, 1);
+   margin-right: 0;
+   margin-left: auto;
+   padding: 0 0 0 2.5vw;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.tv__search-form {
+   @include av("width", 838, 419, 1280, 480, 1);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 50px;
+}
+@media only screen and (max-width: 768px) {
+   .tv__top {
+      padding: 0 0 0 12.5vw;
+   }
+}
+.main__tv {
+   .star-rating-top {
+      position: unset !important;
+   }
+}
+.tv-tvi__img a {
+   position: relative;
+   display: block;
+   
+   margin-bottom: 10px;
+   padding-bottom: 0 !important;
+   &::before {
+      content: '';
+      border-radius: 20px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(#000000, 0.2);
+      background-image: url(../image/favorite-icon.svg);
+      background-repeat: no-repeat;
+      background-size: 25%;
+      background-position: center;
+      transition: opacity 0.3s;
+   }
+   &:hover::before {
+      opacity: 1;
+      
+   }
+}
+@media only screen and (max-width: 768px) {
+   .select-items div {
+      word-wrap: break-word;
+      padding: 10px 5px;
+   }
+}
+.tv-form-search input,
+.tv-form-date input,
+.tv-form-status div {
+   cursor: url("../image/cursor-link.svg") 0 0, auto;
+}
+.tv-form-search,
+.tv-form-status {
+   cursor: url("../image/cursor-link.svg") 0 0, auto;
+   width: 50%;
+   max-width: 232px;
+   @include av("height", 50, 36, 1920, 480, 1);
+   border-radius: 25px;
+}
+.tv-form-search {
+   position: relative;
+   &::before {
+      content: "";
+      @include av("width", 23, 20, 1920, 480, 1);
+      @include av("height", 23, 20, 1920, 480, 1);
+      background-image: url("../image/search-icon.svg");
+      background-size: 100% 100%;
+      position: absolute;
+      fill: black;
+      @include av("left", 17, 10, 1920, 480, 1);
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: all;
+   }
+   &-input {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.89);
+      width: 100%;
+      height: 100%;
+      border-radius: 25px;
+      @include av("padding-top", 15, 7, 1920, 480, 1);
+      @include av("padding-bottom", 15, 7, 1920, 480, 1);
+      @include av("padding-left", 50, 40, 1920, 480, 1);
+      @include av("padding-right", 15, 7, 1920, 480, 1);
+   }
+}
+
+.tv-form-status {
+   position: relative;
+   &::before {
+      content: "";
+      @include av("width", 23, 20, 1920, 480, 1);
+      @include av("height", 23, 20, 1920, 480, 1);
+      background-image: url("../image/lessons-level.svg");
+      background-size: 100% 100%;
+      position: absolute;
+      fill: black;
+      @include av("left", 17, 10, 1920, 480, 1);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      pointer-events: none;
+   }
+   &-input {
+      width: 100%;
+      height: 100%;
+      & .select-selected {
+         display: flex;
+         align-items: center;
+         text-align: left;
+         background: rgba(255, 255, 255, 1);
+         width: 100%;
+         height: 100%;
+         @include av("padding-top", 15, 7, 1920, 480, 1);
+         @include av("padding-bottom", 15, 7, 1920, 480, 1);
+         @include av("padding-left", 50, 40, 1920, 480, 1);
+         @include av("padding-right", 35, 30, 1920, 480, 1);
+         &::after {
+            @include av("width", 18, 10, 1920, 480, 1);
+            @include av("height", 9, 5, 1920, 480, 1);
+            background-image: url("../image/filter-arrow.svg");
+            background-size: 100%;
+            border: unset;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+         }
+      }
+   }
+}
+.select-selected.select-arrow-active::after {
+   transform: rotate(180deg);
+}
+
+.tv__title {
+   text-align: left;
+   padding: 0;
+   margin-right: 20px;
+   &::after,
+   &::before {
+      content: unset;
+   }
+}
+.tv__top {
+   max-width: calc(1280px + ((100vw - 1280px) / 2));
+   @include av("margin-top", 60, 30, 1920, 480, 1);
+   @include av("margin-bottom", 50, 25, 1920, 480, 1);
+   margin-right: 0;
+   margin-left: auto;
+   padding: 0 0 0 2.5vw;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.filter {
+   //width: calc(565px + ((100vw - 1280px) / 2));
+   //width: 565px;
+   background-color: $mblue;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+   padding: 15px calc((105vw - 1280px) / 2) 15px 32px;
+}
+.tv__search-form {
+   //@include av("width", 565, 200, 1280, 480, 1);
+   max-width: 565px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 50px;
+   margin-right: 2.5vw;
+}
+//@at-root
+//@at-root
+//@debug
+/* Dropdown Button */
+.tv-select {
+   width: 100%;
+   background: white !important;
+   border-radius: 25px;
+   color: rgba(0, 0, 0, 0.62) !important;
+   text-align: left;
+   @include av("padding-top", 15, 7, 1920, 480, 1);
+   @include av("padding-bottom", 15, 7, 1920, 480, 1);
+   @include av("padding-left", 50, 40, 1920, 480, 1);
+   @include av("padding-right", 35, 30, 1920, 480, 1);
+   @include av("height", 50, 36, 1920, 480, 1);
+   &::after {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      width: 18px;
+      height: 9px;
+      border: unset;
+      background-image: url("../image/filter-arrow.svg");
+      transform: translateY(-50%);
+      background-size: 100% 100%;
+      transition: transform 0.3s;
+   }
+}
+.tv-select.show {
+   background: white !important;
+   color: rgba(0, 0, 0, 0.62);
+   width: 100%;
+   height: 100%;
+   &::after {
+      transform: rotate(180deg) translateY(50%);
+   }
+}
+.tv-select-list {
+   width: 100%;
+   background: #ffffff;
+   font-weight: 400;
+   font-size: 19px;
+   line-height: 23px;
+   color: #000000;
+   border: 1px solid #808080;
+   border-radius: 28px;
+   padding: 10px 0 23px;
+   & li {
+      padding: 10px 24px;
+      text-align: left;
+      background-color: unset;
+      position: relative;
+
+      &::after {
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         content: "";
+         width: 126px;
+         border-bottom: 1px solid #808080;
+      }
+      & button {
+         text-align: left;
+         background-color: white;
+      }
+   }
+}
+
+////////////////////
+@media only screen and (max-width: 900px) {
+   .filter-2 {
+      margin: 0;
+      padding-right: 12.5vw;
+      padding-left: 12.5vw;
+      border-radius: 0;
+      //height: 120px;
+   }
+}
+.filter-2 {
+   //width: calc(565px + ((105vw - 1280px) / 2));
+   //width: 838px;
+   background-color: $mblue;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+   padding: 15px calc((100vw - 1280px) / 2) 15px 32px;
+}
+@media only screen and (max-width: 768px) {
+   .filter-2 {
+      margin: 0;
+      padding-right: 12.5vw;
+      padding-left: 12.5vw;
+      border-radius: 0;
+      height: 120px;
+   }
+   .tv__top {
+      display: block;
+      padding-left: 0;
+   }
+   .tv__search-form {
+      flex-wrap: wrap;
+      gap: 15px;
+      width: 100%;
+   }
+   .tv-form-search {
+      order: 3;
+      width: 100%;
+      max-width: unset;
+   }
+   .tv__title {
+      padding-left: 12.5vw;
+      padding-right: 12, 4vw;
+   }
+}
+.sort {
+   border-bottom: 1px solid #808080;
+   width: 100%;
+   @include av("margin-bottom", 70, 30, 1920, 480, 1);
+}
+@media only screen and (min-width: 1280px) {
+   .sort {
+      padding: 0 12.5vw;
+   }
+}
+
+.sort-container {
+   max-width: 1280px;
+   padding: 0 2.5vw;
+   margin-left: auto;
+   margin-right: auto;
+   display: flex;
+   justify-content: space-between;
+   & h4 {
+      @include av("font-size", 29, 21, 1920, 480, 1);
+      @include av("line-height", 35, 26, 1920, 480, 1);
+      font-weight: 600;
+      color: #000000;
+   }
+   & .controls {
+      display: flex;
+      gap: 64px;
+      & button {
+         @include av("font-size", 20, 16, 1920, 480, 1);
+         @include av("line-height", 24, 20, 1920, 480, 1);
+         color: #000000;
+         font-weight: 400;
+         font-size: 16px;
+         line-height: 20px;
+         background: transparent;
+         position: relative;
+         &.mixitup-control-active {
+            font-weight: 600;
+            &::after{
+               transform: rotate(180deg) translateY(50%);
+            }
+         }
+      }
+      & button::after {
+         content: "";
+         position: absolute;
+         top: 50%;
+         @include av("right", -25, -16, 1920, 480, 1);
+         //transform: translateX(50%);
+         @include av("width", 18, 10, 1920, 480, 1);
+         @include av("height", 9, 5, 1920, 480, 1);
+         background-image: url("../image/filter-arrow.svg");
+         background-size: 100%;
+         border: unset;
+         top: 50%;
+         transform: translateY(-50%);
+         transition: transform 0.3s;
+      }
+   }
+}
+.mobile {
+   display: none;
+}
+@media only screen and (max-width: 850px) {
+   .mobile {
+      display: block;
+      & .dropdown {
+         word-break: break-all;
+         & .btn {
+            border: unset;
+            color: #000000;
+            &.show {
+               border: unset !important;
+               border-color: transparent !important;
+            }
+         }
+      }
+   }
+   .sort-container .controls {
+      display: none;
+   }
+}
+@media only screen and (max-width: 768px) {
+   .sort {
+      max-width: 1280px;
+      padding: 0 2.5vw;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #808080;
+      @include av("margin-bottom", 70, 30, 1920, 480, 1);
+
+      & h4 {
+         font-weight: 700;
+      }
+      &.controls button {
+         font-weight: 400;
+      }
+   }
+}
+
+@media only screen and (max-width: 580px) {
+   .sort {
+      padding: 0 12.5vw;
+   }
+}
+
+.tv {
+   &__title {
+      @include av("padding-bottom", 70, 20, 1920, 480, 1);
+   }
+   &__content-list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+   }
+   &__content-item {
+      //@include av("width", 297, 262, 1920, 480, 1);
+      min-width: 262px;
+      max-width: 297px;
+      width: calc(25% - 30px);
+      //width: 100%;
+      display: flex;
+      flex-direction: column;
+      @include av("margin-bottom", 80, 26.5, 1920, 480, 1);
+   }
+   &-tvi {
+      &__img {
+         @include av("padding-bottom", 11, 8, 1920, 480, 1);
+         & a img {
+            width: 100%;
+            border-radius: 20px;
+         }
+      }
+      &__section-one {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         @include av("padding-bottom", 9, 8, 1920, 480, 1);
+      }
+      &__title {
+         font-weight: 600;
+         text-align: left;
+         @include av("font-size", 26, 23, 1920, 480, 1);
+         @include av("line-height", 32, 28, 1920, 480, 1);
+      }
+      &__star {
+         display: flex;
+         align-items: center;
+         @include av("font-size", 17, 15, 1920, 480, 1);
+         @include av("line-height", 21, 18, 1920, 480, 1);
+         font-weight: 300;
+         padding-right: 9px;
+      }
+      &__section-two {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         @include av("padding-bottom", 33, 28, 1920, 480, 1);
+      }
+      &__writer {
+         @include av("font-size", 20, 17.6, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+         font-weight: 400;
+      }
+      &__views {
+         color: #808080;
+         font-weight: 300;
+         @include av("font-size", 17, 15, 1920, 480, 1);
+         @include av("line-height", 21, 18, 1920, 480, 1);
+         position: relative;
+         &::before {
+            content: "";
+            position: absolute;
+            left: -25px;
+            // @include av("top", 8, 7, 1920, 480, 1);
+            // @include av("left", 16, 12, 1920, 480, 1);
+            background-image: url("../image/views-book.svg");
+            background-size: 100% 100%;
+            @include av("width", 23, 20, 1920, 480, 1);
+            @include av("height", 23, 20, 1920, 480, 1);
+         }
+      }
+      &__section-three {
+         display: flex;
+         height: 57px;
+         justify-content: space-between;
+         //@include av("padding-bottom", 42, 37, 1920, 480, 1);
+      }
+      &__level-title {
+         @include av("font-size", 22, 19.5, 1920, 480, 1);
+         @include av("line-height", 27, 24, 1920, 480, 1);
+      }
+      &__level-value {
+         font-weight: 400;
+         @include av("font-size", 20, 17.5, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+         max-width: 133px;
+         text-align: right;
+      }
+      &__link {
+         display: inline-block;
+         align-self: flex-start;
+         background-color: $mred;
+         padding-top: 7px;
+         padding-bottom: 7px;
+         text-align: left;
+         @include av("padding-left", 45, 38, 1920, 480, 1);
+         @include av("padding-right", 45, 38, 1920, 480, 1);
+         border-radius: 25px;
+         color: white;
+         @include av("font-size", 20, 17.5, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+      }
+   }
+}
+@media only screen and (max-width: 1280px) {
+  .tv__content-list{
+   justify-content: center;
+  }
+}
+@media only screen and (max-width: 480px) {
+   .tv__content-item{
+      min-width: 240px;
+   }
+}
+
+.main__tv {
+   .star-rating-top {
+      margin-left: unset;
+      margin-bottom: 10px;
+   }
+   .tv-tvi__section-two {
+      padding-bottom: 0px !important;
+   }
+}

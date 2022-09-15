@@ -1,0 +1,792 @@
+.video__top {
+   max-width: calc(1280px + ((100vw - 1280px) / 2));
+   @include av("margin-top", 60, 30, 1920, 480, 1);
+   @include av("margin-bottom", 50, 25, 1920, 480, 1);
+   margin-right: 0;
+   margin-left: auto;
+   padding: 0 0 0 2.5vw;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.video__search-form {
+   @include av("width", 838, 419, 1280, 480, 1);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 50px;
+}
+@media only screen and (max-width: 768px) {
+   .video__top {
+      padding: 0 0 0 12.5vw;
+   }
+}
+.star__ratings {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 5px;
+   margin-bottom: 10px;
+   p {
+      margin-bottom: unset;
+      text-align: right;
+   }
+}
+.star__ratings:last-child {
+   margin-bottom: 25px;
+}
+.main__video {
+   .star-rating-top {
+      margin-left: unset;
+      margin-right: unset;
+   }
+}
+@media only screen and (max-width: 768px) {
+   .select-items div {
+      word-wrap: break-word;
+      padding: 10px 5px;
+   }
+}
+.video-videoi__img a {
+   position: relative;
+   display: block;
+
+   margin-bottom: 10px;
+   padding-bottom: 0 !important;
+   &::before {
+      content: '';
+      border-radius: 20px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(#000000, 0.2);
+      background-image: url(../image/favorite-icon.svg);
+      background-repeat: no-repeat;
+      background-size: 25%;
+      background-position: center;
+      transition: opacity 0.3s;
+   }
+   &:hover::before {
+      opacity: 1;
+      
+   }
+}
+.full-stars-example-two {
+   display: flex !important;
+   align-items: center !important;
+   gap: 5px !important;
+}
+.video-form-search input,
+.video-form-date input,
+.video-form-status div {
+   cursor: url("../image/cursor-link.svg") 0 0, auto;
+}
+.video-form-search,
+.video-form-status {
+   cursor: url("../image/cursor-link.svg") 0 0, auto;
+   width: 50%;
+   max-width: 232px;
+   @include av("height", 50, 36, 1920, 480, 1);
+   border-radius: 25px;
+}
+.video-form-search {
+   position: relative;
+   max-width: 735px;
+   width: 735px;
+   &::before {
+      content: "";
+      @include av("width", 23, 20, 1920, 480, 1);
+      @include av("height", 23, 20, 1920, 480, 1);
+      background-image: url("../image/search-icon.svg");
+      background-size: 100% 100%;
+      position: absolute;
+      fill: black;
+      @include av("left", 17, 10, 1920, 480, 1);
+      top: 50%;
+      transform: translateY(-50%) translateX(50%);
+      pointer-events: all;
+   }
+   &-input {
+      max-width: 750px;
+      width: 702px;
+      text-align: left;
+      background: #e3eeff;
+      height: 100%;
+      height: 50px;
+      border-radius: 25px;
+      @include av("padding-top", 15, 7, 1920, 480, 1);
+      @include av("padding-bottom", 15, 7, 1920, 480, 1);
+      @include av("padding-left", 50, 40, 1920, 480, 1);
+      @include av("padding-right", 180, 50, 1920, 480, 1);
+   }
+   &-button {
+      position: absolute;
+      top: 0;
+      right: 0px;
+      padding: 10px 45px;
+      @include av("font-size", 25, 16, 1920, 480, 1);
+      @include av("line-height", 30, 20, 1920, 480, 1);
+      @include av("padding-top", 10, 6, 1920, 480, 1);
+      @include av("padding-bottom", 10, 6, 1920, 480, 1);
+      @include av("padding-left", 45, 23, 1920, 480, 1);
+      @include av("padding-right", 45, 23, 1920, 480, 1);
+      width: min-content;
+      color: white;
+      background: #f2111e;
+      border-radius: 25px;
+   }
+}
+
+.video-form-status {
+   position: relative;
+   &::before {
+      content: "";
+      @include av("width", 23, 20, 1920, 480, 1);
+      @include av("height", 23, 20, 1920, 480, 1);
+      background-image: url("../image/lessons-level.svg");
+      background-size: 100% 100%;
+      position: absolute;
+      fill: black;
+      @include av("left", 17, 10, 1920, 480, 1);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      pointer-events: none;
+   }
+   &-input {
+      width: 100%;
+      height: 100%;
+      & .select-selected {
+         display: flex;
+         align-items: center;
+         text-align: left;
+         background: rgba(255, 255, 255, 1);
+         width: 100%;
+         height: 100%;
+         @include av("padding-top", 15, 7, 1920, 480, 1);
+         @include av("padding-bottom", 15, 7, 1920, 480, 1);
+         @include av("padding-left", 50, 40, 1920, 480, 1);
+         @include av("padding-right", 35, 30, 1920, 480, 1);
+         &::after {
+            @include av("width", 18, 10, 1920, 480, 1);
+            @include av("height", 9, 5, 1920, 480, 1);
+            background-image: url("../image/filter-arrow.svg");
+            background-size: 100%;
+            border: unset;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+         }
+      }
+   }
+}
+.select-selected.select-arrow-active::after {
+   transform: rotate(180deg);
+}
+
+.video__title-t {
+   text-align: left;
+   padding: 0;
+   margin-right: 20px;
+   &::after,
+   &::before {
+      content: unset;
+   }
+}
+.video__title-t {
+   @include av("font-size", 52, 21, 1920, 480, 1);
+   @include av("line-height", 63, 26, 1920, 480, 1);
+   font-weight: 700;
+}
+.video__top {
+   max-width: calc(1280px + ((100vw - 1280px) / 2));
+   @include av("margin-top", 60, 30, 1920, 480, 1);
+   @include av("margin-bottom", 50, 25, 1920, 480, 1);
+   margin-right: 0;
+   margin-left: auto;
+   padding: 0 0 0 2.5vw;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.filter {
+   //width: calc(565px + ((100vw - 1280px) / 2));
+   //width: 565px;
+   background-color: $mblue;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+   padding: 24px calc((105vw - 1280px) / 2) 24px 34px;
+}
+.video__search-form {
+   //@include av("width", 565, 200, 1280, 480, 1);
+   max-width: 266px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 50px;
+   margin-right: 2.5vw;
+}
+//@at-root
+//@at-root
+//@debug
+/* Dropdown Button */
+.video-select {
+   width: 100%;
+   background: white !important;
+   border-radius: 25px;
+   color: rgba(0, 0, 0, 0.62) !important;
+   text-align: left;
+   @include av("padding-top", 15, 7, 1920, 480, 1);
+   @include av("padding-bottom", 15, 7, 1920, 480, 1);
+   @include av("padding-left", 50, 40, 1920, 480, 1);
+   @include av("padding-right", 35, 30, 1920, 480, 1);
+   @include av("height", 50, 36, 1920, 480, 1);
+   &::after {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      width: 18px;
+      height: 9px;
+      border: unset;
+      background-image: url("../image/filter-arrow.svg");
+      transform: translateY(-50%);
+      background-size: 100% 100%;
+      transition: transform 0.3s;
+   }
+}
+.video-select.show {
+   background: white !important;
+   color: rgba(0, 0, 0, 0.62);
+   width: 100%;
+   height: 100%;
+   &::after {
+      transform: rotate(180deg) translateY(50%);
+   }
+}
+.video-select-list {
+   width: 100%;
+   background: #ffffff;
+   font-weight: 400;
+   font-size: 19px;
+   line-height: 23px;
+   color: #000000;
+   border: 1px solid #808080;
+   border-radius: 28px;
+   padding: 10px 0 23px;
+   & li {
+      padding: 10px 24px;
+      text-align: left;
+      background-color: unset;
+      position: relative;
+
+      &::after {
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         content: "";
+         width: 126px;
+         border-bottom: 1px solid #808080;
+      }
+      & button {
+         text-align: left;
+         background-color: white;
+      }
+   }
+}
+
+////////////////////
+@media only screen and (max-width: 900px) {
+   .filter-3 {
+      margin: 0;
+      padding-right: 12.5vw;
+      padding-left: 12.5vw;
+      border-radius: 0;
+      //height: 120px;
+   }
+}
+.filter-3 {
+   //width: calc(565px + ((105vw - 1280px) / 2));
+   //width: 838px;
+   background-color: $mblue;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+   padding: 24px calc((100vw - 1280px) / 2) 24px 34px;
+}
+@media only screen and (max-width: 768px) {
+   .filter-3 {
+      margin: 0;
+      padding-right: 12.5vw;
+      padding-left: 12.5vw;
+      border-radius: 0;
+      //height: 120px;
+   }
+   .video__top {
+      display: block;
+      padding-left: 0;
+   }
+   .video__search-form {
+      flex-wrap: wrap;
+      gap: 15px;
+      width: 100%;
+   }
+   .video-form-search {
+      order: 3;
+      width: 100%;
+      max-width: unset;
+   }
+   .video__title-t {
+      padding-left: 12.5vw;
+      padding-right: 12, 4vw;
+   }
+}
+.sort {
+   border-bottom: 1px solid #808080;
+   width: 100%;
+   @include av("margin-bottom", 70, 30, 1920, 480, 1);
+}
+@media only screen and (min-width: 1280px) {
+   .sort {
+      padding: 0 12.5vw;
+   }
+}
+
+.sort-container {
+   max-width: 1280px;
+   padding: 0 2.5vw;
+   margin-left: auto;
+   margin-right: auto;
+   display: flex;
+   justify-content: space-between;
+   & h4 {
+      @include av("font-size", 29, 21, 1920, 480, 1);
+      @include av("line-height", 35, 26, 1920, 480, 1);
+      font-weight: 600;
+      color: #000000;
+   }
+   & .controls {
+      display: flex;
+      gap: 64px;
+      & button {
+         @include av("font-size", 20, 16, 1920, 480, 1);
+         @include av("line-height", 24, 20, 1920, 480, 1);
+         color: #000000;
+         font-weight: 400;
+         font-size: 16px;
+         line-height: 20px;
+         background: transparent;
+         position: relative;
+         &.mixitup-control-active {
+            font-weight: 600;
+            &::after{
+               transform: rotate(180deg) translateY(50%);
+            }
+         }
+      }
+      & button::after {
+         content: "";
+         position: absolute;
+         top: 50%;
+         @include av("right", -25, -16, 1920, 480, 1);
+         //transform: translateX(50%);
+         @include av("width", 18, 10, 1920, 480, 1);
+         @include av("height", 9, 5, 1920, 480, 1);
+         background-image: url("../image/filter-arrow.svg");
+         background-size: 100%;
+         border: unset;
+         top: 50%;
+         transform: translateY(-50%);
+         transition: transform 0.3s;
+      }
+   }
+}
+.mobile {
+   display: none;
+}
+@media only screen and (max-width: 850px) {
+   .mobile {
+      display: block;
+      & .dropdown {
+         word-break: break-all;
+         & .btn {
+            border: unset;
+            color: #000000;
+            &.show {
+               border: unset !important;
+               border-color: transparent !important;
+            }
+         }
+      }
+   }
+   .sort-container .controls {
+      display: none;
+   }
+}
+@media only screen and (max-width: 768px) {
+   .sort {
+      max-width: 1280px;
+      padding: 0 2.5vw;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #808080;
+      @include av("margin-bottom", 70, 30, 1920, 480, 1);
+
+      & h4 {
+         font-weight: 700;
+      }
+      &.controls button {
+         font-weight: 400;
+      }
+   }
+}
+
+@media only screen and (max-width: 580px) {
+   .sort {
+      padding: 0 12.5vw;
+   }
+}
+.video {
+   &__title {
+      @include av("padding-bottom", 70, 20, 1920, 480, 1);
+   }
+   &__content-list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+   }
+   &__content-item {
+      //@include av("width", 297, 262, 1920, 480, 1);
+      min-width: 262;
+      width: calc(25% - 30px);
+      display: flex;
+      flex-direction: column;
+      @include av("margin-bottom", 80, 26.5, 1920, 480, 1);
+   }
+   &-videoi {
+      &__img a {
+         @include av("padding-bottom", 11, 8, 1920, 480, 1);
+         width: 100%;
+         display: block;
+         & img {
+            width: 100%;
+            border-radius: 20px;
+         }
+      }
+      &__section-one {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         @include av("padding-bottom", 9, 8, 1920, 480, 1);
+      }
+      &__title {
+         font-weight: 600;
+         text-align: left;
+         @include av("font-size", 26, 23, 1920, 480, 1);
+         @include av("line-height", 32, 28, 1920, 480, 1);
+      }
+      &__star {
+         display: flex;
+         align-items: center;
+         @include av("font-size", 17, 15, 1920, 480, 1);
+         @include av("line-height", 21, 18, 1920, 480, 1);
+         font-weight: 300;
+         padding-right: 9px;
+      }
+      &__section-two {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         @include av("padding-bottom", 33, 28, 1920, 480, 1);
+      }
+      &__writer {
+         @include av("font-size", 20, 17.6, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+         font-weight: 400;
+      }
+      &__views {
+         color: #808080;
+         font-weight: 300;
+         @include av("font-size", 17, 15, 1920, 480, 1);
+         @include av("line-height", 21, 18, 1920, 480, 1);
+         position: relative;
+         &::before {
+            content: "";
+            position: absolute;
+            left: -25px;
+            // @include av("top", 8, 7, 1920, 480, 1);
+            // @include av("left", 16, 12, 1920, 480, 1);
+            background-image: url("../image/views-book.svg");
+            background-size: 100% 100%;
+            @include av("width", 23, 20, 1920, 480, 1);
+            @include av("height", 23, 20, 1920, 480, 1);
+         }
+      }
+      &__section-three {
+         display: flex;
+         height: 57px;
+         justify-content: space-between;
+         //@include av("padding-bottom", 42, 37, 1920, 480, 1);
+      }
+      &__level-title {
+         @include av("font-size", 22, 19.5, 1920, 480, 1);
+         @include av("line-height", 27, 24, 1920, 480, 1);
+      }
+      &__level-value {
+         font-weight: 400;
+         @include av("font-size", 20, 17.5, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+         max-width: 133px;
+         text-align: right;
+      }
+      &__link {
+         display: inline-block;
+         align-self: flex-start;
+         background-color: $mred;
+         padding-top: 7px;
+         padding-bottom: 7px;
+         text-align: left;
+         @include av("padding-left", 45, 38, 1920, 480, 1);
+         @include av("padding-right", 45, 38, 1920, 480, 1);
+         border-radius: 25px;
+         color: white;
+         @include av("font-size", 20, 17.5, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+      }
+   }
+}
+@media only screen and (min-width: 1000px) {
+   .video__search-form {
+      gap: 20px;
+   }
+   .filter-3 {
+      height: 235px;
+   }
+   .video-form-search {
+      position: absolute;
+      bottom: 9px;
+      left: 2.5vw;
+   }
+   .video__top {
+      position: relative;
+   }
+   .video__search-form {
+      flex-wrap: wrap;
+   }
+}
+.video-form-lang {
+   width: 100%;
+   & div .btn {
+      width: 100%;
+      &::before {
+         content: "";
+         @include av("width", 23, 20, 1920, 480, 1);
+         @include av("height", 23, 20, 1920, 480, 1);
+         background-image: url("../image/video-lang.svg");
+         background-size: 100% 100%;
+         position: absolute;
+         fill: black;
+         @include av("left", 17, 10, 1920, 480, 1);
+         top: 50%;
+         transform: translateY(-50%);
+         pointer-events: all;
+      }
+   }
+}
+.video-form-level {
+   width: 100%;
+   & div .btn {
+      width: 100%;
+      &::before {
+         content: "";
+         @include av("width", 23, 20, 1920, 480, 1);
+         @include av("height", 23, 20, 1920, 480, 1);
+         background-image: url("../image/lessons-level.svg");
+         background-size: 100% 100%;
+         position: absolute;
+         fill: black;
+         @include av("left", 17, 10, 1920, 480, 1);
+         top: 50%;
+         transform: translateY(-50%);
+         pointer-events: all;
+      }
+   }
+}
+.video-form-topic {
+   width: 100%;
+   & div .btn {
+      width: 100%;
+      &::before {
+         content: "";
+         @include av("width", 23, 20, 1920, 480, 1);
+         @include av("height", 23, 20, 1920, 480, 1);
+         background-image: url("../image/video-topic.svg");
+         background-size: 100% 100%;
+         position: absolute;
+         fill: black;
+         @include av("left", 17, 10, 1920, 480, 1);
+         top: 50%;
+         transform: translateY(-50%);
+         pointer-events: all;
+      }
+   }
+}
+@media only screen and (max-width: 1280px) {
+   .video-form-search {
+      max-width: 50%;
+
+      & input {
+         width: 100%;
+         padding-right: 183px;
+         padding-left: 60px;
+      }
+   }
+   .video__content-item {
+      min-width: 297px;
+   }
+}
+@media only screen and (max-width: 1000px) {
+   .filter-3 {
+      border-radius: 0;
+      padding-right: 34px;
+   }
+   .video__search-form {
+      flex-wrap: wrap;
+      gap: 30px;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      & input {
+         width: 100%;
+         max-width: 100%;
+      }
+   }
+   .video__content-list {
+      justify-content: center;
+   }
+   .video__top {
+      flex-wrap: wrap;
+      padding-left: 0;
+   }
+   .video-form-search {
+      order: 4;
+      max-width: 100%;
+      width: 100%;
+      padding: 0;
+      & input {
+         @include av("height", 50, 33, 1920, 480, 1);
+      }
+      & button {
+         @include av("height", 50, 33, 1920, 480, 1);
+      }
+   }
+   .video-form-topic,
+   .video-form-level,
+   .video-form-lang {
+      width: 52%;
+   }
+}
+.recommendation__video {
+   &-1,
+   &-2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include av("margin-bottom", 50, 30, 1920, 480, 1);
+      & div.img-1-2 {
+         & .img-1 {
+            width: 31.8%;
+         }
+         & div.img-2 {
+            width: 31.8%;
+            .img-2 {
+               @include av("width", 120, 40, 1920, 480, 1);
+            }
+         }
+      }
+      & .desc {
+         width: 36.4%;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: flex-end;
+         & p {
+            text-align: left;
+            font-weight: 400;
+            @include av("font-size", 20, 16, 1920, 480, 1);
+            @include av("line-height", 24, 20, 1920, 480, 1);
+         }
+         & a {
+            @include av("padding-top", 10, 3, 1920, 480, 1);
+            @include av("padding-bottom", 10, 3, 1920, 480, 1);
+            @include av("padding-left", 23, 22, 1920, 480, 1);
+            @include av("padding-right", 23, 22, 1920, 480, 1);
+            @include av("font-size", 25, 16, 1920, 480, 1);
+            @include av("line-height", 30, 20, 1920, 480, 1);
+            @include av("margin-top", 60, 30, 1920, 480, 1);
+            @include av("margin-bottom", 50, 30, 1920, 480, 1);
+            background: #f2111e;
+            border-radius: 25px;
+            text-align: center;
+            letter-spacing: 0.03em;
+            color: #ffffff;
+         }
+      }
+   }
+}
+@media only screen and (max-width: 768px) {
+   .recommendation__video {
+      &-1,
+      &-2 {
+         display: block;
+         & div.img-1-2 {
+            position: relative;
+            padding-bottom: 30px;
+            & .img-1 {
+               width: 100%;
+            }
+            & div.img-2 {
+               img{
+                  position: absolute;
+                  top: 5px;
+                  right: 6px;
+               }
+            }
+         }
+         & .desc {
+            justify-content: start;
+            width: 100%;
+         }
+      }
+   }
+}
+@media only screen and (min-width: 1000px) {
+   .video-form-search-input{
+      @include av ("height",50,40, 1920, 1000, 1);
+   }
+}
+@media only screen and (max-width: 1280px) {
+   .video__content-list{
+    justify-content: center;
+   }
+ }
+ @media only screen and (max-width: 480px) {
+    .video__content-item{
+       min-width: 240px;
+    }
+    .video-form-search{
+      width: 100%;
+    }
+    .video-form-search input{
+      padding-right: 110px;
+    }
+ }
+ .play{
+   display: none;
+ }

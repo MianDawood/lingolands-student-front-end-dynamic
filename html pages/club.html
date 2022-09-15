@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Добро пожаловать в клуб!</title>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="./node_modules/@fancyapps/ui/dist/fancybox.css">
+   <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+   <header class="header">
+      <div class="header__inner">
+         <div class="container">
+            <div class="header__top header-top">
+               <div class="header-top__logo">
+                  <a href="./" class="header-top__logo-link">
+                     <img class="header-top__logo-img" src="./image/logo.svg" alt="logo">
+                  </a>
+               </div>
+               <div class="header-top__search">
+                  <form class="header-top__search-form" action="#">
+                     <input class="header-top__search-form-input" type="text" placeholder="Search">
+                  </form>
+                  <div class="header-top__buy-btn">
+                     <a href="./buy-lessons.html">Купить уроки</a>
+                  </div>
+               </div>
+               <div class="header-top__user-nav">
+                  <div style="position:relative">
+                     <a href="#" class="header-top__notification-btn" data-fancybox="" data-src="#notification">
+                        <img src="./image/notification-icon.svg" alt="notification">
+                     </a>
+                     <div class="popup__notifications popup__notifications-main" id="notification2"
+                        style="max-width:500px;">
+                        <p class="notifications-title">Уведомления</p>
+                        <ol class="notifications-list">
+                           <li class="notifications-item">
+                              <a href="./homework.html">Новое домашнее задание уже добавлено!</a>
+                           </li>
+                           <li class="notifications-item">
+                              <a href="./homework.html">У вас 2 не выполненых домашних задания!</a>
+                           </li>
+                           <li class="notifications-item">
+                              <a href="./club.html">Сегодня состоиться встреча в разговорном клубе!</a>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+                  <a href="./account.html" class="header-top__account-btn">
+                     <img src="./image/account-icon.svg" alt="account">
+                  </a>
+               </div>
+               <div class="header__mob-menu-btn">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+               <div class="mob-menu">
+                  <div class="mob-menu-content">
+                     <a href="#" class="mob-menu__notification-btn" data-fancybox="" data-src="#notification">
+                        <img src="./image/notification-icon-m.svg" alt="notification">
+                     </a>
+                     <a href="./account.html" class="mob-menu__account-btn">
+                        Мой профиль <img src="./image/account-icon.svg" alt="account">
+                     </a>
+                  </div>
+                  <nav>
+                     <ul>
+                        <li class="mob-menu-link drop">
+                           <div class="mob-menu-link-main accordion" href="#">Уроки</div>
+                           <div class="drop-content">
+                              <a class="drop-content-link" href="#">Мои уроки</a>
+                              <a class="drop-content-link" href="#">Домашнее задание</a>
+                           </div>
+                        </li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./buy-lessons.html">Курсы</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./tv.html">Телеканалы</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./books.html">Книги</a></li>
+                        <li class="mob-menu-link"><a class="mob-menu-link-main" href="./radio.html">Радио</a></li>
+                     </ul>
+                  </nav>
+                  <div class="mob-menu-content-bottom">
+                     <a href="#" class="mob-menu__account-btn-l">
+                        Выйти из аккаунта <img src="./image/account-icon.svg" alt="account">
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="popup__notifications" id="notification" style="display:none;max-width:500px;">
+            <p class="notifications-title">Уведомления</p>
+            <ol class="notifications-list">
+               <li class="notifications-item">
+                  <a href="./homework.html">Новое домашнее задание уже добавлено!</a>
+               </li>
+               <li class="notifications-item">
+                  <a href="./homework.html">У вас 2 не выполненых домашних задания!</a>
+               </li>
+               <li class="notifications-item">
+                  <a href="./club.html">Сегодня состоиться встреча в разговорном клубе!</a>
+               </li>
+               </>
+         </div>
+      </div>
+      <div class="header__bottom header-bottom">
+         <div class="header-bottom__inner">
+            <div class="container">
+               <nav class="header__menu">
+                  <ul class="header__menu-list">
+                     <li class="header__menu-item  header__menu-item-drop">
+                        <div href="#" class="header__menu-item-link">
+                           Уроки
+                        </div>
+                        <div class="dropdown-content">
+                           <a class="dropdown-content-link" href="./lessons.html">Мои уроки</a>
+                           <a class="dropdown-content-link" href="./homework.html">Домашнее задание</a>
+                        </div>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./buy-lessons.html" class="header__menu-item-link">
+                           Курсы
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./tv.html" class="header__menu-item-link">
+                           Телеканалы
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./books.html" class="header__menu-item-link">
+                           Книги
+                        </a>
+                     </li>
+                     <li class="header__menu-item">
+                        <a href="./radio.html" class="header__menu-item-link">
+                           Радио
+                        </a>
+                     </li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </header>
+   <main class="main">
+      <section class="club__banner">
+         <div class="club-banner__inner">
+            <div class="club-banner__content">
+               <h1 class="club-banner__title">Добро пожаловать в клуб!</h1>
+               <p class="club-banner__desc">
+                  Практикуйте ваши навыки общения иностранными языки в разговорном клубе вместе с другими студентами
+               </p>
+               <a href="#" class="club-banner__link" data-target="#exampleModalCenter" data-fancybox=""
+                  data-src="#club__popup">Записаться</a>
+            </div>
+         </div>
+      </section>
+      <section class="club__meets">
+         <div class="club-meets__inner">
+            <div class="container">
+               <h2 class="club-meets__title">Расписание наших встеч </h2>
+               <div class="club-meets-list">
+                  <div class="club-meets-item">
+                     <div class="club-meets-item__inner">
+                        <div class="club-meets-item__status">
+                           <img src="./image/club-status.png" alt="club-talk">
+                        </div>
+                        <div class="club-meets-item__desc">
+                           <p class="club-meets-item__title">
+                              Тема урока
+                           </p>
+                           <a href="#" class="club-meets-item-link-pass club-meets-item-link">Записаться</a>
+                        </div>
+                        <p class="club-meets-item__name">
+                           Диана Смолова
+                        </p>
+                        <div class="club-meets-item__container">
+                           <div class="club-meets-item__level">
+                              <p class="level-title">Уровень</p>
+                              <p class="level-value">Профи</p>
+                           </div>
+                           <div class="club-meets-item__time">
+                              <p class="time-title">Время</p>
+                              <p class="time-value">15:00</p>
+                           </div>
+                           <div class="club-meets-item__date">
+                              <p class="date-title">Дата</p>
+                              <p class="date-value">12.12.22</p>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+                  <div class="club-meets-item">
+                     <div class="club-meets-item__inner">
+                        <div class="club-meets-item__status">
+                           <img src="./image/club-status.png" alt="club-talk">
+                        </div>
+                        <div class="club-meets-item__desc">
+                           <p class="club-meets-item__title">
+                              Тема урока
+                           </p>
+                           <a href="#" class="club-meets-item-link-pass club-meets-item-link">Записаться</a>
+                        </div>
+                        <p class="club-meets-item__name">
+                           Диана Смолова
+                        </p>
+                        <div class="club-meets-item__container">
+                           <div class="club-meets-item__level">
+                              <p class="level-title">Уровень</p>
+                              <p class="level-value">Профи</p>
+                           </div>
+                           <div class="club-meets-item__time">
+                              <p class="time-title">Время</p>
+                              <p class="time-value">15:00</p>
+                           </div>
+                           <div class="club-meets-item__date">
+                              <p class="date-title">Дата</p>
+                              <p class="date-value">12.12.22</p>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+                  <div class="club-meets-item">
+                     <div class="club-meets-item__inner">
+                        <div class="club-meets-item__status">
+                           <img src="./image/club-status.png" alt="club-talk">
+                        </div>
+                        <div class="club-meets-item__desc">
+                           <p class="club-meets-item__title">
+                              Тема урока
+                           </p>
+                           <a href="#" class="club-meets-item-link-pass club-meets-item-link">Записаться</a>
+                        </div>
+                        <p class="club-meets-item__name">
+                           Диана Смолова
+                        </p>
+                        <div class="club-meets-item__container">
+                           <div class="club-meets-item__level">
+                              <p class="level-title">Уровень</p>
+                              <p class="level-value">Профи</p>
+                           </div>
+                           <div class="club-meets-item__time">
+                              <p class="time-title">Время</p>
+                              <p class="time-value">15:00</p>
+                           </div>
+                           <div class="club-meets-item__date">
+                              <p class="date-title">Дата</p>
+                              <p class="date-value">12.12.22</p>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+                  <div class="club-meets-item">
+                     <div class="club-meets-item__inner">
+                        <div class="club-meets-item__status">
+                           <img src="./image/club-status.png" alt="club-talk">
+                        </div>
+                        <div class="club-meets-item__desc">
+                           <p class="club-meets-item__title">
+                              Тема урока
+                           </p>
+                           <a href="#" class="club-meets-item-link-pass club-meets-item-link">Записаться</a>
+                        </div>
+                        <p class="club-meets-item__name">
+                           Диана Смолова
+                        </p>
+                        <div class="club-meets-item__container">
+                           <div class="club-meets-item__level">
+                              <p class="level-title">Уровень</p>
+                              <p class="level-value">Профи</p>
+                           </div>
+                           <div class="club-meets-item__time">
+                              <p class="time-title">Время</p>
+                              <p class="time-value">15:00</p>
+                           </div>
+                           <div class="club-meets-item__date">
+                              <p class="date-title">Дата</p>
+                              <p class="date-value">12.12.22</p>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+                  <div class="club-meets-item">
+                     <div class="club-meets-item__inner">
+                        <div class="club-meets-item__status">
+                           <img src="./image/club-status.png" alt="club-talk">
+                        </div>
+                        <div class="club-meets-item__desc">
+                           <p class="club-meets-item__title">
+                              Тема урока
+                           </p>
+                           <a href="#" class="club-meets-item-link-pass club-meets-item-link">Записаться</a>
+                        </div>
+                        <p class="club-meets-item__name">
+                           Диана Смолова
+                        </p>
+                        <div class="club-meets-item__container">
+                           <div class="club-meets-item__level">
+                              <p class="level-title">Уровень</p>
+                              <p class="level-value">Профи</p>
+                           </div>
+                           <div class="club-meets-item__time">
+                              <p class="time-title">Время</p>
+                              <p class="time-value">15:00</p>
+                           </div>
+                           <div class="club-meets-item__date">
+                              <p class="date-title">Дата</p>
+                              <p class="date-value">12.12.22</p>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="club__video">
+         <div class="club-video__innder">
+            <div class="container">
+               <h2 class="club-video__title">Видео прошлых занятий</h2>
+            </div>
+            <div class="club-video__list">
+               <div class="container">
+                  <div class="club-video__item">
+                     <a data-fancybox="video-gallery" href="https://www.youtube.com/watch?v=z2X2HaTvkl8">
+                        <p class="club-video__item-name">Тема урока</p>
+                        <img src="./image/video.jpg" max-width="407" max-height="218" />
+                     </a>
+                  </div>
+                  <div class="club-video__item">
+                     <a data-fancybox="video-gallery" href="https://www.youtube.com/watch?v=z2X2HaTvkl8">
+                        <p class="club-video__item-name">Тема урока</p>
+                        <img src="./image/video.jpg" max-width="407" max-height="218" />
+                     </a>
+                  </div>
+                  <div class="club-video__item">
+                     <a data-fancybox="video-gallery" href="https://www.youtube.com/watch?v=z2X2HaTvkl8">
+                        <p class="club-video__item-name">Тема урока</p>
+                        <img src="./image/video.jpg" max-width="407" max-height="218" />
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <div class="club__popup" id="club__popup">
+         <h4>Записать в наш клуб</h4>
+         <form action="#" class="club__form">
+            <div class="club__form-name">
+               <input type="text">
+            </div>
+            <div class="club__form-sid">
+               <input type="text">
+            </div>
+            <div class="club__form-phone">
+               <input type="text">
+            </div>
+            <div class="club__form-email">
+               <input type="text">
+            </div>
+            <div class="custom-select club__form-select">
+               <select class="club__form-select-sel">
+                  <option value="0">English</option>
+                  <option value="1">Spanish</option>
+                  <option value="2">French</option>
+                  <option value="3">Italian</option>
+               </select>
+            </div>
+            <button>Отправить</button>
+
+         </form>
+         <p>By clicking Submit, you agree to Lingolands Terms and conditions и Privacy Policy</p>
+      </div>
+   </main>
+   <footer class="footer">
+      <div class="footer__inner">
+         <div class="container">
+            <div class="footer__menu-one footer-menu">
+               <ul class="footer__menu-one-list">
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Процесс изучения
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Цена
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Груповые уроки
+                     </a>
+                  </li>
+                  <li class="footer__menu-one-item">
+                     <a href="#" class="footer__menu-one-link">
+                        Разговорные клубы
+                     </a>
+                  </li>
+               </ul>
+            </div>
+            <div class="footer__menu-two footer-menu">
+               <ul class="footer__menu-two-list">
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Общий английский
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Бизнес английский
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Подготовка к экзамену
+                     </a>
+                  </li>
+                  <li class="footer__menu-two-item">
+                     <a href="#" class="footer__menu-two-link">
+                        Школьный английский
+                     </a>
+                  </li>
+               </ul>
+            </div>
+            <div class="footer__menu-three footer-menu">
+               <ul class="footer__menu-three-list">
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Работа для учителей
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Политика конфиденциальности
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Условия и положения
+                     </a>
+                  </li>
+                  <li class="footer__menu-three-item">
+                     <a href="#" class="footer__menu-three-link">
+                        Контакты
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <script src="./node_modules/@fancyapps/ui/dist//fancybox.umd.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="./scripts/main.js"></script>
+</body>
+
+</html>

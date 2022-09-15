@@ -1,0 +1,3907 @@
+@mixin av($property, $startSize, $minSize, $maxw, $minw, $type) {
+   $addSize: $startSize - $minSize;
+   @if $type==1 {
+      //#{$property}: $startSize + px;
+      @media only screen and (min-width: #{$minw + px}) and (max-width: #{$maxw + px}) {
+         #{$property}: calc(#{$minSize + px} + (#{$addSize} * (100vw - #{$minw + px}) / (#{$maxw} - #{$minw})));
+      }
+      @media only screen and (max-width: #{$minw + px}) {
+         #{$property}: #{$minSize + px};
+      }
+      @media only screen and (min-width: #{$maxw + px}) {
+         #{$property}: #{$startSize + px};
+      }
+   }
+   @if $type==2 {
+      //#{$property}: $startSize + px;
+      @media only screen and (min-width: #{$minw + px}) and (max-width: #{$maxw + px}) {
+         #{$property}: calc(#{$minSize + px} + (#{$addSize} * (100vw - #{$minw + px}) / (#{$maxw} - #{$minw})));
+      }
+   } @else {
+      //Всегда
+      #{$property}: calc(#{$minSize + px} + (#{$addSize} * 100vw / #{$maxw}));
+   }
+}
+@import "customselect.scss";
+@import "rating";
+//nulled style
+a,
+button {
+   cursor: url("../image/cursor-link.svg") 0 0, auto !important;
+}
+* {
+   padding: 0;
+   margin: 0;
+   border: 0;
+}
+*,
+*:before,
+*:after {
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+}
+:focus,
+:active {
+   outline: none;
+}
+a:focus,
+a:active {
+   outline: none;
+}
+nav,
+footer,
+header,
+aside {
+   display: block;
+}
+html,
+body {
+   height: 100%;
+   width: 100%;
+   font-size: 100%;
+   line-height: 1;
+   font-size: 14px;
+   -ms-text-size-adjust: 100%;
+   -moz-text-size-adjust: 100%;
+   -webkit-text-size-adjust: 100%;
+   overflow-x: hidden;
+}
+input,
+button,
+textarea {
+   font-family: inherit;
+}
+//input::-ms-clear {
+//   display: none;
+//}
+button {
+   cursor: pointer;
+}
+button::-moz-focus-inner {
+   padding: 0;
+   border: 0;
+}
+a,
+a:visited {
+   text-decoration: none;
+}
+a:hover {
+   text-decoration: none;
+}
+ul li {
+   list-style: none;
+}
+img {
+   vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-size: inherit;
+   font-weight: 400;
+}
+//input[type="text"]::-ms-clear {
+//   display: none;
+//   width: 0;
+//   height: 0;
+//}
+//input[type="text"]::-ms-reveal {
+//   display: none;
+//   width: 0;
+//   height: 0;
+//}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+   display: none;
+}
+
+//global colors
+$mblue: #0060fc;
+$mred: #f2111e;
+$vectors: #808080;
+
+*,
+input {
+   //font-family: 'Inter', sans-serif;
+   font-family: "Montserrat", sans-serif;
+   font-style: normal;
+   font-weight: 500;
+   text-align: center;
+   font-size: inherit;
+   color: inherit;
+}
+.container {
+   max-width: 1280px;
+   margin: 0 auto;
+   padding: 0 2.5vw;
+}
+@media only screen and (min-width: 1350px) {
+   .container {
+      padding: 0 0;
+   }
+}
+h3 {
+   font-weight: 600;
+   @include av("font-size", 32, 19, 1920, 480, 1);
+   @include av("line-height", 39, 23, 1920, 480, 1);
+}
+h2 {
+   font-weight: 700;
+   @include av("font-size", 52, 21, 1920, 480, 1);
+   @include av("line-height", 63, 26, 1920, 480, 1);
+   position: relative;
+   display: flex;
+   align-items: center;
+   text-align: left;
+   display: flex;
+   align-self: start;
+}
+@media only screen and (min-width: 1200px) {
+   h2:before,
+   h2:after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+      height: 1px;
+      background-color: $vectors;
+      position: relative;
+   }
+   h2:before {
+      margin-left: -100%;
+      left: -14px;
+   }
+   h2:after {
+      margin-right: -100%;
+      right: -14px;
+   }
+}
+//header
+
+.header {
+   background-color: $mblue;
+   &__inner .container {
+      padding-top: 1px;
+      padding-bottom: 2px;
+   }
+}
+@media only screen and (min-width: 768px) {
+   .header__inner {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      margin-left: 30px;
+      padding-right: 30px;
+   }
+}
+.mob-menu__notification-btn {
+   position: relative;
+}
+.mob-menu__notification-btn::after {
+   content: "4";
+   background-color: #f2111e;
+   border-radius: 50%;
+   padding: 1px 5.5px;
+   font-weight: 300;
+   font-size: 13.8583px;
+   line-height: 17px;
+   text-align: center;
+   color: #000;
+   position: absolute;
+   top: 70%;
+   right: -20%;
+}
+.video-select-list {
+   left: unset !important;
+   right: 0 !important;
+   width: 181% !important;
+}
+.popup__notifications {
+   width: 365px;
+   height: auto;
+   border-radius: 25px;
+   padding: 10px 0 16px;
+}
+@media (max-width: 500px) {
+   .account__info-person-interess ul {
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      li {
+         margin-left: unset !important;
+         width: 100% !important;
+      }
+   }
+}
+.popup__notifications-main {
+   display: none;
+}
+.popup__notifications-main.active {
+   display: block;
+   position: absolute;
+   background-color: white;
+   top: calc(100% + 2px);
+   right: 0;
+   z-index: 99;
+}
+
+.notifications-title {
+   font-weight: 600;
+   font-size: 20px;
+   line-height: 24px;
+   color: #000000;
+   text-align: left;
+   border-bottom: 1px solid #000;
+   padding: 0 22px;
+}
+.notifications-item {
+   text-align: left;
+   padding: 20px 0 5px;
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 24px;
+   color: #000000;
+   position: relative;
+   padding-left: 32px;
+   &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      content: "";
+      width: 190px;
+      border-bottom: 1px solid #808080;
+   }
+   &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: $mred;
+      text-align: center;
+      content: counter(item);
+      counter-increment: item;
+      font-weight: 300;
+      font-size: 13.8583px;
+      line-height: 17px;
+      text-align: center;
+      padding-top: 4px;
+
+      color: #ffffff;
+   }
+}
+ol {
+   list-style-type: none; /* Убираем исходные маркеры */
+   counter-reset: item; /* Обнуляем счетчик списка */
+}
+.mob-menu-content {
+   margin: 0 12.5vw;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+
+.mob-menu__account-btn,
+.mob-menu__account-btn-l {
+   margin-left: 26px;
+   background-color: $mblue;
+   border-radius: 15px;
+   padding: 12px 16px;
+   font-weight: 600;
+   font-size: 19px;
+   line-height: 23px;
+   color: #ffffff;
+   display: inline-block;
+   & img {
+      width: 21px;
+      height: 21px;
+   }
+}
+.mob-menu__account-btn-l {
+   margin-top: 50px;
+   margin-left: 0;
+}
+.header-top {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   position: relative;
+   @include av("gap", 100, 10, 1920, 700, 1);
+   //gap: 100px;
+   &__logo {
+      @include av("width", 225, 138, 1920, 480, 1);
+      &-img {
+         width: 100%;
+         height: auto;
+      }
+   }
+   &__search {
+      display: flex;
+      @include av("gap", 50, 10, 1920, 700, 1);
+      align-self: center;
+      justify-self: center;
+      margin-left: auto;
+      height: 39px;
+   }
+   &__user-nav {
+      display: flex;
+      @include av("gap", 53, 10, 1920, 700, 1);
+      justify-content: center;
+      align-items: center;
+      max-width: 133px;
+      height: 42px;
+   }
+   &__notification-btn {
+      position: relative;
+   }
+   &__notification-btn::after {
+      content: "4";
+      background-color: #f2111e;
+      border-radius: 50%;
+      padding: 1px 5.5px;
+      font-weight: 300;
+      font-size: 13.8583px;
+      line-height: 17px;
+      text-align: center;
+      color: #ffffff;
+      position: absolute;
+      top: 70%;
+      right: -20%;
+   }
+   &__buy-btn {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      & a {
+         display: block;
+         background: #f2111e;
+         border-radius: 25px;
+         padding: 7px 6px 8px 5px;
+         color: white;
+         width: max-content;
+
+         @include av("font-size", 20, 16, 1920, 480, 1);
+         @include av("line-height", 24, 18, 1920, 720, 1);
+         //font-size: 20px;
+         line-height: 24px;
+         max-width: 155px;
+      }
+   }
+   &__search {
+      &-form {
+         width: 387px;
+         background: rgba(255, 255, 255, 0.38);
+         border: 0px;
+         border-radius: 25px;
+         position: relative;
+         &::before {
+            content: "";
+            width: 23px;
+            height: 23px;
+            position: absolute;
+            top: 6px;
+            left: 18px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url("../image/search-icon.svg");
+         }
+         &-input {
+            width: 100%;
+            padding: 8px 49px 8px 49px;
+            text-align: left;
+            border: none;
+            border-color: transparent;
+            background-color: transparent;
+            color: rgba(0, 0, 0, 0.62);
+            outline: none;
+            position: relative;
+            font-style: normal;
+            font-weight: 400;
+            @include av("font-size", 19, 16, 1920, 480, 1);
+            line-height: 23px;
+            color: rgba(0, 0, 0, 0.62);
+
+            &::placeholder {
+               color: inherit;
+               font-weight: 400;
+               font-size: 19px;
+               line-height: 23px;
+            }
+         }
+      }
+   }
+}
+
+@media only screen and (max-width: 1000px) {
+   .header-top__search-form {
+      max-width: 30vw;
+   }
+}
+@media only screen and (min-width: 1200px) {
+   .header-top__search {
+      margin-right: auto;
+      //padding-left: 130px;
+   }
+}
+
+.header__menu {
+   font-size: 19px;
+   line-height: 23px;
+   text-align: center;
+   color: #ffffff;
+   &-list {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 7px;
+      padding-bottom: 9px;
+      margin: 0;
+   }
+   &-item {
+      position: relative;
+   }
+}
+@media only screen and (min-width: 1200px) {
+   .header__menu-list {
+      gap: 150px;
+      justify-content: center;
+   }
+}
+.header__menu-item-drop {
+   position: relative;
+   display: inline-block;
+}
+.mob-menu-link.drop {
+   padding-bottom: 0px;
+   & .mob-menu-link-main {
+      position: relative;
+      padding-bottom: 10px;
+      display: inline-block;
+      &::before {
+         position: absolute;
+         top: 35%;
+         transform: translateY(-50%);
+         right: -15px;
+         content: "";
+         width: 11px;
+         height: 8px;
+         background-image: url("../image/mobile-drop-arrow.svg");
+         background-size: 100% 100%;
+      }
+   }
+}
+.mob-menu-link-main {
+   font-weight: 600;
+   font-size: 19px;
+   line-height: 23px;
+}
+.drop-content {
+   display: block;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 20px;
+   padding-bottom: 0px;
+}
+.drop-content-link {
+   display: block;
+   text-align: center;
+   padding-bottom: 15px;
+}
+.mob-menu-link {
+   padding-top: 40px;
+}
+.header__menu-item-drop .header__menu-item-link::after {
+   content: "";
+   width: 16px;
+   height: 8px;
+   position: absolute;
+   top: 11px;
+   right: -20px;
+   background-image: url("../image/menu-more-arrow.svg");
+   background-size: 100% 100%;
+}
+.dropdown-content {
+   //display: none;
+   visibility: hidden;
+   opacity: 0;
+   position: absolute;
+   background-color: $mblue;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+   z-index: 1;
+   border-radius: 25px;
+   padding: 9px 12px 11px;
+   transition: opacity 0.3s, visibility 0.3s;
+   transition-property: opacity, visibility;
+   width: 224px;
+   text-align: left;
+}
+@media (max-width: 1600px) {
+   .sort {
+      padding: 0 !important;
+   }
+}
+.banner__flag {
+   position: relative;
+   &::before {
+      content: "En";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      color: #fff;
+      font-size: 25px;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+   }
+   &:hover::before {
+      opacity: 1;
+   }
+}
+.banner__flag:nth-child(2) {
+   &::before {
+      content: "Fr";
+   }
+}
+.banner__flag:nth-child(3) {
+   &::before {
+      content: "Sp";
+   }
+}
+.banner__flag:nth-child(4) {
+   &::before {
+      content: "It";
+   }
+}
+@media (max-width: 1150px) {
+   .mobile {
+      display: block !important;
+   }
+   .controls {
+      display: none !important;
+   }
+}
+.dropdown-content-link {
+   padding-bottom: 7px;
+   margin-bottom: 7px;
+   border-bottom: 2px solid white;
+}
+.dropdown-content-link:last-child {
+   border-bottom: unset;
+   padding: 0;
+   margin: 0;
+}
+.dropdown-content a {
+   font-size: 19px;
+   line-height: 23px;
+   color: white;
+   display: inline-block;
+}
+.header__menu-item-drop:hover .dropdown-content {
+   //display: block;
+   visibility: visible;
+   opacity: 1;
+   transition: opacity 0.3s;
+}
+/* Гамбургер иконка */
+.header__mob-menu-btn {
+   display: none;
+   width: 33px;
+   height: 33px;
+   position: relative;
+   z-index: 3;
+   overflow: hidden;
+   transition: all 0.5s;
+   position: absolute;
+   top: 0px;
+   left: 90%;
+   transition: top 0.3s, left 0.3s, background-color 1.3s;
+}
+
+.header__mob-menu-btn span {
+   width: 30px;
+   height: 2px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: white;
+   transition: all 0.5s;
+}
+
+.header__mob-menu-btn span:nth-of-type(2) {
+   top: calc(50% - 8px);
+}
+.header__mob-menu-btn span:nth-of-type(3) {
+   top: calc(50% + 8px);
+}
+.header__mob-menu-btn.active span {
+   width: 20px;
+}
+/* Меняем гамбургер иконку, когда меню открыто */
+.header__mob-menu-btn.active span:nth-of-type(1) {
+   display: none;
+}
+.header__mob-menu-btn.active span:nth-of-type(2) {
+   top: 50%;
+   transform: translate(-52%, 0%) rotate(45deg);
+}
+.header__mob-menu-btn.active span:nth-of-type(3) {
+   top: 50%;
+   transform: translate(-48%, 0%) rotate(-45deg);
+}
+
+/* Меню, которое будет появляться */
+.mob-menu {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   padding: 15px 0;
+   background: white;
+   transform: translateX(-100%);
+   transition: transform 0.5s;
+   font-weight: 600;
+   font-size: 19px;
+   line-height: 23px;
+   text-align: center;
+   color: #000000;
+   z-index: 30;
+}
+.header__mob-menu-btn.active {
+   background-color: $mblue;
+   z-index: 31;
+   border-radius: 50%;
+   padding: 16px;
+   position: absolute;
+   top: 17px;
+   left: 0;
+}
+
+.mob-menu.active {
+   transform: translateX(0);
+}
+
+.mob-menu li {
+   list-style-type: none;
+}
+
+@media only screen and (max-width: 768px) {
+   .header-top__search {
+      margin-right: auto;
+      margin-left: 29px;
+   }
+   .header__inner {
+      padding: 0;
+   }
+
+   .header__menu {
+      display: none;
+   }
+   .header__mob-menu-btn {
+      display: block;
+   }
+   .header-top__user-nav {
+      display: none;
+   }
+}
+@media only screen and (max-width: 580px) {
+   .header-top__search-form {
+      display: none;
+   }
+}
+//main
+// lang банер
+@media only screen and (min-width: 1320px) {
+   .banner {
+      &__inner {
+         max-width: 919px;
+         margin-right: calc((100vw - 1280px) / 2);
+         margin-left: auto;
+         & .container {
+            padding: 0;
+         }
+      }
+   }
+}
+.banner {
+   color: white;
+   background-image: url("../image/main-banner-bg.png");
+   background-size: cover;
+   background-position: center center;
+
+   &__inner {
+      color: white;
+   }
+   &__title {
+      font-weight: 700;
+      @include av("font-size", 53, 21, 1920, 480, 1);
+      @include av("line-height", 65, 26, 1920, 480, 1);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      @include av("padding-top", 60, 30, 1920, 480, 1);
+      @include av("padding-bottom", 50, 30, 1920, 480, 1);
+   }
+   &__flags {
+      display: flex;
+      justify-content: space-between;
+      @include av("width", 554, 360, 1920, 480, 1);
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 50px;
+   }
+   &__flag {
+      & img {
+         border-radius: 50%;
+         @include av("width", 77, 50, 1920, 480, 1);
+         @include av(" height", 77, 50, 1920, 480, 1);
+         filter: brightness(62%);
+         transition: filter 0.3s, transform 0.3s;
+         &:hover {
+            transform: scale(1.1);
+         }
+      }
+   }
+   &__flag.active {
+      & img {
+         filter: brightness(100%);
+      }
+   }
+   &__search {
+      @include av("padding-bottom", 36, 18, 1920, 480, 1);
+      &-form {
+         width: 78.12%;
+         background: rgba(255, 255, 255, 0.38);
+         border: 0px;
+         border-radius: 25px;
+         position: relative;
+         @include av("margin-left", 0, 120, 1920, 1320, 2);
+         &::before {
+            content: "";
+            width: 23px;
+            height: 23px;
+            position: absolute;
+            top: 6px;
+            left: 18px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url("../image/search-icon.svg");
+         }
+         &-input {
+            width: 100%;
+            padding: 8px 49px 8px 49px;
+            text-align: left;
+            border: none;
+            border-color: transparent;
+            background-color: transparent;
+            color: rgba(0, 0, 0, 0.62);
+            outline: none;
+            position: relative;
+            font-style: normal;
+            font-weight: 400;
+            @include av("font-size", 19, 16, 1920, 480, 1);
+            line-height: 23px;
+            color: rgba(0, 0, 0, 0.62);
+
+            &::placeholder {
+               color: inherit;
+               font-weight: 400;
+               font-size: 19px;
+               line-height: 23px;
+            }
+         }
+      }
+   }
+   &__content {
+      @include av("margin-left", 0, 120, 1920, 1320, 2);
+   }
+   &__desc {
+      display: flex;
+      @include av("gap", 190, 20, 1920, 480, 1);
+
+      text-align: left;
+      &-title {
+         padding-bottom: 50px;
+         text-align: left;
+      }
+      &-text {
+         width: 48.1%;
+         @include av("font-size", 20, 17, 1920, 480, 1);
+         @include av("line-height", 24, 21, 1920, 480, 1);
+         text-align: left;
+         @include av("padding-bottom", 133, 66, 1920, 480, 1);
+      }
+   }
+   &__btn {
+      width: 26.3%;
+   }
+   &__link {
+      @include av("font-size", 20, 12, 1920, 480, 1);
+      @include av("line-height", 24, 15, 1920, 480, 1);
+      padding: 16px 53px;
+      @include av("padding-left", 56, 28, 1920, 480, 1);
+      @include av("padding-right", 56, 28, 1920, 480, 1);
+      background-color: $mred;
+      border-radius: 25px;
+      border: 3px solid transparent;
+      display: inline-block;
+      //width: 100%;
+   }
+}
+@media only screen and (max-width: 1319px) {
+   .banner__search-form {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+   }
+   .banner__desc {
+      justify-content: space-between;
+      gap: 10px;
+      &-text {
+         width: 50%;
+      }
+   }
+   .banner__btn {
+      width: 45%;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      align-items: flex-end;
+   }
+   .banner__content {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+   }
+}
+@media only screen and (max-width: 580px) {
+   .banner__top {
+      background-image: url("../image/main-banner-bg.png");
+      background-size: cover;
+      background-position: center center;
+   }
+   .banner {
+      background-image: unset;
+   }
+   .banner__content {
+      width: 100%;
+      color: black;
+   }
+   .banner__desc-title {
+      padding: 50px 0 20px;
+   }
+   .banner__btn {
+      width: 100%;
+      max-width: 210px;
+      color: white;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+   }
+   .banner__link {
+      font-size: 16px;
+      line-height: 19.5px;
+      width: 100%;
+      padding: 10px 53px;
+      border: 0;
+   }
+   .banner__desc {
+      display: block;
+      width: 100%;
+   }
+   .banner__desc-text {
+      width: 100%;
+      font-weight: 400;
+      padding-bottom: 30px;
+   }
+   .container {
+      padding: 0 12.5%;
+   }
+   .banner__search {
+      display: none;
+   }
+   .banner__flags {
+      padding-bottom: 70px;
+   }
+}
+
+//відео
+.video {
+   &__title {
+      text-align: left;
+      font-weight: 600;
+      @include av("font-size", 32, 19, 1920, 480, 1);
+      @include av("line-height", 39, 23, 1920, 480, 1);
+      padding-top: 70px;
+      @include av("padding-bottom", 50, 30, 1920, 480, 1);
+   }
+   &__img {
+      width: 100%;
+   }
+   padding-bottom: 70px;
+}
+//уроки ціни
+.lessons__products-items-30,
+.lessons__products-items-60,
+.lessons__products-items-90,
+.lessons__personal,
+.lessons__group,
+.rbb {
+   display: none;
+}
+.lessons {
+   background-image: url("../image/lessons-bg.svg");
+   background-repeat: no-repeat;
+   background-position: center bottom;
+   background-size: 100% auto;
+   padding-bottom: 240px;
+   &__title {
+      text-align: center;
+      display: block;
+      @include av("padding-bottom", 50, 30, 1920, 480, 1);
+      &::before {
+         content: unset;
+      }
+      &::after {
+         content: unset;
+      }
+   }
+   &__choose {
+      display: flex;
+      justify-content: space-between;
+      width: 57%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 70px;
+      gap: 10px;
+      &-link {
+         &-o,
+         &-t {
+            color: white;
+            background-color: $mblue;
+            border-radius: 25px;
+            font-weight: 400;
+            border: 2px solid transparent;
+            @include av("font-size", 20, 16, 1920, 480, 1);
+            @include av("line-height", 24, 20, 1920, 480, 1);
+            @include av("width", 233, 227, 1920, 480, 1);
+         }
+      }
+      &-link-o.active,
+      &-link-t.active {
+         background-color: transparent;
+         border-color: $mred;
+         color: $mred;
+      }
+   }
+   &__products {
+      &-title {
+         @include av("font-size", 28, 19, 1920, 480, 1);
+         @include av("line-height", 34, 23, 1920, 480, 1);
+         @include av("padding-bottom", 50, 30, 1920, 480, 1);
+      }
+      &-duration {
+         @include av("font-size", 22, 16, 1920, 480, 1);
+         @include av("line-height", 27, 20, 1920, 480, 1);
+         border: 1px solid black;
+         display: flex;
+         justify-content: center;
+         padding-top: 18px;
+         padding-bottom: 18px;
+         @include av("gap", 168, 21, 1920, 480, 1);
+         @include av("margin-bottom", 50, 30, 1920, 480, 1);
+         &-link {
+            border: 2px solid transparent;
+            border-radius: 25px;
+            padding: 6px 15px;
+            background-color: transparent;
+         }
+         &-link.active {
+            border-color: $mred;
+            color: $mred;
+         }
+      }
+      &-items-30,
+      &-items-60,
+      &-items-90 {
+         //display: flex;
+         justify-content: space-between;
+         gap: 30px;
+      }
+      &-item {
+         width: 100%;
+         border-color: transparent;
+         border: 1px solid black;
+         border-radius: 15px;
+         position: relative;
+         overflow: hidden;
+         &-count {
+            position: absolute;
+            height: 71px;
+            width: auto;
+            width: 71px;
+            top: 0px;
+            left: 0px;
+            font-weight: 600;
+            font-size: 58px;
+            line-height: 71px;
+            color: white;
+            z-index: 3;
+            &::after {
+               content: "";
+               position: absolute;
+               top: -35px;
+               left: -41px;
+               width: 120px;
+               height: 120px;
+               border-radius: 50%;
+               background-color: $mblue;
+               z-index: -1;
+            }
+         }
+         &-title {
+            padding-top: 20px;
+            padding-bottom: 68px;
+            font-size: 28px;
+            line-height: 34px;
+         }
+         &-desc {
+            background-color: $mblue;
+            padding: 5px 20px;
+            margin-bottom: 24px;
+            color: white;
+         }
+         &-content {
+            &::after {
+               content: "";
+               position: absolute;
+               bottom: 0px;
+               left: 50%;
+               height: 50%;
+               border-right: 1px solid black;
+            }
+
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 6px;
+         }
+      }
+   }
+}
+.rbb {
+   display: flex;
+   position: absolute;
+   bottom: 15px;
+   left: calc(50% - 77px);
+   z-index: -1;
+   background-color: $mred;
+   border-radius: 25px;
+   width: 155px;
+   height: 39px;
+   opacity: 0.2;
+   color: white;
+   align-items: center;
+   justify-content: center;
+}
+.rb {
+   display: block;
+   border-radius: 15px 0px 14px;
+   width: 50%;
+   padding: 0px 3px;
+   cursor: url("../image/cursor-link.svg") 0 0, auto;
+}
+.rb p {
+   font-weight: 400;
+   font-size: 17px;
+   line-height: 21px;
+   padding-top: 23px;
+}
+.rb p:first-child {
+   padding-top: 1px;
+}
+.rb p:last-child {
+   padding-bottom: 84px;
+}
+@media only screen and (max-width: 1280px) {
+   .lessons__products-items-30,
+   .lessons__products-items-60,
+   .lessons__products-items-90 {
+      flex-wrap: wrap;
+   }
+   .lessons__products-item {
+      width: 48%;
+   }
+}
+@media only screen and (max-width: 800px) {
+   .lessons {
+      background-image: unset;
+      padding-bottom: 70px;
+   }
+   .lessons__products-items-30,
+   .lessons__products-items-60,
+   .lessons__products-items-90 {
+      flex-wrap: wrap;
+   }
+   .lessons__products-item {
+      width: 100%;
+   }
+   .lessons__choose {
+      display: block;
+   }
+   .lessons__choose-link-o {
+      margin-bottom: 30px;
+   }
+}
+
+//переваги
+.advantage {
+   margin-top: 52px;
+   background-color: $mblue;
+   background-image: url("../image/advantage-bg.png");
+   background-position: center bottom;
+   background-repeat: no-repeat;
+   background-size: 32% auto;
+   @include av("font-size", 20, 16, 1920, 480, 1);
+   @include av("line-height", 24, 20, 1920, 480, 1);
+   color: white;
+   &__content-item-link {
+      background-color: $mred;
+      border-radius: 17.0968px;
+      padding: 10px 52px;
+      display: inline-block;
+      @include av("margin-top", 40, 30, 1920, 480, 1);
+   }
+   &__content-one {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-end;
+      justify-content: space-between;
+   }
+   &__content-two {
+      padding-top: 98px;
+      @include av("padding-bottom", 84, 70, 1920, 480, 1);
+      margin-bottom: 87px;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-end;
+      justify-content: space-between;
+   }
+   &__content-item {
+      @include av("width", 390, 360, 1920, 480, 1);
+   }
+
+   &__title {
+      font-weight: 600;
+      color: white;
+      @include av("font-size", 32, 19, 1920, 480, 1);
+      @include av("line-height", 39, 23, 1920, 480, 1);
+      @include av("padding-top", 60, 30, 1920, 480, 1);
+      @include av("padding-bottom", 50, 30, 1920, 480, 1);
+   }
+}
+@media only screen and (max-width: 800px) {
+   .advantage-order-1 {
+      order: 2;
+   }
+   .advantage-order-2 {
+      order: 1;
+   }
+   .advantage {
+      background-size: 100%;
+      &__content-one {
+         display: inline-flex;
+         flex-wrap: wrap;
+         padding-bottom: 0;
+      }
+      &__content-two {
+         padding-top: 0;
+         display: inline-flex;
+         flex-wrap: wrap;
+         padding-bottom: calc(100% * 0.72);
+         margin-bottom: -2px;
+      }
+      &__content-item {
+         padding-bottom: 30px;
+         width: 100%;
+         &-text {
+            font-weight: 400;
+         }
+      }
+   }
+}
+@media only screen and (min-width: 580px) and (max-width: 800px) {
+   .advantage {
+      &__content-two {
+         padding-bottom: calc(100% * 0.64);
+      }
+   }
+}
+
+//відгуки
+.review {
+   background-image: url("../image/review-bg.svg");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: top left;
+   @include av("padding-top", 87, 70, 1920, 480, 1);
+   @include av("padding-bottom", 94, 46, 1920, 480, 1);
+   &__item-top {
+      display: flex;
+   }
+   &__title {
+      @include av("font-size", 32, 19, 1920, 480, 1);
+      @include av("line-height", 39, 23, 1920, 480, 1);
+      font-weight: 600;
+      color: white;
+      text-align: left;
+   }
+   &__content {
+      @include av("padding-top", 60, 30, 1920, 480, 1);
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 30px;
+   }
+   &__item {
+      &-img {
+         border-radius: 50%;
+         @include av("width", 98, 84, 1920, 480, 1);
+         @include av("height", 98, 84, 1920, 480, 1);
+      }
+      &-name {
+         padding-left: 15px;
+         font-size: 20px;
+         line-height: 24px;
+         text-align: center;
+         color: #ffffff;
+      }
+      &-name span {
+         text-align: left;
+         font-weight: 400;
+         display: block;
+      }
+      &-text {
+         background-color: #ffffff;
+         border-radius: 5px;
+
+         padding-top: 8px;
+         margin-top: 20px;
+         padding-bottom: 18px;
+         position: relative;
+         z-index: 2;
+         &::before {
+            position: absolute;
+            content: "";
+            @include av("top", -16, -14, 1920, 480, 1);
+            @include av("left", 22, 19, 1920, 480, 1);
+            width: 25px;
+            height: 33px;
+            background-image: url("../image/reviews-before.svg");
+            z-index: -1;
+         }
+      }
+      width: 33.333%;
+   }
+}
+@media only screen and (max-width: 850px) {
+   .review {
+      background-image: unset;
+      background-color: $mblue;
+      &__content {
+         display: block;
+      }
+      &__item {
+         &-text {
+            margin-left: 9px;
+            margin-right: 9px;
+         }
+         display: block;
+         width: 100%;
+         padding-bottom: 26px;
+      }
+      &__item-top {
+         display: flex;
+      }
+   }
+}
+
+//footer
+.footer {
+   background-color: $mblue;
+   height: 260px;
+   color: white;
+   @include av("font-size", 19, 16, 1920, 480, 1);
+   @include av("line-height", 23, 19.5, 1920, 480, 1);
+   display: flex;
+   align-items: flex-end;
+   justify-content: center;
+   &__inner {
+      & .container {
+         display: flex;
+         justify-content: center;
+      }
+   }
+   &-menu {
+      padding: 45px 58px 40px;
+      border-right: 1px solid white;
+      & ul li {
+         text-align: left;
+         padding-bottom: 10px;
+      }
+   }
+   &-menu:last-child {
+      border-right: unset;
+   }
+}
+@media only screen and (max-width: 1200px) {
+   .footer {
+      height: auto;
+   }
+}
+
+@media only screen and (max-width: 800px) {
+   .footer {
+      background-color: white;
+      height: auto;
+      color: black;
+      display: block;
+      &__inner {
+         & .container {
+            width: 100%;
+            padding: 0;
+            display: block;
+            justify-content: center;
+         }
+      }
+      &-menu {
+         padding: 30px 58px 12px;
+         border-bottom: 1px solid black;
+         border-right: unset;
+         & ul li {
+            text-align: center;
+            //padding-bottom: 10px;
+         }
+      }
+      &-menu:last-child {
+         border-bottom: unset;
+      }
+   }
+}
+// li,
+// a,
+// button {
+//    transition: transform 0.3s;
+// }
+// li:hover {
+//    transform: translateY(5%) scale(1.05);
+// }
+// a:hover,
+// button:hover {
+//    transform: translateY(5%);
+// }
+
+///test welcome
+
+@media only screen and (max-width: 800px) {
+   .test-welcome-footer {
+      background-color: transparent;
+   }
+}
+.test-welcome {
+   &-title {
+      @include av("font-size", 32, 19, 1920, 480, 1);
+      @include av("line-height", 39, 23, 1920, 480, 1);
+      font-weight: 600;
+      @include av("padding-top", 60, 30, 1920, 480, 1);
+      @include av("padding-bottom", 50, 30, 1920, 480, 1);
+   }
+   &-text {
+      @include av("font-size", 27, 18, 1920, 480, 1);
+      @include av("line-height", 33, 22, 1920, 480, 1);
+      @include av("padding-bottom", 50, 18, 1920, 480, 1);
+      margin: 0 auto;
+      max-width: 80%;
+   }
+   &-desc {
+      @include av("font-size", 20, 15, 1920, 480, 1);
+      @include av("line-height", 24, 18, 1920, 480, 1);
+      padding-bottom: 50px;
+      max-width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+   }
+   &-btn {
+      display: inline-block;
+      color: #ffffff;
+      @include av("padding-top", 24, 10, 1920, 480, 1);
+      @include av("padding-bottom", 24, 10, 1920, 480, 1);
+      @include av("padding-right", 80, 41, 1920, 480, 1);
+      @include av("padding-left", 80, 41, 1920, 480, 1);
+      border-radius: 53.2312px;
+      background-color: $mred;
+      @include av("font-size", 28, 16, 1920, 480, 1);
+      @include av("line-height", 34, 20, 1920, 480, 1);
+      @include av("margin-bottom", 152, 110, 1920, 480, 1);
+   }
+}
+
+///tests
+
+.tests {
+   &-title {
+      @include av("font-size", 32, 19, 1920, 480, 1);
+      @include av("line-height", 39, 23, 1920, 480, 1);
+      font-weight: 600;
+      @include av("padding-top", 60, 30, 1920, 480, 1);
+      @include av("padding-bottom", 50, 30, 1920, 480, 1);
+   }
+   &-text {
+      @include av("font-size", 27, 18, 1920, 480, 1);
+      @include av("line-height", 33, 22, 1920, 480, 1);
+      @include av("padding-bottom", 50, 18, 1920, 480, 1);
+      margin: 0 auto;
+      max-width: 80%;
+   }
+   &-desc {
+      @include av("font-size", 20, 15, 1920, 480, 1);
+      @include av("line-height", 24, 18, 1920, 480, 1);
+      padding-bottom: 50px;
+      max-width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+   }
+   &-btn {
+      display: inline-block;
+      color: #ffffff;
+      @include av("padding-top", 24, 10, 1920, 480, 1);
+      @include av("padding-bottom", 24, 10, 1920, 480, 1);
+      @include av("padding-right", 80, 41, 1920, 480, 1);
+      @include av("padding-left", 80, 41, 1920, 480, 1);
+      border-radius: 53.2312px;
+      background-color: $mred;
+      @include av("margin-bottom", 24, 8, 1920, 480, 1);
+      background-color: $mred;
+      @include av("margin-top", 30, 17, 1920, 480, 1);
+      @include av("font-size", 28, 16, 1920, 480, 1);
+      @include av("line-height", 34, 20, 1920, 480, 1);
+   }
+}
+.tests-container .checkmark {
+   display: block;
+   text-align: left;
+   padding: 6px 20px;
+   margin-left: 20px;
+   margin-right: 20px;
+   @include av("font-size", 20, 12, 1920, 480, 1);
+   @include av("line-height", 25, 14, 1920, 480, 1);
+   @include av("margin-bottom", 20, 12, 1920, 480, 1);
+}
+.tests-container input:checked ~ .checkmark {
+   margin-left: 14px;
+   padding: 6px 20px;
+   display: block;
+   background: #ababab;
+   border-radius: 32px;
+   color: white;
+   text-align: left;
+}
+button[disabled] {
+   border: 1px solid #999999;
+   background-color: #cccccc;
+   color: #666666;
+}
+.tests-form {
+   position: relative;
+   background: rgba(243, 237, 237, 0.83);
+   border-radius: 25px;
+   max-width: 623px;
+   margin-left: auto;
+   margin-right: auto;
+   @include av("margin-bottom", 66, 110, 1920, 480, 1);
+   & .question {
+      @include av("padding-left", 70, 40, 1920, 480, 1);
+      @include av("padding-right", 70, 40, 1920, 480, 1);
+      display: block;
+      text-align: left;
+      @include av("font-size", 30, 17, 1920, 480, 1);
+      @include av("line-height", 37, 21, 1920, 480, 1);
+      @include av("padding-top", 11, 6, 1920, 480, 1);
+      @include av("padding-bottom", 40, 23, 1920, 480, 1);
+   }
+   & .progress {
+      position: absolute;
+      display: block;
+      right: 7px;
+      border-radius: 50%;
+      background-color: $mblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      @include av("font-size", 18, 10, 1920, 480, 1);
+      @include av("line-height", 22, 13, 1920, 480, 1);
+      @include av("width", 82, 48, 1920, 480, 1);
+      @include av("height", 39, 23, 1920, 480, 1);
+      @include av("top", 10, 6.7, 1920, 480, 1);
+      @include av("right", 7, 2.4, 1920, 480, 1);
+   }
+}
+.time {
+   & img {
+      @include av("width", 100, 42, 1920, 480, 1);
+      height: auto;
+   }
+   & progress {
+      padding: 0px 30px 0px 9px;
+      width: 100%;
+      &::-webkit-progress-bar {
+         border: 0;
+         height: 13px;
+         border-radius: 26px;
+      }
+      &::-webkit-progress-value {
+         background: $mblue;
+         border-radius: 26px;
+      }
+
+      &::-webkit-progress-bar {
+         background: #ccfbdc;
+         border-radius: 26px;
+      }
+   }
+   & p {
+      @include av("font-size", 23, 14, 1920, 480, 1);
+      @include av("line-height", 28, 17, 1920, 480, 1);
+      color: $mred;
+   }
+   width: 100%;
+   display: flex;
+   align-items: center;
+}
+.banner__flags.tests {
+   @include av("padding-bottom", 50, 32, 1920, 480, 1);
+}
+@media only screen and (max-width: 800px) {
+   .tests-footer {
+      background-color: transparent;
+   }
+   .time {
+      flex-wrap: wrap;
+      & img {
+         order: 3;
+         align-self: start;
+         padding-top: 11px;
+         padding-bottom: 17px;
+      }
+      & progress {
+         order: 2;
+         padding: 0;
+      }
+      & p {
+         padding-bottom: 1px;
+         width: 100%;
+         text-align: right;
+         display: block;
+         order: 1;
+         align-self: flex-end;
+      }
+   }
+}
+.container-tests {
+   background-image: url("../image/tests.png");
+   background-repeat: no-repeat;
+   background-position: bottom -100px right;
+   background-size: 438px 438px;
+}
+@media only screen and (max-width: 800px) {
+   .container-tests {
+      background-image: unset;
+   }
+}
+
+///tests results
+.tests-results {
+   &-title {
+      @include av("font-size", 32, 19, 1920, 480, 1);
+      @include av("line-height", 39, 23, 1920, 480, 1);
+      font-weight: 600;
+      @include av("padding-top", 60, 30, 1920, 480, 1);
+      @include av("padding-bottom", 50, 30, 1920, 480, 1);
+   }
+   &-text {
+      @include av("font-size", 27, 18, 1920, 480, 1);
+      @include av("line-height", 33, 22, 1920, 480, 1);
+      @include av("padding-bottom", 50, 18, 1920, 480, 1);
+      margin: 0 auto;
+      max-width: 80%;
+   }
+   &-desc {
+      @include av("font-size", 20, 15, 1920, 480, 1);
+      @include av("line-height", 24, 18, 1920, 480, 1);
+      padding-bottom: 50px;
+      max-width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+   }
+   &-btn {
+      display: inline-block;
+      color: #ffffff;
+      @include av("padding-top", 24, 10, 1920, 480, 1);
+      @include av("padding-bottom", 24, 10, 1920, 480, 1);
+      @include av("padding-right", 80, 41, 1920, 480, 1);
+      @include av("padding-left", 80, 41, 1920, 480, 1);
+      border-radius: 53.2312px;
+      background-color: $mred;
+      @include av("margin-bottom", 24, 8, 1920, 480, 1);
+      background-color: $mred;
+      @include av("margin-top", 30, 17, 1920, 480, 1);
+      @include av("font-size", 28, 16, 1920, 480, 1);
+      @include av("line-height", 34, 20, 1920, 480, 1);
+   }
+}
+.tests-results-container.good .checkmark {
+   background-color: #71b33d;
+   margin-left: 14px;
+   color: white;
+   text-align: left;
+}
+.tests-results-container.bad .checkmark {
+   background-color: $mred;
+   margin-left: 14px;
+   color: white;
+   text-align: left;
+}
+.tests-results-container .checkmark {
+   display: block;
+   border-radius: 32px;
+   text-align: left;
+   padding: 6px 20px;
+   margin-left: 20px;
+   margin-right: 20px;
+   @include av("font-size", 20, 12, 1920, 480, 1);
+   @include av("line-height", 25, 14, 1920, 480, 1);
+   @include av("margin-bottom", 20, 12, 1920, 480, 1);
+}
+.tests-results-form {
+   position: relative;
+   background: rgba(243, 237, 237, 0.83);
+   border-radius: 25px;
+   max-width: 623px;
+   width: 75%;
+   margin-left: auto;
+   margin-right: auto;
+   @include av("margin-bottom", 66, 110, 1920, 480, 1);
+   & .question {
+      @include av("padding-left", 70, 40, 1920, 480, 1);
+      @include av("padding-right", 70, 40, 1920, 480, 1);
+      display: block;
+      text-align: left;
+      @include av("font-size", 30, 17, 1920, 480, 1);
+      @include av("line-height", 37, 21, 1920, 480, 1);
+      @include av("padding-top", 11, 6, 1920, 480, 1);
+      @include av("padding-bottom", 40, 23, 1920, 480, 1);
+   }
+   & .progress {
+      position: absolute;
+      display: block;
+      right: 7px;
+      border-radius: 50%;
+      background-color: $mblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      @include av("font-size", 18, 10, 1920, 480, 1);
+      @include av("line-height", 22, 13, 1920, 480, 1);
+      @include av("width", 82, 48, 1920, 480, 1);
+      @include av("height", 39, 23, 1920, 480, 1);
+      @include av("top", 10, 6.7, 1920, 480, 1);
+      @include av("right", 7, 2.4, 1920, 480, 1);
+   }
+}
+.tests-results-results {
+   background-color: $mblue;
+   color: white;
+   padding-top: 25px;
+   padding-bottom: 25px;
+   @include av("margin-bottom", 41, 50, 1920, 480, 1);
+   @include av("font-size", 24, 19, 1920, 480, 1);
+   @include av("line-height", 29, 23, 1920, 480, 1);
+}
+
+@media only screen and (max-width: 800px) {
+   .tests-results-footer {
+      background-color: transparent;
+   }
+}
+.container-results {
+   background-image: url("../image/tests-results.png");
+   background-repeat: no-repeat;
+   background-position: top -67px left;
+   background-size: 438px 438px;
+}
+@media only screen and (max-width: 800px) {
+   .container-results {
+      background-image: unset;
+   }
+}
+//my_lessons
+.my-lessons-form-search input,
+.my-lessons-form-date input,
+.my-lessons-form-status div {
+   cursor: url("../image/cursor-link.svg") 0 0, auto;
+}
+.my-lessons-form-search,
+.my-lessons-form-date,
+.my-lessons-form-status {
+   cursor: url("../image/cursor-link.svg") 0 0, auto;
+   width: 33%;
+   max-width: 232px;
+   @include av("height", 50, 36, 1920, 480, 1);
+   border-radius: 25px;
+}
+.my-lessons-form-search {
+   position: relative;
+   &::before {
+      content: "";
+      @include av("width", 23, 20, 1920, 480, 1);
+      @include av("height", 23, 20, 1920, 480, 1);
+      background-image: url("../image/search-icon.svg");
+      background-size: 100% 100%;
+      position: absolute;
+      fill: black;
+      @include av("left", 17, 10, 1920, 480, 1);
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: all;
+   }
+   &-input {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.89);
+      width: 100%;
+      height: 100%;
+      border-radius: 25px;
+      @include av("padding-top", 15, 7, 1920, 480, 1);
+      @include av("padding-bottom", 15, 7, 1920, 480, 1);
+      @include av("padding-left", 50, 40, 1920, 480, 1);
+      @include av("padding-right", 15, 7, 1920, 480, 1);
+   }
+}
+.my-lessons-form-date {
+   position: relative;
+   &::before {
+      content: "";
+      @include av("width", 23, 20, 1920, 480, 1);
+      @include av("height", 23, 20, 1920, 480, 1);
+      background-image: url("../image/lessons-date.svg");
+      background-size: 100% 100%;
+      position: absolute;
+      fill: black;
+      @include av("left", 17, 10, 1920, 480, 1);
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+   }
+   &::after {
+      content: "";
+      position: absolute;
+      @include av("width", 18, 10, 1920, 480, 1);
+      @include av("height", 9, 5, 1920, 480, 1);
+      background-image: url("../image/filter-arrow.svg");
+      background-size: 100%;
+      border: unset;
+      top: 50%;
+      right: 14px;
+      transform: translateY(-50%);
+      transition: transform 0.3s;
+      pointer-events: none;
+   }
+   & input {
+      text-align: left;
+      background: rgba(255, 255, 255, 1);
+      width: 100%;
+      height: 100%;
+      border-radius: 25px;
+      @include av("padding-top", 15, 7, 1920, 480, 1);
+      @include av("padding-bottom", 15, 7, 1920, 480, 1);
+      @include av("padding-left", 50, 40, 1920, 480, 1);
+      @include av("padding-right", 35, 30, 1920, 480, 1);
+   }
+}
+.my-lessons-form-date.active::after {
+   transform: rotate(180deg);
+}
+.my-lessons-form-status {
+   position: relative;
+   &::before {
+      content: "";
+      @include av("width", 23, 20, 1920, 480, 1);
+      @include av("height", 23, 20, 1920, 480, 1);
+      background-image: url("../image/lessons-status.svg");
+      background-size: 100% 100%;
+      position: absolute;
+      fill: black;
+      @include av("left", 17, 10, 1920, 480, 1);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      pointer-events: none;
+   }
+   &-input {
+      width: 100%;
+      height: 100%;
+      & .select-selected {
+         display: flex;
+         align-items: center;
+         text-align: left;
+         background: rgba(255, 255, 255, 1);
+         width: 100%;
+         height: 100%;
+         @include av("padding-top", 15, 7, 1920, 480, 1);
+         @include av("padding-bottom", 15, 7, 1920, 480, 1);
+         @include av("padding-left", 50, 40, 1920, 480, 1);
+         @include av("padding-right", 35, 30, 1920, 480, 1);
+         &::after {
+            @include av("width", 18, 10, 1920, 480, 1);
+            @include av("height", 9, 5, 1920, 480, 1);
+            background-image: url("../image/filter-arrow.svg");
+            background-size: 100%;
+            border: unset;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+         }
+      }
+   }
+}
+.select-selected.select-arrow-active::after {
+   transform: rotate(180deg);
+}
+
+.my-lessons__title {
+   display: contents;
+   &::after,
+   &::before {
+      content: unset;
+   }
+}
+.my-lessons__top {
+   max-width: calc(1280px + ((100vw - 1280px) / 2));
+   @include av("margin-top", 60, 30, 1920, 480, 1);
+   @include av("margin-bottom", 50, 25, 1920, 480, 1);
+   margin-right: 0;
+   margin-left: auto;
+   padding: 0 0 0 2.5vw;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.filter {
+   //width: calc(838px + ((100vw - 1280px) / 2));
+   //width: 838px;
+   background-color: $mblue;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+   padding: 15px calc((100vw - 1280px) / 2) 15px 32px;
+}
+.my-lessons__search-form {
+   @include av("width", 838, 419, 1280, 480, 1);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 50px;
+   margin-right: 2.5vw;
+}
+@media only screen and (max-width: 580px) {
+   .my-lessons__top {
+      padding: 0 0 0 12.5vw;
+   }
+}
+.my-lessons-item-link {
+   display: none;
+}
+.my-lessons-item.pass .my-lessons-item-link-pass {
+   display: block;
+}
+.my-lessons-item.cancel .my-lessons-item-link-cancel {
+   display: block;
+}
+.my-lessons-item.start .my-lessons-item-link-start {
+   display: block;
+}
+.my-lessons-item__status {
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   display: block;
+   @include av("width", 55, 35, 1920, 480, 1);
+   @include av("height", 55, 35, 1920, 480, 1);
+   @include av("margin-top", 15, 5, 1920, 480, 1);
+   @include av("margin-bottom", 15, 5, 1920, 480, 1);
+   @include av("margin-left", 47, 8, 1920, 480, 1);
+}
+.my-lessons-item.cancel .my-lessons-item__status {
+   background-image: url("../image/lessons-cancel.svg");
+}
+.my-lessons-item.pass .my-lessons-item__status {
+   background-image: url("../image/lessons-pass.svg");
+}
+.my-lessons-item.start .my-lessons-item__status {
+   background-image: url("../image/lessons-start.svg");
+}
+
+.my-lessons-item {
+   border: 1px solid #000000;
+   border-radius: 15px;
+   width: 100%;
+   height: auto;
+   display: flex;
+   flex-wrap: nowrap;
+   align-items: center;
+   @include av("margin-bottom", 35, 30, 1920, 480, 1);
+
+   &__inner {
+      position: relative;
+      display: flex;
+      justify-content: end;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      width: 100%;
+      align-items: center;
+   }
+   &__desc {
+      text-align: left;
+      margin: 11px 0px 11px 9px;
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+   }
+   &__title {
+      text-align: left;
+      width: 100%;
+      width: 150px;
+   }
+   &__number {
+      text-align: left;
+      width: 100%;
+   }
+   &__name {
+      max-width: 200px;
+      align-items: center;
+      display: flex;
+      font-size: 18px;
+      line-height: 22px;
+      margin-left: auto;
+   }
+   &__container {
+      max-width: 530px;
+      display: flex;
+      margin: 15px 23px 15px 29px;
+   }
+   &__long {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__level {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__time {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__date {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &-link {
+      position: absolute;
+      border: 1px solid $mblue;
+      border-radius: 25px;
+      left: 212px;
+      top: 7px;
+      padding: 4px 20px 4px 3px;
+      font-weight: 300;
+      @include av("font-size", 18, 16, 1920, 480, 1);
+      @include av("line-height", 22, 20, 1920, 480, 1);
+
+      &::after {
+         position: absolute;
+         background-image: url("../image/lessons-arrow.svg");
+         content: "";
+         top: 40%;
+         right: 8px;
+         width: 9px;
+         height: 9px;
+         background-size: 100% 100%;
+      }
+   }
+}
+@media only screen and (max-width: 1300px) {
+   .my-lessons-item__desc {
+      padding-bottom: 30px;
+   }
+   .my-lessons-item-link {
+      bottom: 5px;
+      top: auto;
+      @include av("left", 132, 30, 1920, 480, 1);
+   }
+}
+@media only screen and (max-width: 1000px) {
+   .my-lessons-item__container {
+      display: grid;
+      grid-template-columns: auto auto;
+   }
+}
+@media only screen and (max-width: 768px) {
+   .my-lessons__title {
+      text-align: left;
+      padding-bottom: 8px;
+      display: inline-block;
+   }
+   .my-lessons-form-date {
+      width: 45%;
+      max-width: unset;
+      margin-right: 7px;
+      height: 33px;
+   }
+   .my-lessons-form-status {
+      height: 33px;
+      width: 45%;
+      max-width: unset;
+      margin-left: 8px;
+   }
+   .my-lessons__top {
+      display: block;
+      padding-left: 0;
+   }
+   .filter {
+      margin: 0;
+      padding-right: 12.5vw;
+      padding-left: 12.5vw;
+      border-radius: 0;
+      height: 120px;
+   }
+   .my-lessons__search-form {
+      flex-wrap: wrap;
+      gap: 17px;
+      width: 100%;
+   }
+   .my-lessons-form-search {
+      width: 100%;
+      order: 2;
+      max-width: unset;
+   }
+   .my-lessons-item__inner {
+      display: flex;
+      justify-content: start;
+      flex-wrap: wrap;
+   }
+   .my-lessons-item__container {
+      margin-left: auto;
+   }
+   .my-lessons-item__desc {
+      padding-bottom: 0px;
+   }
+   .my-lessons-item__name {
+      margin: 0;
+      display: inline-block;
+   }
+}
+@media only screen and (max-width: 600px) {
+   .my-lessons-item__desc {
+      padding-bottom: 20px;
+   }
+   .my-lessons-item__status {
+      top: 8px;
+      left: 7px;
+      position: absolute;
+   }
+   .my-lessons-item__container {
+      padding-left: 0px;
+   }
+   .my-lessons-item__inner {
+      display: block;
+   }
+   .my-lessons-item__desc {
+      justify-content: space-around;
+      flex-wrap: nowrap;
+      padding: 13px 55px 13px 55px;
+      & p {
+         display: inline-block;
+         width: auto;
+         text-align: center;
+      }
+   }
+   .my-lessons-item__name {
+      margin: 0 auto;
+      display: inline-block;
+   }
+   .my-lessons-item__container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: unset;
+      justify-content: space-around;
+      margin-bottom: 60px;
+      gap: 20px;
+   }
+
+   .my-lessons-item-link {
+      bottom: 8px;
+      top: auto;
+      left: auto;
+      right: 8px;
+   }
+   .my-lessons-item {
+      &__long {
+         width: 40%;
+      }
+      &__level {
+         width: 22%;
+      }
+      &__time {
+         width: 40%;
+      }
+      &__date {
+         width: 22%;
+      }
+   }
+}
+
+@media only screen and (max-width: 768px) {
+   .my-lessons-item {
+      &__inner {
+         font-weight: 400;
+      }
+      &__name {
+         font-size: 19px;
+         font-weight: 600;
+         line-height: 23px;
+      }
+      &-link {
+         font-weight: 500;
+      }
+   }
+   .long-title {
+      font-weight: 400;
+   }
+}
+
+//homework
+//accordion
+.accordion {
+   //background-color: #eee;
+   //color: #444;
+   //cursor: pointer;
+   //padding: 18px;
+   width: 100%;
+   // border: none;
+   // text-align: left;
+   //outline: none;
+   //font-size: 15px;
+   transition: 0.4s;
+}
+
+//.active,
+.accordion:hover {
+   background-color: #ccc;
+   border-radius: 15px;
+}
+.drop-content {
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.3s ease-out;
+}
+.mob-menu-link-main {
+   width: auto;
+}
+.mob-menu-link-main:hover {
+   background-color: unset;
+}
+.panel {
+   padding: 0px 124px 0px 39px;
+   //background-color: white;
+   max-height: 0;
+   overflow: hidden;
+   display: flex;
+   transition: max-height 0.2s ease-out;
+   &-icon {
+      @include av("width", 72, 50, 1920, 480, 1);
+      @include av("height", 72, 50, 1920, 480, 1);
+      box-sizing: content-box;
+      padding-top: 23px;
+      @include av("padding-right", 107, 50, 1920, 480, 1);
+      padding-bottom: 15px;
+      & img {
+         width: 100%;
+      }
+   }
+   &-desc {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      gap: 30px;
+   }
+}
+.name-teacher {
+   width: calc(39% - 58px);
+   margin-left: 28px;
+   &-title {
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      color: #000000;
+      text-align: left;
+      position: relative;
+      &::before {
+         content: "";
+         position: absolute;
+         top: 0px;
+         @include av("left", -28, -25, 1920, 480, 1);
+         background-image: url("../image/homwwork-teacher.svg");
+         @include av("width", 23, 20, 1920, 480, 1);
+         @include av("height", 23, 20, 1920, 480, 1);
+      }
+   }
+   &-value {
+      font-weight: 400;
+      text-align: left;
+      color: rgba(0, 0, 0, 0.66);
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+   }
+}
+.homework-date {
+   width: calc(34% - 58px);
+   margin-left: 28px;
+   &-title {
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      color: #000000;
+      text-align: left;
+      position: relative;
+      &::before {
+         content: "";
+         position: absolute;
+         top: 0px;
+         @include av("left", -28, -25, 1920, 480, 1);
+         background-image: url("../image/homework-date.svg");
+         background-size: 100% 100%;
+         @include av("width", 23, 20, 1920, 480, 1);
+         @include av("height", 23, 20, 1920, 480, 1);
+      }
+   }
+   &-value {
+      font-weight: 400;
+      text-align: left;
+      color: rgba(0, 0, 0, 0.66);
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+   }
+}
+.homework-status {
+   width: calc(27% - 58px);
+   margin-left: 28px;
+   &-title {
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      color: #000000;
+      text-align: left;
+      position: relative;
+      &::before {
+         content: "";
+         position: absolute;
+         top: 0px;
+         @include av("left", -28, -25, 1920, 480, 1);
+         background-image: url("../image/homework-status.svg");
+         background-size: 100% 100%;
+         @include av("width", 23, 20, 1920, 480, 1);
+         @include av("height", 23, 20, 1920, 480, 1);
+      }
+   }
+   &-value {
+      font-weight: 400;
+      text-align: left;
+      color: rgba(0, 0, 0, 0.66);
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+   }
+}
+@media only screen and (max-width: 768px) {
+   .name-teacher-title {
+      font-weight: 400;
+   }
+   .homework-date-title {
+      font-weight: 400;
+   }
+   .homework-status {
+      font-weight: 400;
+   }
+}
+
+.panel-desc-bottom {
+   width: 100%;
+}
+.panel-desc-bottom-text {
+   @include av("font-size", 19, 16, 1920, 480, 1);
+   @include av("line-height", 23, 20, 1920, 480, 1);
+   font-weight: 400;
+   text-align: left;
+   & span {
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+   }
+   padding-bottom: 30px;
+}
+.panel-desc-bottom-link {
+   text-align: left;
+   font-weight: 400;
+   @include av("font-size", 17, 15, 1920, 480, 1);
+   @include av("line-height", 21, 18, 1920, 480, 1);
+   color: #680071;
+   width: 100%;
+   display: inline-block;
+   padding-bottom: 20px;
+}
+
+//
+
+.homework__title {
+   display: contents;
+   &::after,
+   &::before {
+      content: unset;
+   }
+}
+.homework__top {
+   max-width: calc(1280px + ((100vw - 1280px) / 2));
+   @include av("margin-top", 60, 30, 1920, 480, 1);
+   @include av("margin-bottom", 50, 25, 1920, 480, 1);
+   margin-right: 0;
+   margin-left: auto;
+   padding: 0 0 0 2.5vw;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.homework__search-form {
+   @include av("width", 838, 419, 1280, 480, 1);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 50px;
+}
+@media only screen and (max-width: 768px) {
+   .homework__top {
+      padding: 0 0 0 12.5vw;
+   }
+}
+.homework-item-link {
+   display: none;
+}
+.homework-item.pass .homework-item-link-pass {
+   display: block;
+}
+.homework-item.cancel .homework-item-link-cancel {
+   display: block;
+}
+.homework-item.start .homework-item-link-start {
+   display: block;
+}
+.homework-item__status {
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   display: block;
+   @include av("width", 55, 35, 1920, 480, 1);
+   @include av("height", 55, 35, 1920, 480, 1);
+   @include av("margin-top", 15, 5, 1920, 480, 1);
+   @include av("margin-bottom", 15, 5, 1920, 480, 1);
+   @include av("margin-left", 47, 8, 1920, 480, 1);
+}
+.homework-item.cancel .homework-item__status {
+   background-image: url("../image/lessons-cancel.svg");
+}
+.homework-item.pass .homework-item__status {
+   background-image: url("../image/lessons-pass.svg");
+}
+.homework-item.start .homework-item__status {
+   background-image: url("../image/lessons-start.svg");
+}
+
+.homework-item {
+   position: relative;
+   box-sizing: border-box;
+   background-color: #f3efef;
+   width: 100%;
+   height: auto;
+   //display: flex;
+   flex-wrap: nowrap;
+   align-items: center;
+   @include av("margin-bottom", 35, 30, 1920, 480, 1);
+   border-bottom-left-radius: 15px;
+   border-bottom-right-radius: 15px;
+
+   &__inner {
+      background-color: white;
+      border: 1px solid #000000;
+      border-radius: 15px;
+      position: relative;
+      display: flex;
+      justify-content: end;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      width: 100%;
+   }
+   &__desc {
+      text-align: left;
+      margin: 11px 0px 11px 9px;
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+   }
+   &__title {
+      text-align: left;
+      width: 100%;
+   }
+   &__number {
+      text-align: left;
+      width: 100%;
+   }
+   &__name {
+      align-items: center;
+      display: flex;
+      font-size: 18px;
+      line-height: 22px;
+      margin-left: auto;
+   }
+   &__container {
+      max-width: 530px;
+      display: flex;
+      margin: 15px 23px 15px 29px;
+   }
+   &__long {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__level {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__time {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__date {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &-link {
+      width: 140px;
+      position: absolute;
+      border: 1px solid $mblue;
+      border-radius: 25px;
+      left: 212px;
+      top: 7px;
+      padding: 4px 20px 4px 3px;
+      font-weight: 300;
+      @include av("font-size", 18, 16, 1920, 480, 1);
+      @include av("line-height", 22, 20, 1920, 480, 1);
+
+      &::after {
+         position: absolute;
+         background-image: url("../image/lessons-arrow.svg");
+         content: "";
+         top: 40%;
+         right: 8px;
+         width: 9px;
+         height: 9px;
+         background-size: 100% 100%;
+      }
+   }
+}
+.long-title {
+   width: 100%;
+   @include av("font-size", 20, 16, 1920, 480, 1);
+   @include av("line-height", 24, 20, 1920, 480, 1);
+   color: #000;
+   text-align: left;
+   position: relative;
+}
+.long-title::before {
+   content: "";
+   position: absolute;
+   top: 0px;
+   @include av("left", -28, -25, 1920, 480, 1);
+   background-image: url("../image/lessons-long.svg");
+   background-size: 100% 100%;
+   @include av("width", 23, 20, 1920, 480, 1);
+   @include av("height", 23, 20, 1920, 480, 1);
+}
+.level-title {
+   width: 100%;
+   @include av("font-size", 20, 16, 1920, 480, 1);
+   @include av("line-height", 24, 20, 1920, 480, 1);
+   color: #000;
+   text-align: left;
+   position: relative;
+}
+.level-title::before {
+   content: "";
+   position: absolute;
+   top: 0px;
+   @include av("left", -28, -25, 1920, 480, 1);
+   background-image: url("../image/lessons-level.svg");
+   background-size: 100% 100%;
+   @include av("width", 23, 20, 1920, 480, 1);
+   @include av("height", 23, 20, 1920, 480, 1);
+}
+.time-title {
+   width: 100%;
+   @include av("font-size", 20, 16, 1920, 480, 1);
+   @include av("line-height", 24, 20, 1920, 480, 1);
+   color: #000;
+   text-align: left;
+   position: relative;
+}
+.time-title::before {
+   content: "";
+   position: absolute;
+   top: 0px;
+   @include av("left", -28, -25, 1920, 480, 1);
+   background-image: url("../image/lessons-time.svg");
+   background-size: 100% 100%;
+   @include av("width", 23, 20, 1920, 480, 1);
+   @include av("height", 23, 20, 1920, 480, 1);
+}
+.date-title {
+   width: 100%;
+   @include av("font-size", 20, 16, 1920, 480, 1);
+   @include av("line-height", 24, 20, 1920, 480, 1);
+   color: #000;
+   text-align: left;
+   position: relative;
+}
+.date-title::before {
+   content: "";
+   position: absolute;
+   top: 0px;
+   @include av("left", -28, -25, 1920, 480, 1);
+   background-image: url("../image/lessons-date.svg");
+   background-size: 100% 100%;
+   @include av("width", 23, 20, 1920, 480, 1);
+   @include av("height", 23, 20, 1920, 480, 1);
+}
+
+@media only screen and (max-width: 768px) {
+   .select-items div {
+      word-wrap: break-word;
+      padding: 10px 5px;
+   }
+   .homework-item {
+      &__inner {
+         font-weight: 400;
+      }
+      &__name {
+         font-size: 19px;
+         line-height: 23px;
+      }
+      &-link {
+         font-weight: 500;
+      }
+   }
+   .long-title {
+      font-weight: 400;
+   }
+}
+.homework-form-search input,
+.homework-form-date input,
+.homework-form-status div {
+   cursor: url("../image/cursor-link.svg") 0 0, auto;
+}
+.homework-form-search,
+.homework-form-date,
+.homework-form-status {
+   cursor: url("../image/cursor-link.svg") 0 0, auto;
+   width: 33%;
+   max-width: 232px;
+   @include av("height", 50, 36, 1920, 480, 1);
+   border-radius: 25px;
+}
+.homework-form-search {
+   position: relative;
+   &::before {
+      content: "";
+      @include av("width", 23, 20, 1920, 480, 1);
+      @include av("height", 23, 20, 1920, 480, 1);
+      background-image: url("../image/search-icon.svg");
+      background-size: 100% 100%;
+      position: absolute;
+      fill: black;
+      @include av("left", 17, 10, 1920, 480, 1);
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: all;
+   }
+   &-input {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.89);
+      width: 100%;
+      height: 100%;
+      border-radius: 25px;
+      @include av("padding-top", 15, 7, 1920, 480, 1);
+      @include av("padding-bottom", 15, 7, 1920, 480, 1);
+      @include av("padding-left", 50, 40, 1920, 480, 1);
+      @include av("padding-right", 15, 7, 1920, 480, 1);
+   }
+}
+.homework-form-date {
+   position: relative;
+   &::before {
+      content: "";
+      @include av("width", 23, 20, 1920, 480, 1);
+      @include av("height", 23, 20, 1920, 480, 1);
+      background-image: url("../image/lessons-date.svg");
+      background-size: 100% 100%;
+      position: absolute;
+      fill: black;
+      @include av("left", 17, 10, 1920, 480, 1);
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+   }
+   &::after {
+      content: "";
+      position: absolute;
+      @include av("width", 18, 10, 1920, 480, 1);
+      @include av("height", 9, 5, 1920, 480, 1);
+      background-image: url("../image/filter-arrow.svg");
+      background-size: 100%;
+      border: unset;
+      top: 50%;
+      right: 14px;
+      transform: translateY(-50%);
+      transition: transform 0.3s;
+      pointer-events: none;
+   }
+   & input {
+      text-align: left;
+      background: rgba(255, 255, 255, 1);
+      width: 100%;
+      height: 100%;
+      border-radius: 25px;
+      @include av("padding-top", 15, 7, 1920, 480, 1);
+      @include av("padding-bottom", 15, 7, 1920, 480, 1);
+      @include av("padding-left", 50, 40, 1920, 480, 1);
+      @include av("padding-right", 35, 30, 1920, 480, 1);
+   }
+}
+.homework-form-date.active::after {
+   transform: rotate(180deg);
+}
+.homework-form-status {
+   position: relative;
+   &::before {
+      content: "";
+      @include av("width", 23, 20, 1920, 480, 1);
+      @include av("height", 23, 20, 1920, 480, 1);
+      background-image: url("../image/lessons-status.svg");
+      background-size: 100% 100%;
+      position: absolute;
+      fill: black;
+      @include av("left", 17, 10, 1920, 480, 1);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      pointer-events: none;
+   }
+   &-input {
+      width: 100%;
+      height: 100%;
+      & .select-selected {
+         display: flex;
+         align-items: center;
+         text-align: left;
+         background: rgba(255, 255, 255, 1);
+         width: 100%;
+         height: 100%;
+         @include av("padding-top", 15, 7, 1920, 480, 1);
+         @include av("padding-bottom", 15, 7, 1920, 480, 1);
+         @include av("padding-left", 50, 40, 1920, 480, 1);
+         @include av("padding-right", 35, 30, 1920, 480, 1);
+         &::after {
+            @include av("width", 18, 10, 1920, 480, 1);
+            @include av("height", 9, 5, 1920, 480, 1);
+            background-image: url("../image/filter-arrow.svg");
+            background-size: 100%;
+            border: unset;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+         }
+      }
+   }
+}
+.select-selected.select-arrow-active::after {
+   transform: rotate(180deg);
+}
+
+.homework__title {
+   display: contents;
+   &::after,
+   &::before {
+      content: unset;
+   }
+}
+.homework__top {
+   max-width: calc(1280px + ((100vw - 1280px) / 2));
+   @include av("margin-top", 60, 30, 1920, 480, 1);
+   @include av("margin-bottom", 50, 25, 1920, 480, 1);
+   margin-right: 0;
+   margin-left: auto;
+   padding: 0 0 0 2.5vw;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.filter {
+   //width: calc(838px + ((100vw - 1280px) / 2));
+   //width: 838px;
+   background-color: $mblue;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+   padding: 15px calc((100vw - 1280px) / 2) 15px 32px;
+}
+.homework__search-form {
+   @include av("width", 838, 419, 1280, 480, 1);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 50px;
+   margin-right: 2.5vw;
+}
+
+.homework-item__status {
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   display: block;
+   @include av("width", 55, 35, 1920, 480, 1);
+   @include av("height", 55, 35, 1920, 480, 1);
+   @include av("margin-top", 15, 5, 1920, 480, 1);
+   @include av("margin-bottom", 15, 5, 1920, 480, 1);
+   @include av("margin-left", 47, 8, 1920, 480, 1);
+}
+.homework-item.cancel .homework-item__status {
+   background-image: url("../image/lessons-cancel.svg");
+}
+.homework-item.pass .homework-item__status {
+   background-image: url("../image/lessons-pass.svg");
+}
+.homework-item.start .homework-item__status {
+   background-image: url("../image/lessons-start.svg");
+}
+
+.homework-item {
+   //border: 1px solid #000000;
+   border-radius: 15px;
+   width: 100%;
+   height: auto;
+   //display: flex;
+   flex-wrap: nowrap;
+   align-items: center;
+   @include av("margin-bottom", 35, 30, 1920, 480, 1);
+
+   &__inner {
+      position: relative;
+      display: flex;
+      justify-content: end;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      width: 100%;
+      align-items: center;
+   }
+   &__desc {
+      text-align: left;
+      margin: 11px 0px 11px 9px;
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+   }
+   &__title {
+      text-align: left;
+      width: 100%;
+      width: 150px;
+   }
+   &__number {
+      text-align: left;
+      width: 100%;
+   }
+   &__name {
+      max-width: 200px;
+      align-items: center;
+      display: flex;
+      font-size: 18px;
+      line-height: 22px;
+      margin-left: auto;
+   }
+   &__container {
+      max-width: 530px;
+      display: flex;
+      margin: 15px 23px 15px 29px;
+   }
+   &__long {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__level {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__time {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &__date {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 28px;
+      font-weight: 400;
+      @include av("font-size", 18, 15, 1920, 480, 1);
+      @include av("line-height", 22, 18, 1920, 480, 1);
+      color: rgba(0, 0, 0, 0.66);
+   }
+   &-link {
+      position: absolute;
+      border: 1px solid $mblue;
+      border-radius: 25px;
+      left: 212px;
+      top: 7px;
+      padding: 4px 20px 4px 3px;
+      font-weight: 300;
+      @include av("font-size", 18, 16, 1920, 480, 1);
+      @include av("line-height", 22, 20, 1920, 480, 1);
+
+      &::after {
+         position: absolute;
+         background-image: url("../image/lessons-arrow.svg");
+         content: "";
+         top: 40%;
+         right: 8px;
+         width: 9px;
+         height: 9px;
+         background-size: 100% 100%;
+      }
+   }
+}
+.panel-desc {
+   @include av("padding-bottom", 15, 9, 1920, 480, 1);
+}
+@media only screen and (max-width: 1300px) {
+   .homework-item__desc {
+      padding-bottom: 30px;
+   }
+   .homework-item-link {
+      @include av("left", 132, 30, 1920, 480, 1);
+   }
+}
+@media only screen and (max-width: 1000px) {
+   .homework-item__container {
+      display: grid;
+      grid-template-columns: auto auto;
+   }
+   .name-teacher {
+      order: 1;
+      @include av("padding-left", 102, 80, 1920, 480, 1);
+      width: 100%;
+      @include av("padding-bottom", 70, 58, 1920, 480, 1);
+   }
+   .panel-desc-bottom {
+      order: 2;
+   }
+   .homework-date {
+      order: 4;
+      width: calc(43% - 58px);
+   }
+   .homework-status {
+      order: 3;
+      width: calc(57% - 58px);
+   }
+   .panel {
+      padding: 0 4px;
+      position: relative;
+   }
+   .panel-icon {
+      position: absolute;
+      top: 20px;
+      left: 15px;
+      padding: 0;
+   }
+}
+@media only screen and (max-width: 900px) {
+   .homework__title {
+      text-align: left;
+      padding-bottom: 8px;
+      display: inline-block;
+   }
+   .homework__top {
+      display: block;
+      padding-left: 0;
+   }
+   .filter {
+      margin: 0;
+      padding-right: 12.5vw;
+      padding-left: 12.5vw;
+      border-radius: 0;
+      height: 120px;
+   }
+
+   .homework-form-date {
+      width: 45%;
+      max-width: unset;
+      margin-right: 7px;
+      height: 33px;
+   }
+   .homework-form-status {
+      height: 33px;
+      width: 45%;
+      max-width: unset;
+      margin-left: 8px;
+   }
+
+   .homework__search-form {
+      flex-wrap: wrap;
+      gap: 17px;
+      width: 100%;
+   }
+   .homework-form-search {
+      width: 100%;
+      order: 2;
+      max-width: unset;
+   }
+}
+@media only screen and (max-width: 768px) {
+   .panel-desc-bottom-text span {
+      font-weight: 600;
+   }
+   .homework-item__inner {
+      display: flex;
+      justify-content: start;
+      flex-wrap: wrap;
+   }
+   .homework-item__container {
+      margin-left: auto;
+   }
+   .homework-item__desc {
+      padding-bottom: 0px;
+   }
+   .homework-item__name {
+      margin: 0;
+      display: inline-block;
+   }
+}
+
+@media only screen and (max-width: 768px) {
+   .homework-item {
+      background: #d9d9d9;
+      &__inner {
+         font-weight: 400;
+      }
+      &__name {
+         font-size: 19px;
+         font-weight: 600;
+         line-height: 23px;
+      }
+      &-link {
+         font-weight: 500;
+      }
+   }
+   .long-title {
+      font-weight: 400;
+   }
+}
+@media only screen and (max-width: 600px) {
+   .homework-item__desc {
+      padding-bottom: 20px;
+   }
+   .homework-item__status {
+      top: 8px;
+      left: 7px;
+      position: absolute;
+   }
+   .homework-item__container {
+      padding-left: 0px;
+   }
+   .homework-item__inner {
+      display: block;
+   }
+   .homework-item__desc {
+      justify-content: space-around;
+      flex-wrap: nowrap;
+      padding: 13px 55px 13px 55px;
+      & p {
+         display: inline-block;
+         width: auto;
+         text-align: center;
+      }
+   }
+   .homework-item__name {
+      margin: 0 auto;
+      display: inline-block;
+   }
+   .homework-item__container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: unset;
+      justify-content: space-around;
+      margin-bottom: 60px;
+      gap: 20px;
+   }
+
+   .homework-item-link {
+      //bottom: 8px;
+      top: auto;
+      left: auto;
+      right: 8px;
+   }
+   .homework-item {
+      &__long {
+         width: 40%;
+      }
+      &__level {
+         width: 22%;
+      }
+      &__time {
+         width: 40%;
+      }
+      &__date {
+         width: 22%;
+      }
+   }
+}
+
+//book
+.book {
+   @include av("margin-bottom", 70, 50, 1920, 480, 1);
+   &__content {
+      display: flex;
+   }
+
+   &__title {
+      @include av("padding-top", 60, 33, 1920, 480, 1);
+      @include av("padding-bottom", 34, 0, 1920, 480, 1);
+   }
+   &__writer {
+      font-weight: 400;
+      text-align: left;
+      @include av("font-size", 20, 15, 1920, 480, 1);
+      @include av("line-height", 24, 18, 1920, 480, 1);
+      @include av("padding-bottom", 33, 30, 1920, 480, 1);
+   }
+   &__img {
+      width: 23.2%;
+      height: auto;
+      & img {
+         width: 100%;
+      }
+   }
+   &__desc {
+      width: calc(76% - 25px);
+      padding-left: 25px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-content: space-between;
+   }
+   &__star {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      @include av("font-size", 20, 19, 1920, 480, 1);
+      @include av("line-height", 24, 23, 1920, 480, 1);
+      @include av("height", 24, 22, 1920, 480, 1);
+      & div div .rating__label {
+         @include av("font-size", 20, 19, 1920, 480, 1);
+         @include av("line-height", 24, 23, 1920, 480, 1);
+         @include av("height", 24, 22, 1920, 480, 1);
+      }
+      & img {
+         height: 100%;
+         //@include av ("height",24,22, 1920, 480, 1);
+      }
+   }
+   &__text {
+      text-align: left;
+      @include av("margin-left", 134, 67, 1920, 480, 1);
+      max-width: 733px;
+      @include av("font-size", 16, 21, 1920, 480, 1);
+      @include av("line-height", 26, 20, 1920, 480, 1);
+      & span {
+         font-style: italic;
+      }
+   }
+   &__buttons {
+      width: 100%;
+      display: flex;
+      @include av("margin-left", 134, 67, 1920, 480, 1);
+      margin-right: 36px;
+      justify-content: space-between;
+      & a {
+         position: relative;
+         padding: 6px 16px 6px 49px;
+         background-color: $mblue;
+         border-radius: 25px;
+         color: white;
+         @include av("font-size", 20, 16, 1920, 480, 1);
+         @include av("line-height", 24, 20, 1920, 480, 1);
+      }
+   }
+}
+.book__play::before {
+   content: "";
+   position: absolute;
+   @include av("top", 8, 7, 1920, 480, 1);
+   @include av("left", 16, 12, 1920, 480, 1);
+   top: 6px;
+   left: 16px;
+   background-image: url("../image/play-button.svg");
+   background-size: 100% 100%;
+   @include av("width", 23, 20, 1920, 480, 1);
+   @include av("height", 23, 20, 1920, 480, 1);
+}
+.book__download-text::before,
+.book__download-audio::before {
+   content: "";
+   position: absolute;
+   @include av("top", 8, 7, 1920, 480, 1);
+   @include av("left", 16, 12, 1920, 480, 1);
+   top: 6px;
+   left: 16px;
+   background-image: url("../image/download-button.svg");
+   background-size: 100% 100%;
+   @include av("width", 23, 20, 1920, 480, 1);
+   @include av("height", 23, 20, 1920, 480, 1);
+}
+@media only screen and (max-width: 768px) {
+   .book__star {
+      font-weight: 600;
+   }
+}
+@media only screen and (max-width: 1050px) {
+   .book__buttons {
+      margin-top: 40px;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+      & a {
+         display: inline-block;
+      }
+   }
+   .book__text {
+      margin-top: 30px;
+   }
+}
+@media only screen and (max-width: 768px) {
+   .book__img {
+      padding: 0 50px 15px;
+      width: 100%;
+   }
+   .book__content {
+      flex-direction: column;
+   }
+   .book__desc {
+      width: 100%;
+   }
+   .book__text {
+      width: 100%;
+      margin-left: 0px;
+      font-weight: 400;
+      & span {
+         font-weight: 400;
+      }
+   }
+   .book__buttons {
+      margin-left: 0px;
+   }
+}
+
+.recommend {
+   &__title {
+      @include av("padding-bottom", 70, 20, 1920, 480, 1);
+   }
+   &__content-list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+   }
+   &__content-item {
+      @include av("width", 297, 262, 1920, 480, 1);
+      display: flex;
+      flex-direction: column;
+      @include av("margin-bottom", 80, 26.5, 1920, 480, 1);
+   }
+   &-book {
+      &__img img {
+         width: 100%;
+         border-radius: 20px;
+      }
+      &__section-one {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         @include av("padding-bottom", 9, 8, 1920, 480, 1);
+      }
+      &__title {
+         font-weight: 600;
+         @include av("font-size", 26, 23, 1920, 480, 1);
+         @include av("line-height", 32, 28, 1920, 480, 1);
+         padding-bottom: 8px;
+      }
+      &__star {
+         display: flex;
+         align-items: center;
+         @include av("font-size", 17, 15, 1920, 480, 1);
+         @include av("line-height", 21, 18, 1920, 480, 1);
+         font-weight: 300;
+         padding-right: 9px;
+      }
+      &__section-two {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         @include av("padding-bottom", 33, 28, 1920, 480, 1);
+      }
+      &__writer {
+         @include av("font-size", 20, 17.6, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+         font-weight: 400;
+      }
+      &__views {
+         color: #808080;
+         font-weight: 300;
+         @include av("font-size", 17, 15, 1920, 480, 1);
+         @include av("line-height", 21, 18, 1920, 480, 1);
+         position: relative;
+         &::before {
+            content: "";
+            position: absolute;
+            left: -25px;
+            // @include av("top", 8, 7, 1920, 480, 1);
+            // @include av("left", 16, 12, 1920, 480, 1);
+            background-image: url("../image/views-book.svg");
+            background-size: 100% 100%;
+            @include av("width", 23, 20, 1920, 480, 1);
+            @include av("height", 23, 20, 1920, 480, 1);
+         }
+      }
+      &__section-three {
+         display: flex;
+         height: 57px;
+         justify-content: space-between;
+         //@include av("padding-bottom", 42, 37, 1920, 480, 1);
+      }
+      &__level-title {
+         @include av("font-size", 22, 19.5, 1920, 480, 1);
+         @include av("line-height", 27, 24, 1920, 480, 1);
+      }
+      &__level-value {
+         font-weight: 400;
+         @include av("font-size", 20, 17.5, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+         max-width: 133px;
+         text-align: right;
+      }
+      &__link {
+         display: inline-block;
+         align-self: flex-start;
+         background-color: $mred;
+         padding-top: 7px;
+         padding-bottom: 7px;
+         text-align: left;
+         @include av("padding-left", 45, 38, 1920, 480, 1);
+         @include av("padding-right", 45, 38, 1920, 480, 1);
+         border-radius: 25px;
+         color: white;
+         @include av("font-size", 20, 17.5, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+      }
+   }
+}
+@media only screen and (max-width: 950px) {
+   .recommend {
+      &__content-list {
+         justify-content: center;
+      }
+   }
+}
+
+.books {
+   &__title {
+      @include av("padding-bottom", 70, 20, 1920, 480, 1);
+   }
+   &__content-list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 70px;
+   }
+   &__content-item {
+      @include av("width", 297, 262, 1920, 480, 1);
+      min-width: 262;
+      width: 33.3%;
+      display: flex;
+      flex-direction: column;
+      @include av("margin-bottom", 80, 26.5, 1920, 480, 1);
+   }
+   &-book {
+      &__img img {
+         width: 100%;
+         border-radius: 20px;
+      }
+      &__section-one {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         @include av("padding-bottom", 9, 8, 1920, 480, 1);
+      }
+      &__title {
+         font-weight: 600;
+         @include av("font-size", 26, 23, 1920, 480, 1);
+         @include av("line-height", 32, 28, 1920, 480, 1);
+      }
+      &__star {
+         display: flex;
+         align-items: center;
+         @include av("font-size", 17, 15, 1920, 480, 1);
+         @include av("line-height", 21, 18, 1920, 480, 1);
+         font-weight: 300;
+         padding-right: 9px;
+      }
+      &__section-two {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         @include av("padding-bottom", 33, 28, 1920, 480, 1);
+      }
+      &__writer {
+         @include av("font-size", 20, 17.6, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+         font-weight: 400;
+      }
+      &__views {
+         color: #808080;
+         font-weight: 300;
+         @include av("font-size", 17, 15, 1920, 480, 1);
+         @include av("line-height", 21, 18, 1920, 480, 1);
+         position: relative;
+         &::before {
+            content: "";
+            position: absolute;
+            left: -25px;
+            // @include av("top", 8, 7, 1920, 480, 1);
+            // @include av("left", 16, 12, 1920, 480, 1);
+            background-image: url("../image/views-book.svg");
+            background-size: 100% 100%;
+            @include av("width", 23, 20, 1920, 480, 1);
+            @include av("height", 23, 20, 1920, 480, 1);
+         }
+      }
+      &__section-three {
+         display: flex;
+         height: 57px;
+         justify-content: space-between;
+         //@include av("padding-bottom", 42, 37, 1920, 480, 1);
+      }
+      &__level-title {
+         @include av("font-size", 22, 19.5, 1920, 480, 1);
+         @include av("line-height", 27, 24, 1920, 480, 1);
+      }
+      &__level-value {
+         font-weight: 400;
+         @include av("font-size", 20, 17.5, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+         max-width: 133px;
+         text-align: right;
+      }
+      &__link {
+         display: inline-block;
+         align-self: flex-start;
+         background-color: $mred;
+         padding-top: 7px;
+         padding-bottom: 7px;
+         text-align: left;
+         @include av("padding-left", 45, 38, 1920, 480, 1);
+         @include av("padding-right", 45, 38, 1920, 480, 1);
+         border-radius: 25px;
+         color: white;
+         @include av("font-size", 20, 17.5, 1920, 480, 1);
+         @include av("line-height", 24, 22, 1920, 480, 1);
+      }
+   }
+}
+@media only screen and (max-width: 1000px) {
+   .books {
+      &__content-list {
+         justify-content: center;
+      }
+   }
+}
+@import "books.scss";
+@import "club.scss";
+@import "pagination";
+@import "tv";
+@import "video";
+@import "account";
+@import "radio";
+
+.lessons.buy-lessons {
+   @include av("padding-top", 70, 30, 1920, 480, 1);
+}
+@media only screen and (min-width: 1000px) {
+   .footer.buy-lessons {
+      margin-top: -100px;
+   }
+}
+a,
+li,
+button {
+   transition: transform 0.3s;
+}
+a:hover,
+li:hover,
+button:hover {
+   transform: scale(1.05);
+}
+@media only screen and (max-width: 768px) {
+   .lessons__choose {
+      width: 100%;
+   }
+}
+@media only screen and (max-width: 480px) {
+   .header-top__logo {
+      width: 40%;
+   }
+   .header-top__search {
+      margin-left: 10px;
+   }
+   .header-top__buy-btn {
+      & a {
+         @include av("font-size", 16, 11, 480, 320, 1);
+      }
+   }
+   .mob-menu-content {
+      & a {
+         @include av("font-size", 16, 11, 480, 320, 1);
+         margin-left: 10px;
+      }
+   }
+   .mob-menu-content-bottom {
+      & a {
+         @include av("font-size", 16, 11, 480, 320, 1);
+         margin-left: 10px;
+      }
+   }
+   .banner__flags {
+      width: 75%;
+   }
+   .lessons__products-title {
+      text-align: center;
+   }
+   .lessons__products-item-content {
+      & div p {
+         @include av("font-size", 16, 11, 480, 320, 1);
+      }
+   }
+}
+@media only screen and (max-width: 768px) {
+   .recommend__inner {
+      border-top: 1px solid #808080;
+   }
+   .recommend__title {
+      background-color: white;
+      transform: translateY(-50%);
+      text-align: center;
+      width: auto;
+      margin-left: auto;
+      margin-right: auto;
+      display: inline-block;
+      padding: 0 10px;
+      margin-bottom: 20px;
+   }
+}
+.jp-next,
+.jp-previous {
+   transition: background-color 0.3s, color 0.3s;
+}
+.jp-next:hover,
+.jp-previous:hover {
+   background-color: $mblue;
+   color: white;
+}
+.jp-disabled:hover {
+   background-color: unset;
+   color: #808080;
+}
+@media only screen and (max-width: 959px) {
+   .pagination a.jp-previous,
+   .pagination a.jp-next {
+      margin-left: 0px !important;
+      width: 39px;
+      border-radius: 50%;
+      border-color: transparent !important;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+   }
+   .jp-previous {
+      background-image: url("../image/pagination-left.svg");
+   }
+   .jp-next {
+      background-image: url("../image/pagination-right.svg");
+   }
+
+   .jp-previous.jp-disabled {
+      background-image: url("../image/pagination-left-innactive.svg");
+   }
+   .jp-next.jp-disabled {
+      background-image: url("../image/pagination-right-innactive.svg");
+   }
+}
+.dropdown {
+   word-break: break-all;
+}
+@media only screen and (max-width: 900px) {
+   .filter {
+      padding-right: 2.5vw;
+   }
+}
+
+@media only screen and (max-width: 480px) {
+   .filter {
+      height: 166px;
+   }
+}
+@media only screen and (max-width: 580px) {
+   .my-lessons__top .filter .my-lessons__search-form {
+      margin-left: 0;
+   }
+}
+@media only screen and (max-width: 480px) {
+   .banner__flags.test-welcome,
+   .banner__flags.tests {
+      width: 100%;
+   }
+}
+.flag {
+   & img {
+      border-radius: 50%;
+      @include av("width", 77, 50, 1920, 480, 1);
+      @include av(" height", 77, 50, 1920, 480, 1);
+      filter: brightness(62%);
+      transition: filter 0.3s, transform 0.3s;
+      &:hover {
+         transform: scale(1.1);
+      }
+   }
+}
+flag.active {
+   & img {
+      filter: brightness(100%);
+   }
+}
+.star-rating-pannel {
+   margin-left: -15px;
+}
+.comment {
+   display: block;
+   background-color: white;
+   border-radius: 10px;
+   padding: 2px 5px;
+   text-align: left;
+   margin-bottom: 20px;
+   // padding-right: calc(50px + (57 * (100vw - 480px) / (1920 - 480)));
+   // width: calc(50px + (22 * (100vw - 480px) / (1920 - 480)));
+   // 39
+   margin-left: 20px;
+
+   margin-right: 20px;
+   margin-bottom: 5px;
+   transition: margin-left 0.3s;
+}
+.visible-block {
+   padding-bottom: 5px;
+   padding-top: 5px;
+}
+.star-rating-top {
+   margin-left: auto;
+   margin-right: auto;
+}
+@media only screen and (min-width: 1301px) {
+   .star-rating-top {
+      position: absolute !important;
+      bottom: 3px;
+      left: 212px;
+   }
+}
+@media only screen and (min-width: 999px) {
+   .accordion.active ~ .visible-block .comment {
+      margin-left: calc(139px + (79 * (100vw - 480px) / (1920 - 480)));
+   }
+}
+.gl-star-rating--stars::before,
+.gl-star-rating--stars::after {
+   display: none;
+}
+.gl-star-rating {
+   justify-content: center;
+}
+
+.my-lessons-item {
+   position: relative;
+   box-sizing: border-box;
+   background-color: #f3efef;
+   width: 100%;
+   height: auto;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   border-color: transparent;
+   @include av("margin-bottom", 35, 30, 1920, 480, 1);
+   border-bottom-left-radius: 15px;
+   border-bottom-right-radius: 15px;
+
+   &__inner {
+      background-color: white;
+      border: 1px solid #000000;
+      border-radius: 15px;
+      position: relative;
+      display: flex;
+      justify-content: end;
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+      width: 100%;
+   }
+}
+@media only screen and (max-width: 768px) {
+   .my-lessons-item {
+      background-color: #d9d9d9;
+   }
+}
+.visible-block {
+   display: flex;
+}
+.visible-block-controls {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   padding: 3px 5px;
+   align-items: center;
+   & p {
+      @include av("font-size", 20, 16, 1920, 480, 1);
+      @include av("line-height", 24, 20, 1920, 480, 1);
+   }
+}
+.my-lessons-item-link-go {
+   position: relative;
+   width: fit-content;
+   top: unset;
+   left: unset;
+   right: unset;
+   padding: 3px 10px;
+   border-radius: 25px;
+   background-color: $mred;
+   display: block;
+   color: white;
+   &::after {
+      content: unset;
+   }
+}
+@media only screen and (max-width: 600px) {
+   .visible-block {
+      display: flex;
+      flex-direction: column;
+   }
+}
+.notifications-item:hover {
+   transform: scale(1);
+}
+.tv__title {
+   padding-bottom: 0;
+}
+@media only screen and (min-width: 800px) {
+   .tv__top {
+      margin-bottom: 8px;
+   }
+   .tv__title {
+      margin-bottom: 0px;
+   }
+   .filter-2 {
+      padding-top: 4px;
+      padding-bottom: 6px;
+   }
+}
+.tv__inner .sort {
+   & .sort-container {
+      padding-left: 0;
+      padding-right: 0;
+      & h4 {
+         margin-right: auto;
+      }
+   }
+}
+@media only screen and (max-width: 1280px) {
+   .tv__inner .sort {
+      padding: 0 2.5vw;
+   }
+}
+@media only screen and (min-width: 1280px) {
+   .tv__inner .sort {
+      padding: 0 0;
+      & .sort-container {
+         width: 1280px;
+         padding: 0 2.5vw;
+         margin-left: auto;
+         margin-right: auto;
+      }
+   }
+}
+@media only screen and (max-width: 768px) {
+   .tv__inner .sort {
+      padding: 0 12.5vw;
+   }
+}
+.my-lessons-item__name {
+   font-size: 15px !important;
+   line-height: 20px !important;
+}
+.long-title,
+.level-title,
+.time-title,
+.date-title,
+.my-lessons-item-link .homework-item-link {
+   font-size: 14px;
+}
+.long-value,
+.level-value,
+.time-value,
+.date-value {
+   font-size: 13px;
+}
+
+.my-lessons-item__title,
+.my-lessons-item__number,
+.homework-item__title {
+   font-size: 15px !important;
+   line-height: 18px;
+}
+.comment {
+   font-size: 13px;
+}
+.visible-block-controls p {
+   font-size: 13px;
+   line-height: 15px;
+}
+.header__menu-item {
+   font-size: 15px !important;
+}
+
+.homework-item__name {
+   font-size: 15px !important;
+}
+
+.homework-item__name {
+   font-size: 14px;
+}
+
+.main__book {
+   .star-rating-top {
+      position: unset !important;
+   }
+}
+.dropdown-menu {
+   transform: unset !important;
+   top: 34px !important;
+   z-index: 100 !important;
+}
+
