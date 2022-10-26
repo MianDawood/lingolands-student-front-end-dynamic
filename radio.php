@@ -1,3 +1,33 @@
+<?php  
+	 $link = new mysqli("localhost","root","","lingolands");
+
+    // Check connection
+    if ($mysqli -> connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+        exit();
+      }
+      if(isset($_POST['searchSubmit'])) {
+         if($_POST['countryId']!=''){
+            $where = "and w.countryId='".$_POST['countryId']."'";
+            $sql	=	mysqli_query($link, "select * from countries where id='".$_POST['countryId']."' ");
+            $fetch	=	mysqli_fetch_array($sql);
+            $C_Name	=	'Internet radio stations from '.$fetch['name'];
+         }
+         else
+         {
+            $where = '';
+            $C_Name	='Internet radio stations from all countries';
+         }
+      }
+      else
+      {
+         $where = '';
+         $C_Name	='Internet radio stations from all countries';
+      }
+      $sql_qr 		=	mysqli_query($link,	" select w.id wid,w.image,w.countryId,w.status,w.deleted,wd.* from radio_station w LEFT JOIN  radio_station_details wd on w.id=wd.radio_stationId where w.deleted=0 and wd.languageId='1' ".$where." ");
+      $numRadio=mysqli_num_rows($sql_qr);
+      ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -128,307 +158,44 @@
             </div>
             <div class="container">
                <div class="radio__content-list" id="radio">
-                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
-                     data-best="4">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
-                     data-best="1">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a href="#" class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
-                     data-best="4">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
-                     data-best="1">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a href="#" class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
-                     data-best="4">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
-                     data-best="1">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a href="#" class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
-                     data-best="4">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
-                     data-best="1">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a href="#" class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
-                     data-best="4">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
-                     data-best="1">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a href="#" class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item great-britain mix" data-pop="5" data-views="10" data-reiting="5"
-                     data-best="4">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 great-britain</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://s3.yesstreaming.net:19000', 'sc', 'stream', 'customname');">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
-                     data-best="1">
-                     <div class="radio-radioi__img"><a href="#"><img src="./image/radio-img.jpg" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title">WKSU 89.87 austria</h5>
-                        <div class="radio-radioi__star"></div>
-                     </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
-                     </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <a href="#" class="radio-radioi__link">
-                           <img src="./image/radio-start.svg" alt="play"
-                              onclick="goradio('https://stream.wksu.org:443', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
-                        </a>
-                     </div>
-                  </div>
+               <?php
+												$i=1;
+												while($row_webnr=mysqli_fetch_array($sql_qr)){
+											   if(!empty($row_webnr)){
+                                          
+                                          
+                                          ?>
+              
 
+
+                  <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
+                     data-best="1">
+                     <div class="radio-radioi__img"><a href="#"><img src="<?php  echo 'http://lingolands.com/admin/assets/uploads/radio_station/'.$row_webnr['image']  ;?>" alt="radioi"></a></div>
+                     <div class="radio-radioi__section-one">
+                        <h5 class="radio-radioi__title"><?php echo $row_webnr['title'];?></h5>
+                        <div class="radio-radioi__star"></div>
+                     </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="radio-radioi__section-two">
+                        <p class="radio-radioi__writer">English</p>
+                        <!-- <a href="#" class="radio-radioi__link"> -->
+                           <img src="./image/radio-start.svg" alt="play" onclick="goradio('http://schema.org/BroadcastFrequencySpecification', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
+                        <!-- </a> -->
+                     </div>
+                  </div>
+                  <?php
+								$i++;}}?>
+                 
+                 
                   <!-- <div class="gap"></div>
                      <div class="gap"></div>http://stream.wksu.org/wksu1.128.mp3 -->
 
@@ -553,6 +320,44 @@
       }
 
    </script>
+
+
+<script type='text/javascript'>
+
+            $(document).ready(function(){
+
+                $('.radioinfo').click(function(){
+                    $(document.body).css('padding-right','0px');
+                    var radioid = $(this).data('id');
+
+                    // AJAX request
+                    $.ajax({
+                        url: 'playradio.php',
+                        type: 'post',
+						data: {radioid: radioid},
+                        success: function(response){ 
+                            // Add response in Modal body
+                            $('.modal-body').html(response); 
+
+                            // Display Modal
+                            $('#modal-radio').modal('show'); 
+                        }
+                    });
+					
+					
+                });
+				$('#modal-radio').on('hide.bs.modal', function () { //Change #myModal with your modal id
+					$(document.body).css('padding-right','0px');
+				  $('audio').each(function(){
+					this.pause(); // Stop playing
+					this.currentTime = 0; // Reset time
+				  }); 
+				})
+				
+				    
+				
+            });
+            </script>
    <script src="./scripts/custom-player.js"></script>
    <script src="./scripts/main.js"></script>
 </body>

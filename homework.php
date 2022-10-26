@@ -1,3 +1,65 @@
+<?php  
+
+$link = new mysqli("localhost","root","","lingolands");
+
+// Check connection
+if ($mysqli -> connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    exit();
+  }
+
+//include_once ('init.php'); 
+//validation_check($_SESSION['USER_ID'], DOMAIN_SITE, array(0,1,2,3));
+
+//$userId			=	$_SESSION['USER_ID'];
+$userId = 398;
+$current_date	=	date('Y-m-d h:i:s');
+$where = " WHERE lesson_assign_students.memberId='398'";
+if(isset($_POST['searchSubmit'])) {
+	//$where = " WHERE sl.memberId='".$_SESSION['USER_ID']."'";
+ 
+  if(isset($_POST['name']) && $_POST['name'] != "")
+  {
+     $where	.= " AND lessons_details.name LIKE '%".$_POST['name']."%' ";
+  }
+  
+  if(isset($_POST['startDate']) && $_POST['startDate'] != "")
+  {
+    $date =  explode('-',$_POST['startDate']);
+    $startDate = $date[0];
+    $endDate = $date[1];
+    if(empty($endDate))
+    {
+      $endDate = $date[0];
+    }
+
+     $where	.= "  AND DATE(lesson_assign_students.createdOn) BETWEEN    '".date('Y-m-d',strtotime($startDate))."'  AND '".date('Y-m-d',strtotime($endDate))."'  ";
+       
+  }
+
+if(isset($_POST['ID']) && $_POST['ID'] != "")
+  {
+   $where	.= " AND lesson_assign_students.status='".$_POST['ID']."' ";
+
+  }
+			$sql_qr = mysqli_query($link," select ld.name,sl.lessonsId from lessons_details ld  LEFT JOIN lesson_assign_students sl on ld.lessonsId=sl.lessonsId  ".$where);
+ 
+}
+else
+{
+	$sql_qr	=	mysqli_query($link, " select ld.name,sl.lessonsId from lessons_details ld  LEFT JOIN lesson_assign_students sl on ld.lessonsId=sl.lessonsId where sl.memberId='".$userId."'");
+}
+	$dataArr	=	array();
+	while($data=mysqli_fetch_array($sql_qr)){
+		$dataArr[]= $data;
+	}
+	/*echo"<pre>";
+	print_r($dataArr);
+	echo"</pre>";*/
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,29 +86,44 @@
             <div class="homework__top">
                <h2 class="homework__title">Домашнее задания</h2>
                <div class="filter">
-                  <form action="#" class="homework__search-form">
-                     <div class="homework-form-search">
-                        <input class="homework-form-search-input" type="text" placeholder="Поиск">
-                     </div>
-                     <div class="homework-form-date" id="pppp">
-                        <input type="text" data-range="true" id="ppp" data-multiple-dates-separator="-"
-                           class="datepicker-here" autocomplete="off" placeholder="Календарь" . />
-                     </div>
-                     <div class="homework-form-status">
-                        <div class="custom-select homework-form-status-input">
-                           <select>
-                              <option value="0">Активные</option>
-                              <option value="1">Отменённые</option>
-                              <option value="2">Пропущенные</option>
-                              <option value="3">Запланированные</option>
-                           </select>
-                        </div>
-                     </div>
-                  </form>
+               <form action="homework.php" class="my-lessons__search-form" method="post">
+                    <div class="my-lessons-form-search">
+                       <input class="my-lessons-form-search-input" type="text" placeholder="Поиск" name="name">
+                    </div>
+                    <div class="my-lessons-form-date" id="pppp">
+                       <input type="text" data-range="true" id="ppp" data-multiple-dates-separator="-"
+                          class="datepicker-here" autocomplete="off" placeholder="Календарь" name="startDate" />
+                    </div>
+                    <div class="my-lessons-form-status">
+                       <div class="custom-select my-lessons-form-status-input">
+                          <select name="ID">
+                             <option value="">Активные</option>
+                             <option value="1">Отменённые</option>
+                             <option value="2">Пропущенные</option>
+                             <option value="3">Запланированные</option>
+                          </select>
+                       </div>
+                    </div>
+                 <input type="submit" value="Filter" name="searchSubmit" class="tv-tvi__link">
+                 </form>
                </div>
             </div>
             <div class="container">
                <div class="homework-list">
+               <?php
+							  $c1=1;
+							  foreach($dataArr as $k=>$val)
+							  {
+									if($_POST['startDate']!='' && $_POST['endDate']!='')
+									{
+										$sql_hom	= mysqli_query($link," select shw.homeworkstatus,shw.createdOn,shw.teacherId,hd.content from homework_assign_students shw LEFT JOIN homework_details hd on shw.homeworksId=hd.homeworksId where shw.lessonsId='".$val['lessonsId']."' and shw.memberId='".$userId."' and  hd.languageId='1' AND DATE(shw.createdOn) between '".date('Y-m-d',strtotime($_POST['startDate']))."' AND '".date('Y-m-d',strtotime($_POST['endDate']))."' ");
+										
+									}
+									else{
+									$sql_hom	= mysqli_query($link," select shw.homeworkstatus,shw.createdOn,shw.teacherId,hd.content from homework_assign_students shw LEFT JOIN homework_details hd on shw.homeworksId=hd.homeworksId where shw.lessonsId='".$val['lessonsId']."' and shw.memberId='".$userId."' and  hd.languageId='1'"); 
+									}
+                                                                        
+					?>
                   <div class="homework-item pass">
                      <div class="homework-item__inner aoccordion">
                         <div class="homework-item__status"></div>
@@ -94,11 +171,18 @@
                            <a href="#" class="homework-item-link-start homework-item-link">Начать</a> -->
                         </div>
                      </div>
-                     <a href="#" class="homework-item-link-pass homework-item-link accordion">Посмотреть</a>
+                     <a href="#" class="homework-item-link-pass homework-item-link accordion"><?php echo $val['name'] ;?></a>
+                     <?php 
+								while($row_hom=mysqli_fetch_array($sql_hom))
+								{
+									$teacher_qr	=	mysqli_query($link ," select firstName,lastName from members where id='".$row_hom['teacherId']."'");
+									
+									$teachername	=	mysqli_fetch_array($teacher_qr);
+								?>
                      <div class="panel">
                         <div class="panel-icon">
                            <img src="./image/homework-ico.svg" alt="icon">
-                           <p class="name">Урок 1</p>
+                           <p class="name"><?php echo $row_hom['content'] ;?></p>
                            <div class="star-rating-pannel">
                               <select class="star-rating">
                                  <option value="">Виберіть оцінку</option>
@@ -113,15 +197,15 @@
                         <div class="panel-desc">
                            <div class="name-teacher">
                               <p class="name-teacher-title">Назначенное учителем</p>
-                              <p class="name-teacher-value">Диана Смолова</p>
+                              <p class="name-teacher-value"><?php echo $teachername['firstName'].' '.$teachername['lastName'];?></p>
                            </div>
                            <div class="homework-date">
                               <div class="homework-date-title">Дата выполнения</div>
-                              <div class="homework-date-value">12.12.22</div>
+                              <div class="homework-date-value"><?php echo date('d/M/Y',strtotime($row_hom['createdOn']));?></div>
                            </div>
                            <div class="homework-status">
                               <div class="homework-status-title">Статус</div>
-                              <div class="homework-status-value">Выполненное</div>
+                              <div class="homework-status-value">	<?php echo ($row_hom['homeworkstatus']==1) ?'Completed':(($row_hom['homeworkstatus']==2)? 'Uncompleted' : '--')   ?></div>
                            </div>
                            <div class="panel-desc-bottom">
                               <p class="panel-desc-bottom-text">
@@ -133,571 +217,18 @@
                            </div>
                         </div>
                      </div>
+                    
+                     <?php  $i++; } ?>
+                     
                      <div class="visible-block">
                         <div class="comment">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает.
                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem qui nam vitae nulla in velit
                            doloribus magni quisquam provident explicabo minus numquam, asperiores totam quam enim ad
-                           iure labore neque? </div>
+                           iure labore neque? 
+                        </div>
                      </div>
                   </div>
-                  <div class="homework-item pass">
-                     <div class="homework-item__inner aoccordion">
-                        <div class="homework-item__status"></div>
-                        <div class="homework-item__desc">
-                           <p class="homework-item__title">
-                              Урок 1
-                           </p>
-                           <p class="homework-item__number">
-                              Чтение
-                           </p>
-                        </div>
-                        <div class="star-rating-top">
-                           <select class="star-rating">
-                              <option value="">Виберіть оцінку</option>
-                              <option value="5">Відмінно</option>
-                              <option value="4">Дуже добре</option>
-                              <option value="3">Середнє</option>
-                              <option value="2">Погано</option>
-                              <option value="1">Жахливо</option>
-                           </select>
-                        </div>
-
-                        <p class="homework-item__name">
-                           Тема 2 (о дизайне)
-                        </p>
-                        <div class="homework-item__container">
-                           <div class="homework-item__long">
-                              <p class="long-title">Длительность</p>
-                              <p class="long-value">45 минут</p>
-                           </div>
-                           <div class="homework-item__level">
-                              <p class="level-title">Уровень</p>
-                              <p class="level-value">Профи</p>
-                           </div>
-                           <div class="homework-item__time">
-                              <p class="time-title">Время</p>
-                              <p class="time-value">15:00</p>
-                           </div>
-                           <div class="homework-item__date">
-                              <p class="date-title">Дата</p>
-                              <p class="date-value">12.12.22</p>
-                           </div>
-                           <!-- <a href="#" class="homework-item-link-pass homework-item-link">Посмотреть</a>
-                           <a href="#" class="homework-item-link-cancel homework-item-link">Отменено</a>
-                           <a href="#" class="homework-item-link-start homework-item-link">Начать</a> -->
-                        </div>
-                     </div>
-                     <a href="#" class="homework-item-link-pass homework-item-link accordion">Посмотреть</a>
-                     <div class="panel">
-                        <div class="panel-icon">
-                           <img src="./image/homework-ico.svg" alt="icon">
-                           <p class="name">Урок 1</p>
-                           <div class="star-rating-pannel">
-                              <select class="star-rating">
-                                 <option value="">Виберіть оцінку</option>
-                                 <option value="5">Відмінно</option>
-                                 <option value="4">Дуже добре</option>
-                                 <option value="3">Середнє</option>
-                                 <option value="2">Погано</option>
-                                 <option value="1">Жахливо</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="panel-desc">
-                           <div class="name-teacher">
-                              <p class="name-teacher-title">Назначенное учителем</p>
-                              <p class="name-teacher-value">Диана Смолова</p>
-                           </div>
-                           <div class="homework-date">
-                              <div class="homework-date-title">Дата выполнения</div>
-                              <div class="homework-date-value">12.12.22</div>
-                           </div>
-                           <div class="homework-status">
-                              <div class="homework-status-title">Статус</div>
-                              <div class="homework-status-value">Выполненное</div>
-                           </div>
-                           <div class="panel-desc-bottom">
-                              <p class="panel-desc-bottom-text">
-                                 <span>Домашнее задание: </span> прочитать страницу 1 , книга по чтению. Посмотреть
-                                 видео.
-                              </p>
-                              <a href="#" class="panel-desc-bottom-link">Ссылка на видео, книгу и всё что нужно, файл и
-                                 тд.</a>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="visible-block">
-                        <div class="comment">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает.
-                           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem qui nam vitae nulla in velit
-                           doloribus magni quisquam provident explicabo minus numquam, asperiores totam quam enim ad
-                           iure labore neque? </div>
-                     </div>
-                  </div>
-                  <div class="homework-item pass">
-                     <div class="homework-item__inner aoccordion">
-                        <div class="homework-item__status"></div>
-                        <div class="homework-item__desc">
-                           <p class="homework-item__title">
-                              Урок 1
-                           </p>
-                           <p class="homework-item__number">
-                              Чтение
-                           </p>
-                        </div>
-                        <div class="star-rating-top">
-                           <select class="star-rating">
-                              <option value="">Виберіть оцінку</option>
-                              <option value="5">Відмінно</option>
-                              <option value="4">Дуже добре</option>
-                              <option value="3">Середнє</option>
-                              <option value="2">Погано</option>
-                              <option value="1">Жахливо</option>
-                           </select>
-                        </div>
-
-                        <p class="homework-item__name">
-                           Тема 2 (о дизайне)
-                        </p>
-                        <div class="homework-item__container">
-                           <div class="homework-item__long">
-                              <p class="long-title">Длительность</p>
-                              <p class="long-value">45 минут</p>
-                           </div>
-                           <div class="homework-item__level">
-                              <p class="level-title">Уровень</p>
-                              <p class="level-value">Профи</p>
-                           </div>
-                           <div class="homework-item__time">
-                              <p class="time-title">Время</p>
-                              <p class="time-value">15:00</p>
-                           </div>
-                           <div class="homework-item__date">
-                              <p class="date-title">Дата</p>
-                              <p class="date-value">12.12.22</p>
-                           </div>
-                           <!-- <a href="#" class="homework-item-link-pass homework-item-link">Посмотреть</a>
-                           <a href="#" class="homework-item-link-cancel homework-item-link">Отменено</a>
-                           <a href="#" class="homework-item-link-start homework-item-link">Начать</a> -->
-                        </div>
-                     </div>
-                     <a href="#" class="homework-item-link-pass homework-item-link accordion">Посмотреть</a>
-                     <div class="panel">
-                        <div class="panel-icon">
-                           <img src="./image/homework-ico.svg" alt="icon">
-                           <p class="name">Урок 1</p>
-                           <div class="star-rating-pannel">
-                              <select class="star-rating">
-                                 <option value="">Виберіть оцінку</option>
-                                 <option value="5">Відмінно</option>
-                                 <option value="4">Дуже добре</option>
-                                 <option value="3">Середнє</option>
-                                 <option value="2">Погано</option>
-                                 <option value="1">Жахливо</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="panel-desc">
-                           <div class="name-teacher">
-                              <p class="name-teacher-title">Назначенное учителем</p>
-                              <p class="name-teacher-value">Диана Смолова</p>
-                           </div>
-                           <div class="homework-date">
-                              <div class="homework-date-title">Дата выполнения</div>
-                              <div class="homework-date-value">12.12.22</div>
-                           </div>
-                           <div class="homework-status">
-                              <div class="homework-status-title">Статус</div>
-                              <div class="homework-status-value">Выполненное</div>
-                           </div>
-                           <div class="panel-desc-bottom">
-                              <p class="panel-desc-bottom-text">
-                                 <span>Домашнее задание: </span> прочитать страницу 1 , книга по чтению. Посмотреть
-                                 видео.
-                              </p>
-                              <a href="#" class="panel-desc-bottom-link">Ссылка на видео, книгу и всё что нужно, файл и
-                                 тд.</a>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="visible-block">
-                        <div class="comment">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает.
-                           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem qui nam vitae nulla in velit
-                           doloribus magni quisquam provident explicabo minus numquam, asperiores totam quam enim ad
-                           iure labore neque? </div>
-                     </div>
-                  </div>
-                  <div class="homework-item pass">
-                     <div class="homework-item__inner aoccordion">
-                        <div class="homework-item__status"></div>
-                        <div class="homework-item__desc">
-                           <p class="homework-item__title">
-                              Урок 1
-                           </p>
-                           <p class="homework-item__number">
-                              Чтение
-                           </p>
-                        </div>
-                        <div class="star-rating-top">
-                           <select class="star-rating">
-                              <option value="">Виберіть оцінку</option>
-                              <option value="5">Відмінно</option>
-                              <option value="4">Дуже добре</option>
-                              <option value="3">Середнє</option>
-                              <option value="2">Погано</option>
-                              <option value="1">Жахливо</option>
-                           </select>
-                        </div>
-
-                        <p class="homework-item__name">
-                           Тема 2 (о дизайне)
-                        </p>
-                        <div class="homework-item__container">
-                           <div class="homework-item__long">
-                              <p class="long-title">Длительность</p>
-                              <p class="long-value">45 минут</p>
-                           </div>
-                           <div class="homework-item__level">
-                              <p class="level-title">Уровень</p>
-                              <p class="level-value">Профи</p>
-                           </div>
-                           <div class="homework-item__time">
-                              <p class="time-title">Время</p>
-                              <p class="time-value">15:00</p>
-                           </div>
-                           <div class="homework-item__date">
-                              <p class="date-title">Дата</p>
-                              <p class="date-value">12.12.22</p>
-                           </div>
-                           <!-- <a href="#" class="homework-item-link-pass homework-item-link">Посмотреть</a>
-                           <a href="#" class="homework-item-link-cancel homework-item-link">Отменено</a>
-                           <a href="#" class="homework-item-link-start homework-item-link">Начать</a> -->
-                        </div>
-                     </div>
-                     <a href="#" class="homework-item-link-pass homework-item-link accordion">Посмотреть</a>
-                     <div class="panel">
-                        <div class="panel-icon">
-                           <img src="./image/homework-ico.svg" alt="icon">
-                           <p class="name">Урок 1</p>
-                           <div class="star-rating-pannel">
-                              <select class="star-rating">
-                                 <option value="">Виберіть оцінку</option>
-                                 <option value="5">Відмінно</option>
-                                 <option value="4">Дуже добре</option>
-                                 <option value="3">Середнє</option>
-                                 <option value="2">Погано</option>
-                                 <option value="1">Жахливо</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="panel-desc">
-                           <div class="name-teacher">
-                              <p class="name-teacher-title">Назначенное учителем</p>
-                              <p class="name-teacher-value">Диана Смолова</p>
-                           </div>
-                           <div class="homework-date">
-                              <div class="homework-date-title">Дата выполнения</div>
-                              <div class="homework-date-value">12.12.22</div>
-                           </div>
-                           <div class="homework-status">
-                              <div class="homework-status-title">Статус</div>
-                              <div class="homework-status-value">Выполненное</div>
-                           </div>
-                           <div class="panel-desc-bottom">
-                              <p class="panel-desc-bottom-text">
-                                 <span>Домашнее задание: </span> прочитать страницу 1 , книга по чтению. Посмотреть
-                                 видео.
-                              </p>
-                              <a href="#" class="panel-desc-bottom-link">Ссылка на видео, книгу и всё что нужно, файл и
-                                 тд.</a>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="visible-block">
-                        <div class="comment">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает.
-                           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem qui nam vitae nulla in velit
-                           doloribus magni quisquam provident explicabo minus numquam, asperiores totam quam enim ad
-                           iure labore neque? </div>
-                     </div>
-                  </div>
-                  <div class="homework-item pass">
-                     <div class="homework-item__inner aoccordion">
-                        <div class="homework-item__status"></div>
-                        <div class="homework-item__desc">
-                           <p class="homework-item__title">
-                              Урок 1
-                           </p>
-                           <p class="homework-item__number">
-                              Чтение
-                           </p>
-                        </div>
-                        <div class="star-rating-top">
-                           <select class="star-rating">
-                              <option value="">Виберіть оцінку</option>
-                              <option value="5">Відмінно</option>
-                              <option value="4">Дуже добре</option>
-                              <option value="3">Середнє</option>
-                              <option value="2">Погано</option>
-                              <option value="1">Жахливо</option>
-                           </select>
-                        </div>
-
-                        <p class="homework-item__name">
-                           Тема 2 (о дизайне)
-                        </p>
-                        <div class="homework-item__container">
-                           <div class="homework-item__long">
-                              <p class="long-title">Длительность</p>
-                              <p class="long-value">45 минут</p>
-                           </div>
-                           <div class="homework-item__level">
-                              <p class="level-title">Уровень</p>
-                              <p class="level-value">Профи</p>
-                           </div>
-                           <div class="homework-item__time">
-                              <p class="time-title">Время</p>
-                              <p class="time-value">15:00</p>
-                           </div>
-                           <div class="homework-item__date">
-                              <p class="date-title">Дата</p>
-                              <p class="date-value">12.12.22</p>
-                           </div>
-                           <!-- <a href="#" class="homework-item-link-pass homework-item-link">Посмотреть</a>
-                           <a href="#" class="homework-item-link-cancel homework-item-link">Отменено</a>
-                           <a href="#" class="homework-item-link-start homework-item-link">Начать</a> -->
-                        </div>
-                     </div>
-                     <a href="#" class="homework-item-link-pass homework-item-link accordion">Посмотреть</a>
-                     <div class="panel">
-                        <div class="panel-icon">
-                           <img src="./image/homework-ico.svg" alt="icon">
-                           <p class="name">Урок 1</p>
-                           <div class="star-rating-pannel">
-                              <select class="star-rating">
-                                 <option value="">Виберіть оцінку</option>
-                                 <option value="5">Відмінно</option>
-                                 <option value="4">Дуже добре</option>
-                                 <option value="3">Середнє</option>
-                                 <option value="2">Погано</option>
-                                 <option value="1">Жахливо</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="panel-desc">
-                           <div class="name-teacher">
-                              <p class="name-teacher-title">Назначенное учителем</p>
-                              <p class="name-teacher-value">Диана Смолова</p>
-                           </div>
-                           <div class="homework-date">
-                              <div class="homework-date-title">Дата выполнения</div>
-                              <div class="homework-date-value">12.12.22</div>
-                           </div>
-                           <div class="homework-status">
-                              <div class="homework-status-title">Статус</div>
-                              <div class="homework-status-value">Выполненное</div>
-                           </div>
-                           <div class="panel-desc-bottom">
-                              <p class="panel-desc-bottom-text">
-                                 <span>Домашнее задание: </span> прочитать страницу 1 , книга по чтению. Посмотреть
-                                 видео.
-                              </p>
-                              <a href="#" class="panel-desc-bottom-link">Ссылка на видео, книгу и всё что нужно, файл и
-                                 тд.</a>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="visible-block">
-                        <div class="comment">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает.
-                           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem qui nam vitae nulla in velit
-                           doloribus magni quisquam provident explicabo minus numquam, asperiores totam quam enim ad
-                           iure labore neque? </div>
-                     </div>
-                  </div>
-                  <div class="homework-item pass">
-                     <div class="homework-item__inner aoccordion">
-                        <div class="homework-item__status"></div>
-                        <div class="homework-item__desc">
-                           <p class="homework-item__title">
-                              Урок 1
-                           </p>
-                           <p class="homework-item__number">
-                              Чтение
-                           </p>
-                        </div>
-                        <div class="star-rating-top">
-                           <select class="star-rating">
-                              <option value="">Виберіть оцінку</option>
-                              <option value="5">Відмінно</option>
-                              <option value="4">Дуже добре</option>
-                              <option value="3">Середнє</option>
-                              <option value="2">Погано</option>
-                              <option value="1">Жахливо</option>
-                           </select>
-                        </div>
-
-                        <p class="homework-item__name">
-                           Тема 2 (о дизайне)
-                        </p>
-                        <div class="homework-item__container">
-                           <div class="homework-item__long">
-                              <p class="long-title">Длительность</p>
-                              <p class="long-value">45 минут</p>
-                           </div>
-                           <div class="homework-item__level">
-                              <p class="level-title">Уровень</p>
-                              <p class="level-value">Профи</p>
-                           </div>
-                           <div class="homework-item__time">
-                              <p class="time-title">Время</p>
-                              <p class="time-value">15:00</p>
-                           </div>
-                           <div class="homework-item__date">
-                              <p class="date-title">Дата</p>
-                              <p class="date-value">12.12.22</p>
-                           </div>
-                           <!-- <a href="#" class="homework-item-link-pass homework-item-link">Посмотреть</a>
-                           <a href="#" class="homework-item-link-cancel homework-item-link">Отменено</a>
-                           <a href="#" class="homework-item-link-start homework-item-link">Начать</a> -->
-                        </div>
-                     </div>
-                     <a href="#" class="homework-item-link-pass homework-item-link accordion">Посмотреть</a>
-                     <div class="panel">
-                        <div class="panel-icon">
-                           <img src="./image/homework-ico.svg" alt="icon">
-                           <p class="name">Урок 1</p>
-                           <div class="star-rating-pannel">
-                              <select class="star-rating">
-                                 <option value="">Виберіть оцінку</option>
-                                 <option value="5">Відмінно</option>
-                                 <option value="4">Дуже добре</option>
-                                 <option value="3">Середнє</option>
-                                 <option value="2">Погано</option>
-                                 <option value="1">Жахливо</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="panel-desc">
-                           <div class="name-teacher">
-                              <p class="name-teacher-title">Назначенное учителем</p>
-                              <p class="name-teacher-value">Диана Смолова</p>
-                           </div>
-                           <div class="homework-date">
-                              <div class="homework-date-title">Дата выполнения</div>
-                              <div class="homework-date-value">12.12.22</div>
-                           </div>
-                           <div class="homework-status">
-                              <div class="homework-status-title">Статус</div>
-                              <div class="homework-status-value">Выполненное</div>
-                           </div>
-                           <div class="panel-desc-bottom">
-                              <p class="panel-desc-bottom-text">
-                                 <span>Домашнее задание: </span> прочитать страницу 1 , книга по чтению. Посмотреть
-                                 видео.
-                              </p>
-                              <a href="#" class="panel-desc-bottom-link">Ссылка на видео, книгу и всё что нужно, файл и
-                                 тд.</a>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="visible-block">
-                        <div class="comment">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает.
-                           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem qui nam vitae nulla in velit
-                           doloribus magni quisquam provident explicabo minus numquam, asperiores totam quam enim ad
-                           iure labore neque? </div>
-                     </div>
-                  </div>
-                  <div class="homework-item pass">
-                     <div class="homework-item__inner aoccordion">
-                        <div class="homework-item__status"></div>
-                        <div class="homework-item__desc">
-                           <p class="homework-item__title">
-                              Урок 1
-                           </p>
-                           <p class="homework-item__number">
-                              Чтение
-                           </p>
-                        </div>
-                        <div class="star-rating-top">
-                           <select class="star-rating">
-                              <option value="">Виберіть оцінку</option>
-                              <option value="5">Відмінно</option>
-                              <option value="4">Дуже добре</option>
-                              <option value="3">Середнє</option>
-                              <option value="2">Погано</option>
-                              <option value="1">Жахливо</option>
-                           </select>
-                        </div>
-
-                        <p class="homework-item__name">
-                           Тема 2 (о дизайне)
-                        </p>
-                        <div class="homework-item__container">
-                           <div class="homework-item__long">
-                              <p class="long-title">Длительность</p>
-                              <p class="long-value">45 минут</p>
-                           </div>
-                           <div class="homework-item__level">
-                              <p class="level-title">Уровень</p>
-                              <p class="level-value">Профи</p>
-                           </div>
-                           <div class="homework-item__time">
-                              <p class="time-title">Время</p>
-                              <p class="time-value">15:00</p>
-                           </div>
-                           <div class="homework-item__date">
-                              <p class="date-title">Дата</p>
-                              <p class="date-value">12.12.22</p>
-                           </div>
-                           <!-- <a href="#" class="homework-item-link-pass homework-item-link">Посмотреть</a>
-                           <a href="#" class="homework-item-link-cancel homework-item-link">Отменено</a>
-                           <a href="#" class="homework-item-link-start homework-item-link">Начать</a> -->
-                        </div>
-                     </div>
-                     <a href="#" class="homework-item-link-pass homework-item-link accordion">Посмотреть</a>
-                     <div class="panel">
-                        <div class="panel-icon">
-                           <img src="./image/homework-ico.svg" alt="icon">
-                           <p class="name">Урок 1</p>
-                           <div class="star-rating-pannel">
-                              <select class="star-rating">
-                                 <option value="">Виберіть оцінку</option>
-                                 <option value="5">Відмінно</option>
-                                 <option value="4">Дуже добре</option>
-                                 <option value="3">Середнє</option>
-                                 <option value="2">Погано</option>
-                                 <option value="1">Жахливо</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="panel-desc">
-                           <div class="name-teacher">
-                              <p class="name-teacher-title">Назначенное учителем</p>
-                              <p class="name-teacher-value">Диана Смолова</p>
-                           </div>
-                           <div class="homework-date">
-                              <div class="homework-date-title">Дата выполнения</div>
-                              <div class="homework-date-value">12.12.22</div>
-                           </div>
-                           <div class="homework-status">
-                              <div class="homework-status-title">Статус</div>
-                              <div class="homework-status-value">Выполненное</div>
-                           </div>
-                           <div class="panel-desc-bottom">
-                              <p class="panel-desc-bottom-text">
-                                 <span>Домашнее задание: </span> прочитать страницу 1 , книга по чтению. Посмотреть
-                                 видео.
-                              </p>
-                              <a href="#" class="panel-desc-bottom-link">Ссылка на видео, книгу и всё что нужно, файл и
-                                 тд.</a>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="visible-block">
-                        <div class="comment">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает.
-                           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem qui nam vitae nulla in velit
-                           doloribus magni quisquam provident explicabo minus numquam, asperiores totam quam enim ad
-                           iure labore neque? </div>
-                     </div>
-                  </div>
+                 <?php } ?>
                </div>
 
             </div>

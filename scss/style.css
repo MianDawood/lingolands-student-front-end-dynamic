@@ -765,7 +765,7 @@ ol {
   position: relative;
 }
 .header-top__notification-btn::after {
-  content: "4";
+  
   background-color: #f2111e;
   border-radius: 50%;
   padding: 1px 5.5px;

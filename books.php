@@ -66,12 +66,12 @@ else
                               Сложность
                            </button>
                            <ul class="dropdown-menu dropdown-menu-main books-select-list dropdown-books-list">
-                              <li>
+                              <li style="font-size:14px !important;">
                               <a href="books.php"> <button type="button" data-filter="all">Show all</button></a>
                               </li>
-                              <?php $q=mysqli_query($link,"select level_id,level_name from tbl_books where level_id != 0 group by level_id order by level_id");
+                              <?php $q=mysqli_query($link,"select level_id,level_name from tbl_books where level_id != 0 group by level_name order by level_id");
 										while($row=mysqli_fetch_array($q)){?>
-                              <li>
+                              <li style="font-size:14px !important;">
                                 <a href="books.php?id=<?php echo $row['level_id']; ?>"><button type="button">  <?php  echo $row['level_name'];?></button></a> 
                               </li>
 

@@ -1,3 +1,16 @@
+<?php 
+$link = new mysqli("localhost","root","","lingolands");
+
+// Check connection
+if ($mysqli -> connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    exit();
+  }
+
+
+      $userRole=1;
+       $userId = 398;
+?>
 <header class="header">
       <div class="header__inner">
          <div class="container">
@@ -17,23 +30,72 @@
                </div>
                <div class="header-top__user-nav">
                   <div style="position:relative">
-                     <a href="#" class="header-top__notification-btn" data-fancybox="" data-src="#notification">
-                        <img src="./image/notification-icon.svg" alt="notification">
+                  <?php
+									if($userRole=='2')
+									{
+									    $new_notification=mysqli_query($link,"select * from tbl_notifications where teacher_id='$userId' and teacher_notify_status ='0'");
+									    
+									  	$notification=mysqli_query($link,"select * from tbl_notifications where teacher_id='$userId' order by id desc");
+									  	
+									  		
+									}
+									elseif($userRole == 1)
+								          {
+ $new_notification=mysqli_query($link, "select * from tbl_notifications where student_id='$userId' and student_notify_status ='0'");
+$notification=mysqli_query($link,"select * from tbl_notifications where student_id='$userId' order by student_notify_status");							           	  }
+                            $new_num=mysqli_num_rows($new_notification);
+							$num=mysqli_num_rows($notification);
+							if($num > 0 ){
+								?>
+
+<style> 
+  .header-top__notification-btn::after {
+   content: '<?php echo $num; ?>';
+  background-color: #f2111e;
+  border-radius: 50%;
+  padding: 1px 5.5px;
+  font-weight: 300;
+  font-size: 13.8583px;
+  line-height: 17px;
+  text-align: center;
+  color: #ffffff;
+  position: absolute;
+  top: 70%;
+  right: -20%;
+}
+</style>
+                     <a href="#" class="header-top__notification-btn"  data-fancybox="" data-src="#notification">
+                       
+                     <img src="./image/notification-icon.svg" alt="notification">
                      </a>
                      <div class="popup__notifications popup__notifications-main" id="notification2"
                         style="max-width:500px;">
                         <p class="notifications-title">Уведомления</p>
+                      
+                       
                         <ol class="notifications-list">
-                           <li class="notifications-item">
-                              <a href="./homework.php">Новое домашнее задание уже добавлено!</a>
+                        <?php $i=0; while($rec=mysqli_fetch_array($notification)) {	?>
+                          
+                       <?php    if($rec['student_notify_status'] == 0){  ?>
+                        <li class="notifications-item">
+                              <a href="#"><span style="text-decoration:underline; "><?php echo $rec['student_desc'] ?></span>
+</a>
                            </li>
-                           <li class="notifications-item">
-                              <a href="./homework.php">У вас 2 не выполненых домашних задания!</a>
+
+                           <?php	}else { ?>
+                              <li class="notifications-item">
+                              <a href="#"><span style="font-size: 14px !important;"><?php echo $rec['student_desc'] ?></span>
                            </li>
-                           <li class="notifications-item">
-                              <a href="./club.php">Сегодня состоиться встреча в разговорном клубе!</a>
+							<?php	}
+								?>
+                           <?php $i++; }?>
+                           <li class="">
+                              <a href="#"><span style="text-align:center; font-size:18px; margin-top:10px ">All notifications</span>
+</a>
                            </li>
                         </ol>
+
+                        <?php } ?>
                      </div>
                   </div>
                   <button class="header-top__account-btn header-top-account-btn">
