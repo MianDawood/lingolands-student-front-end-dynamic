@@ -2440,13 +2440,7 @@ button[disabled] {
 }
 .homework-item.pass .homework-item-link-pass {
    display: block;
-
 }
-
-.homework-item-link-pass {
-   
-}
-
 .homework-item.cancel .homework-item-link-cancel {
    display: block;
 }
@@ -2566,7 +2560,6 @@ button[disabled] {
    }
    &-link {
       width: 140px;
-      font-size: 1rem !important;
       position: absolute;
       border: 1px solid $mblue;
       border-radius: 25px;
@@ -3740,11 +3733,9 @@ flag.active {
 .gl-star-rating--stars::after {
    display: none;
 }
-
-// tv.php stars are centered aligned with following three lines
-// .gl-star-rating {
-//    justify-content: center;
-// }
+.gl-star-rating {
+   justify-content: center;
+}
 
 .my-lessons-item {
    position: relative;

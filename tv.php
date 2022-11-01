@@ -76,8 +76,7 @@
                         <div class="dropdown">
                            <button class="btn btn-secondary dropdown-toggle tv-select" type="button"
                               data-bs-toggle="dropdown" aria-expanded="false">
-                              <!-- Сложность -->
-                              Язык
+                              Сложность
                            </button>
                            <ul class="dropdown-menu dropdown-menu-main tv-select-list">
                              <li style="font-size:14px !important;">
@@ -110,9 +109,7 @@
             </div>
             <div class="sort">
                <div class="sort-container">
-                  <h4>
-                     <!-- Фильтр -->
-                  </h4>
+                  <h4>Фильтр</h4>
                   <div class="controls">
                      <!-- <button type="button" data-sort="views:asc">Sort by v (A-Z)</button> -->
                      <button type="button" data-sort="views:desc">Количество просмотров
@@ -155,40 +152,31 @@
 											?>
                   <div class="tv__content-item english mix" data-pop="10" data-views="500" data-reiting="5"
                      data-best="1">
-                     
-                     <div>
-                        <div class="tv-tvi__img">
-                           <iframe class="video js-video tv-tvi__img" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="Youtube video player" id="widget2" data-gtm-yt-inspected-637624_403="true" src="<?php echo $row_webnr['youtube'];?>?fs=1&amp;cc_load_policy=1&amp;autoplay=0&amp;controls=1&amp;modestbranding=1&amp;rel=1&amp;showInfo=1&amp;wmode=opaque&amp;aiv_load_policy=3&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fwww.englishdom.com&amp;widgetid=1" frameborder="0"></iframe>
-                        </div>
-
-                        <div class="tv-tvi__section-one">
-                           <h5 class="tv-tvi__title"><?php echo $row_webnr['title'];?></h5>
-                           <div class="tv-tvi__star"></div>
-                        </div>
-                        <div class="tv-tvi__section-two">
-                           <p class="tv-tvi__writer"><?php echo $C_Name;?></p>
-                           <p class="tv-tvi__views2"></p>
-                        </div>
+                     <div class="tv-tvi__img"><iframe class="video js-video tv-tvi__img" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="Youtube video player" id="widget2" data-gtm-yt-inspected-637624_403="true" src="<?php echo $row_webnr['youtube'];?>?fs=1&amp;cc_load_policy=1&amp;autoplay=0&amp;controls=1&amp;modestbranding=1&amp;rel=1&amp;showInfo=1&amp;wmode=opaque&amp;aiv_load_policy=3&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fwww.englishdom.com&amp;widgetid=1" frameborder="0"></iframe></div>
+                     <div class="tv-tvi__section-one">
+                        <h5 class="tv-tvi__title"><?php echo $row_webnr['title'];?></h5>
+                        <div class="tv-tvi__star"></div>
                      </div>
-                     <div>
-                        <div class="star-rating-top">
-                           <select class="star-rating">
-                              <option value="">Виберіть оцінку</option>
-                              <option value="5">Відмінно</option>
-                              <option value="4">Дуже добре</option>
-                              <option value="3">Середнє</option>
-                              <option value="2">Погано</option>
-                              <option value="1">Жахливо</option>
-                           </select>
-                        </div>
-
-                        <div class="tv-tvi__section-three">
-                           <p class="tv-tvi__level-title">Язык:</p>
-                           <p class="tv-tvi__level-value"><?php echo $row_webnr['language'];?></p>
-                        </div>
-                        <a class="tv-tvi__link" href="#">Смотреть</a>
-                      
+                     <div class="tv-tvi__section-two">
+                        <p class="tv-tvi__writer"><?php echo $C_Name;?></p>
+                        <p class="tv-tvi__views2"></p>
                      </div>
+                     <div class="star-rating-top">
+                        <select class="star-rating">
+                           <option value="">Виберіть оцінку</option>
+                           <option value="5">Відмінно</option>
+                           <option value="4">Дуже добре</option>
+                           <option value="3">Середнє</option>
+                           <option value="2">Погано</option>
+                           <option value="1">Жахливо</option>
+                        </select>
+                     </div>
+                     <div class="tv-tvi__section-three">
+                        <p class="tv-tvi__level-title">Язык:</p>
+                        <p class="tv-tvi__level-value"><?php echo $row_webnr['language'];?></p>
+                     </div>
+                     <a class="tv-tvi__link" href="#">Смотреть</a>
+                   
               
                   </div>
 

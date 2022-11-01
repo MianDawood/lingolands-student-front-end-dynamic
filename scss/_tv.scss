@@ -366,14 +366,6 @@
 @media only screen and (max-width: 850px) {
    .mobile {
       display: block;
-      ul {
-         line-height: 10px;
-         li {
-            button {
-               font-size: .7rem;
-            }
-         }
-      }
       & .dropdown {
          word-break: break-all;
          & .btn {
@@ -433,7 +425,6 @@
       width: calc(25% - 30px);
       //width: 100%;
       display: flex;
-      justify-content: space-between;
       flex-direction: column;
       @include av("margin-bottom", 80, 26.5, 1920, 480, 1);
    }
