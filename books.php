@@ -86,7 +86,9 @@ else
             </div>
             <div class="sort">
                <div class="sort-container">
-                  <h4>Фильтр</h4>
+                  <h4>
+                     <!-- Фильтр -->
+                  </h4>
                   <div class="controls">
                    
                      <!-- <button type="button" data-sort="views:asc">Sort by v (A-Z)</button> -->
@@ -124,6 +126,7 @@ else
 					
                     $i=1; while($bookrec=mysqli_fetch_array($all_books)) {?>
                <div class="books__content-item starter mix" data-pop="10" data-views="500" data-reiting="5" data-best="1">
+                  <div>
                      <div class="books-book__img"><a href="book.php?id=<?php echo $bookrec['id']; ?>"><img src="https://www.lingolands.com/admin/assets/uploads/BookImages/<?php echo $bookrec['book_image']; ?>" alt="Book"></a></div>
                      <div class="books-book__section-one">
                         <h5 class="books-book__title"><?= $bookrec['book_title'];?></h5>
@@ -132,7 +135,10 @@ else
                            <img src="./image/star.svg" alt="star">4.9
                         </div>
 
-                     </div>
+                  </div>
+               </div>
+                  <div>
+
                      <div class="books-book__section-two">
                         <p class="books-book__writer"><?= $bookrec['book_author'];?></p>
                         <p class="books-book__views">499</p>
@@ -141,9 +147,11 @@ else
                         <p class="books-book__level-title">Сложность:</p>
                         <p class="books-book__level-value"><?= $bookrec['level_name'];?></p>
                      </div>
-
+                     
+                     
                      <a class="books-book__link" href="book.php?id=<?php echo $bookrec['id']; ?>">Читать</a> 
-                    </div>
+                  </div>
+                  </div>
 
                      <?php $i++; }}else{ echo '<div><h2><span class="text-danger">Sorry No Book found...</span></h2></div>';} ?>
 

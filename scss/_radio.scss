@@ -475,6 +475,7 @@
       min-width: 262px;
       width: 297px;
       display: flex;
+      justify-content: space-between;
       flex-direction: column;
       @include av("margin-bottom", 80, 26.5, 1920, 480, 1);
    }
@@ -828,9 +829,9 @@
 }
 
 .radio-select-list {
-   width: 200% !important;
+   // width: 200% !important;
    left: unset !important;
-   right: 0 !important;
+   // right: 0 !important;
    position: absolute !important;
    transform: unset !important;
 }

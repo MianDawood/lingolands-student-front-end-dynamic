@@ -170,27 +170,32 @@
 
                   <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
                      data-best="1">
-                     <div class="radio-radioi__img"><a href="#"><img src="<?php  echo 'http://lingolands.com/admin/assets/uploads/radio_station/'.$row_webnr['image']  ;?>" alt="radioi"></a></div>
-                     <div class="radio-radioi__section-one">
-                        <h5 class="radio-radioi__title"><?php echo $row_webnr['title'];?></h5>
-                        <div class="radio-radioi__star"></div>
+                     <div>
+                        <div class="radio-radioi__img"><a href="#"><img src="<?php  echo 'http://lingolands.com/admin/assets/uploads/radio_station/'.$row_webnr['image']  ;?>" alt="radioi"></a></div>
+                        <div class="radio-radioi__section-one">
+                           <h5 class="radio-radioi__title"><?php echo $row_webnr['title'];?></h5>
+                           <div class="radio-radioi__star"></div>
+                        </div>
                      </div>
-                     <div class="star-rating-top">
-                        <select class="star-rating">
-                           <option value="">Виберіть оцінку</option>
-                           <option value="5">Відмінно</option>
-                           <option value="4">Дуже добре</option>
-                           <option value="3">Середнє</option>
-                           <option value="2">Погано</option>
-                           <option value="1">Жахливо</option>
-                        </select>
+                     <div>
+                        <div class="star-rating-top">
+                           <select class="star-rating">
+                              <option value="">Виберіть оцінку</option>
+                              <option value="5">Відмінно</option>
+                              <option value="4">Дуже добре</option>
+                              <option value="3">Середнє</option>
+                              <option value="2">Погано</option>
+                              <option value="1">Жахливо</option>
+                           </select>
+                        </div>
+                        <div class="radio-radioi__section-two">
+                           <p class="radio-radioi__writer">English</p>
+                           <!-- <a href="#" class="radio-radioi__link"> -->
+                              <img src="./image/radio-start.svg" alt="play" onclick="goradio('http://schema.org/BroadcastFrequencySpecification', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
+                           <!-- </a> -->
+                        </div>
                      </div>
-                     <div class="radio-radioi__section-two">
-                        <p class="radio-radioi__writer">English</p>
-                        <!-- <a href="#" class="radio-radioi__link"> -->
-                           <img src="./image/radio-start.svg" alt="play" onclick="goradio('http://schema.org/BroadcastFrequencySpecification', 'ic', 'wksu1.128.mp3', 'WKSU 89.87')">
-                        <!-- </a> -->
-                     </div>
+
                   </div>
                   <?php
 								$i++;}}?>

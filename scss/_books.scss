@@ -68,7 +68,7 @@
 .books-form-search,
 .books-form-status {
    cursor: url("../image/cursor-link.svg") 0 0, auto;
-   width: 50%;
+   width: 100%;
    max-width: 232px;
    @include av("height", 50, 36, 1920, 480, 1);
    border-radius: 25px;
