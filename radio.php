@@ -170,18 +170,14 @@
 
                   <div class="radio__content-item austria mix" data-pop="10" data-views="500" data-reiting="5"
                      data-best="1">
-
                      <div>
-
                         <div class="radio-radioi__img"><a href="#"><img src="<?php  echo 'http://lingolands.com/admin/assets/uploads/radio_station/'.$row_webnr['image']  ;?>" alt="radioi"></a></div>
                         <div class="radio-radioi__section-one">
                            <h5 class="radio-radioi__title"><?php echo $row_webnr['title'];?></h5>
                            <div class="radio-radioi__star"></div>
                         </div>
                      </div>
-
                      <div>
-
                         <div class="star-rating-top">
                            <select class="star-rating">
                               <option value="">Виберіть оцінку</option>
