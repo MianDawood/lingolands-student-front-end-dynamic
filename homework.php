@@ -12,9 +12,9 @@ if ($mysqli -> connect_errno) {
 //validation_check($_SESSION['USER_ID'], DOMAIN_SITE, array(0,1,2,3));
 
 //$userId			=	$_SESSION['USER_ID'];
-$userId = 398;
+$USERID = 399;
 $current_date	=	date('Y-m-d h:i:s');
-$where = " WHERE lesson_assign_students.memberId='398'";
+ $where = " WHERE lesson_assign_students.memberId='$USERID'"; 
 if(isset($_POST['searchSubmit'])) {
 	//$where = " WHERE sl.memberId='".$_SESSION['USER_ID']."'";
  
@@ -33,7 +33,7 @@ if(isset($_POST['searchSubmit'])) {
       $endDate = $date[0];
     }
 
-     $where	.= "  AND DATE(lesson_assign_students.createdOn) BETWEEN    '".date('Y-m-d',strtotime($startDate))."'  AND '".date('Y-m-d',strtotime($endDate))."'  ";
+     $where	.= "AND DATE(lesson_assign_students.createdOn) BETWEEN    '".date('Y-m-d',strtotime($startDate))."'  AND '".date('Y-m-d',strtotime($endDate))."'  ";
        
   }
 
@@ -42,20 +42,20 @@ if(isset($_POST['ID']) && $_POST['ID'] != "")
    $where	.= " AND lesson_assign_students.status='".$_POST['ID']."' ";
 
   }
-			$sql_qr = mysqli_query($link," select ld.name,sl.lessonsId from lessons_details ld  LEFT JOIN lesson_assign_students sl on ld.lessonsId=sl.lessonsId  ".$where);
+			$sql_qr = mysqli_query($link," select lesson_assign_students.memberId, lesson_assign_students.time,lesson_assign_students.createdOn,lesson_assign_students.modifiedOn,lesson_assign_students.status as sts,lessons_details.name,lessons_details.lessonsId,lessons_details.level from lessons_details LEFT JOIN lesson_assign_students on lessons_details.lessonsId=lesson_assign_students.lessonsId".$where);
  
 }
 else
 {
-	$sql_qr	=	mysqli_query($link, " select ld.name,sl.lessonsId from lessons_details ld  LEFT JOIN lesson_assign_students sl on ld.lessonsId=sl.lessonsId where sl.memberId='".$userId."'");
+	$sql_qr	=	mysqli_query($link, "select lesson_assign_students.createdOn,lesson_assign_students.modifiedOn,lesson_assign_students.time,lesson_assign_students.status as sts,lessons_details.name,lessons_details.lessonsId,lessons_details.level from lessons_details LEFT JOIN lesson_assign_students on lessons_details.lessonsId=lesson_assign_students.lessonsId where lesson_assign_students.memberId='".$USERID."'");
 }
 	$dataArr	=	array();
 	while($data=mysqli_fetch_array($sql_qr)){
 		$dataArr[]= $data;
 	}
-	/*echo"<pre>";
-	print_r($dataArr);
-	echo"</pre>";*/
+	// echo"<pre>";
+	// print_r($dataArr);
+	// echo"</pre>";
 
 ?>
 
@@ -110,17 +110,20 @@ else
             </div>
             <div class="container">
                <div class="homework-list">
+         
+
                <?php
+              
 							  $c1=1;
 							  foreach($dataArr as $k=>$val)
 							  {
 									if($_POST['startDate']!='' && $_POST['endDate']!='')
 									{
-										$sql_hom	= mysqli_query($link," select shw.homeworkstatus,shw.createdOn,shw.teacherId,hd.content from homework_assign_students shw LEFT JOIN homework_details hd on shw.homeworksId=hd.homeworksId where shw.lessonsId='".$val['lessonsId']."' and shw.memberId='".$userId."' and  hd.languageId='1' AND DATE(shw.createdOn) between '".date('Y-m-d',strtotime($_POST['startDate']))."' AND '".date('Y-m-d',strtotime($_POST['endDate']))."' ");
+										$sql_hom	= mysqli_query($link," select shw.homeworkstatus,shw.createdOn,shw.teacherId,hd.content from homework_assign_students shw LEFT JOIN homework_details hd on shw.homeworksId=hd.homeworksId where shw.lessonsId='".$val['lessonsId']."' and shw.memberId='".$USERID."' and  hd.languageId='1' AND DATE(shw.createdOn) between '".date('Y-m-d',strtotime($_POST['startDate']))."' AND '".date('Y-m-d',strtotime($_POST['endDate']))."' ");
 										
 									}
 									else{
-									$sql_hom	= mysqli_query($link," select shw.homeworkstatus,shw.createdOn,shw.teacherId,hd.content from homework_assign_students shw LEFT JOIN homework_details hd on shw.homeworksId=hd.homeworksId where shw.lessonsId='".$val['lessonsId']."' and shw.memberId='".$userId."' and  hd.languageId='1'"); 
+									$sql_hom	= mysqli_query($link," select shw.homeworkstatus,shw.createdOn,shw.teacherId,hd.content from homework_assign_students shw LEFT JOIN homework_details hd on shw.homeworksId=hd.homeworksId where shw.lessonsId='".$val['lessonsId']."' and shw.memberId='".$USERID."' and  hd.languageId='1'"); 
 									}
                                                                         
 					?>
@@ -129,7 +132,7 @@ else
                         <div class="homework-item__status"></div>
                         <div class="homework-item__desc">
                            <p class="homework-item__title">
-                              Урок 1
+                             <?php echo  $val['name']; ?>
                            </p>
                            <p class="homework-item__number">
                               Чтение
@@ -146,25 +149,25 @@ else
                            </select>
                         </div>
 
-                        <p class="homework-item__name">
+                        <!-- <p class="homework-item__name">
                            Тема 2 (о дизайне)
-                        </p>
+                        </p> -->
                         <div class="homework-item__container">
                            <div class="homework-item__long">
                               <p class="long-title">Длительность</p>
-                              <p class="long-value">45 минут</p>
+                              <p class="long-value"><?php echo ($val['time']!='')? $val['time'] : '---';  ?></p>
                            </div>
                            <div class="homework-item__level">
                               <p class="level-title">Уровень</p>
-                              <p class="level-value">Профи</p>
+                              <p class="level-value"><?php echo $val['level']; ?></p>
                            </div>
                            <div class="homework-item__time">
                               <p class="time-title">Время</p>
-                              <p class="time-value">15:00</p>
+                              <p class="time-value"><?php echo ($val['time']!='')? $val['time'] : '---';  ?></p>
                            </div>
                            <div class="homework-item__date">
                               <p class="date-title">Дата</p>
-                              <p class="date-value">12.12.22</p>
+                              <p class="date-value"><?php echo ($val['sts']=='0')? date('d/M/Y',strtotime($val['createdOn'])): (($val['sts']=='4')? date('d/M/Y',strtotime($val['modifiedOn'])): date('d/M/Y',strtotime($val['createdOn'])) )?></p>
                            </div>
                            <!-- <a href="#" class="homework-item-link-pass homework-item-link">Посмотреть</a>
                            <a href="#" class="homework-item-link-cancel homework-item-link">Отменено</a>
@@ -179,6 +182,7 @@ else
 									
 									$teachername	=	mysqli_fetch_array($teacher_qr);
 								?>
+                        
                      <div class="panel">
                         <div class="panel-icon">
                            <img src="./image/homework-ico.svg" alt="icon">
@@ -229,7 +233,7 @@ else
                      </div>
                   </div>
                  <?php } ?>
-               </div>
+
 
             </div>
          </div>

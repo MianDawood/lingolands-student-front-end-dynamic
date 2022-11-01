@@ -86,7 +86,9 @@ else
             </div>
             <div class="sort">
                <div class="sort-container">
-                  <h4>Фильтр</h4>
+                  <h4>
+                     <!-- Фильтр -->
+                  </h4>
                   <div class="controls">
                    
                      <!-- <button type="button" data-sort="views:asc">Sort by v (A-Z)</button> -->

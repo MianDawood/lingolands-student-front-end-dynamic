@@ -160,13 +160,13 @@ echo"</pre>";*/
                              <option value="1">Жахливо</option>
                           </select>
                        </div>
-                       <p class="my-lessons-item__name">
+                       <!-- <p class="my-lessons-item__name">
                           Тема 2 (о дизайне)
-                       </p>
+                       </p> -->
                        <div class="my-lessons-item__container">
                           <div class="my-lessons-item__long">
                              <p class="long-title">Длительность</p>
-                             <p class="long-value">45 минут</p>
+                             <p class="long-value"><?php echo ($val['time']!='')? $val['time'] : '---';  ?></p>
                           </div>
                           <div class="my-lessons-item__level">
                              <p class="level-title">Уровень</p>
